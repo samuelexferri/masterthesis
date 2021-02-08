@@ -101,11 +101,11 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getBalanceInEth\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"sendCoin\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"sufficient\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/GitHub/masterthesis/truffle-1/contracts/MetaCoin.sol\":\"MetaCoin\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/GitHub/masterthesis/truffle-1/contracts/ConvertLib.sol\":{\"keccak256\":\"0xa95479aadd1facea97659bb29b825dbe847d6683880f0edc49b2e02517f3f5dd\",\"urls\":[\"bzz-raw://035feb5b82d2e91cb244970d553c5e2099e4df7c9746d9a4f7bad3059ac4cae3\",\"dweb:/ipfs/QmYoYLHaXxjotgxDvEHYGadJyYtEKtETn8FDwFgzyZL62E\"]},\"/C/GitHub/masterthesis/truffle-1/contracts/MetaCoin.sol\":{\"keccak256\":\"0x3120b2b343640c8ef461e38ad28e7a85ef99f4fe375376de0c7e2cee56e96e1d\",\"urls\":[\"bzz-raw://c4d47ad4bc9eec4ceb27b6055ca4e748d473622a42227fe516b08b7254e3bab3\",\"dweb:/ipfs/QmcqCW2TvR7FQ271oarfvRi6phLXAPxCjTWXcd7CJu7sdZ\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b506127106000803273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055506103d6806100656000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80637bd703e81461004657806390b98a111461009e578063f8b2cb4f14610104575b600080fd5b6100886004803603602081101561005c57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061015c565b6040518082815260200191505060405180910390f35b6100ea600480360360408110156100b457600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610200565b604051808215151515815260200191505060405180910390f35b6101466004803603602081101561011a57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610359565b6040518082815260200191505060405180910390f35b600073__ConvertLib____________________________6396e4ee3d61018184610359565b60026040518363ffffffff1660e01b8152600401808381526020018281526020019250505060206040518083038186803b1580156101be57600080fd5b505af41580156101d2573d6000803e3d6000fd5b505050506040513d60208110156101e857600080fd5b81019080805190602001909291905050509050919050565b6000816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205410156102515760009050610353565b816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008282540392505081905550816000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a3600190505b92915050565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054905091905056fea265627a7a723158208347bfeb9882d44ba07b07fe458e64edf6738232abb328ad0a6af1d98e60601864736f6c63430005100032",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80637bd703e81461004657806390b98a111461009e578063f8b2cb4f14610104575b600080fd5b6100886004803603602081101561005c57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061015c565b6040518082815260200191505060405180910390f35b6100ea600480360360408110156100b457600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610200565b604051808215151515815260200191505060405180910390f35b6101466004803603602081101561011a57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610359565b6040518082815260200191505060405180910390f35b600073__ConvertLib____________________________6396e4ee3d61018184610359565b60026040518363ffffffff1660e01b8152600401808381526020018281526020019250505060206040518083038186803b1580156101be57600080fd5b505af41580156101d2573d6000803e3d6000fd5b505050506040513d60208110156101e857600080fd5b81019080805190602001909291905050509050919050565b6000816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205410156102515760009050610353565b816000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008282540392505081905550816000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040518082815260200191505060405180910390a3600190505b92915050565b60008060008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054905091905056fea265627a7a723158208347bfeb9882d44ba07b07fe458e64edf6738232abb328ad0a6af1d98e60601864736f6c63430005100032",
-  "sourceMap": "356:674:1:-;;;493:56;8:9:-1;5:2;;;30:1;27;20:12;5:2;493:56:1;540:5;518:8;:19;527:9;518:19;;;;;;;;;;;;;;;:27;;;;356:674;;;;;;",
-  "deployedSourceMap": "356:674:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;356:674:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;819:117;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;819:117:1;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;552:264;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;552:264:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;939:89;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;939:89:1;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;819:117;878:4;894:10;:18;913:16;924:4;913:10;:16::i;:::-;930:1;894:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;894:38:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;894:38:1;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;894:38:1;;;;;;;;;;;;;;;;887:45;;819:117;;;:::o;552:264::-;616:15;664:6;641:8;:20;650:10;641:20;;;;;;;;;;;;;;;;:29;637:47;;;679:5;672:12;;;;637:47;712:6;688:8;:20;697:10;688:20;;;;;;;;;;;;;;;;:30;;;;;;;;;;;744:6;722:8;:18;731:8;722:18;;;;;;;;;;;;;;;;:28;;;;;;;;;;;780:8;759:38;;768:10;759:38;;;790:6;759:38;;;;;;;;;;;;;;;;;;808:4;801:11;;552:264;;;;;:::o;939:89::-;993:4;1010:8;:14;1019:4;1010:14;;;;;;;;;;;;;;;;1003:21;;939:89;;;:::o",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getBalanceInEth\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"sendCoin\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"sufficient\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/GitHub/masterthesis/truffle-1/contracts/MetaCoin.sol\":\"MetaCoin\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":10},\"remappings\":[]},\"sources\":{\"/C/GitHub/masterthesis/truffle-1/contracts/ConvertLib.sol\":{\"keccak256\":\"0xa95479aadd1facea97659bb29b825dbe847d6683880f0edc49b2e02517f3f5dd\",\"urls\":[\"bzz-raw://035feb5b82d2e91cb244970d553c5e2099e4df7c9746d9a4f7bad3059ac4cae3\",\"dweb:/ipfs/QmYoYLHaXxjotgxDvEHYGadJyYtEKtETn8FDwFgzyZL62E\"]},\"/C/GitHub/masterthesis/truffle-1/contracts/MetaCoin.sol\":{\"keccak256\":\"0x3120b2b343640c8ef461e38ad28e7a85ef99f4fe375376de0c7e2cee56e96e1d\",\"urls\":[\"bzz-raw://c4d47ad4bc9eec4ceb27b6055ca4e748d473622a42227fe516b08b7254e3bab3\",\"dweb:/ipfs/QmcqCW2TvR7FQ271oarfvRi6phLXAPxCjTWXcd7CJu7sdZ\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b503260009081526020819052604090206127109055610254806100346000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80637bd703e81461004657806390b98a111461007e578063f8b2cb4f146100be575b600080fd5b61006c6004803603602081101561005c57600080fd5b50356001600160a01b03166100e4565b60408051918252519081900360200190f35b6100aa6004803603604081101561009457600080fd5b506001600160a01b038135169060200135610178565b604080519115158252519081900360200190f35b61006c600480360360208110156100d457600080fd5b50356001600160a01b0316610204565b600073__ConvertLib____________________________6396e4ee3d61010984610204565b60026040518363ffffffff1660e01b8152600401808381526020018281526020019250505060206040518083038186803b15801561014657600080fd5b505af415801561015a573d6000803e3d6000fd5b505050506040513d602081101561017057600080fd5b505192915050565b33600090815260208190526040812054821115610197575060006101fe565b33600081815260208181526040808320805487900390556001600160a01b03871680845292819020805487019055805186815290519293927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929181900390910190a35060015b92915050565b6001600160a01b03166000908152602081905260409020549056fea265627a7a72315820dbd52660f08fa70b9989f83b458aa7539a2bb7227dda1ce13b3da4715c9ca45264736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80637bd703e81461004657806390b98a111461007e578063f8b2cb4f146100be575b600080fd5b61006c6004803603602081101561005c57600080fd5b50356001600160a01b03166100e4565b60408051918252519081900360200190f35b6100aa6004803603604081101561009457600080fd5b506001600160a01b038135169060200135610178565b604080519115158252519081900360200190f35b61006c600480360360208110156100d457600080fd5b50356001600160a01b0316610204565b600073__ConvertLib____________________________6396e4ee3d61010984610204565b60026040518363ffffffff1660e01b8152600401808381526020018281526020019250505060206040518083038186803b15801561014657600080fd5b505af415801561015a573d6000803e3d6000fd5b505050506040513d602081101561017057600080fd5b505192915050565b33600090815260208190526040812054821115610197575060006101fe565b33600081815260208181526040808320805487900390556001600160a01b03871680845292819020805487019055805186815290519293927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929181900390910190a35060015b92915050565b6001600160a01b03166000908152602081905260409020549056fea265627a7a72315820dbd52660f08fa70b9989f83b458aa7539a2bb7227dda1ce13b3da4715c9ca45264736f6c63430005100032",
+  "sourceMap": "356:674:1:-;;;493:56;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;527:9:1;518:8;:19;;;;;;;;;;540:5;518:27;;356:674;;;;;;",
+  "deployedSourceMap": "356:674:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;356:674:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;819:117;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;819:117:1;-1:-1:-1;;;;;819:117:1;;:::i;:::-;;;;;;;;;;;;;;;;552:264;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;;;;;;552:264:1;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;939:89;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;939:89:1;-1:-1:-1;;;;;939:89:1;;:::i;819:117::-;878:4;894:10;:18;913:16;924:4;913:10;:16::i;:::-;930:1;894:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;894:38:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;894:38:1;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;894:38:1;;819:117;-1:-1:-1;;819:117:1:o;552:264::-;650:10;616:15;641:20;;;;;;;;;;;:29;-1:-1:-1;637:47:1;;;-1:-1:-1;679:5:1;672:12;;637:47;697:10;688:8;:20;;;;;;;;;;;:30;;;;;;;-1:-1:-1;;;;;722:18:1;;;;;;;;;:28;;;;;;759:38;;;;;;;722:18;;697:10;759:38;;;;;;;;;;;-1:-1:-1;808:4:1;552:264;;;;;:::o;939:89::-;-1:-1:-1;;;;;1010:14:1;993:4;1010:14;;;;;;;;;;;;939:89::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.25 <0.7.0;\n\nimport \"./ConvertLib.sol\";\n\n// This is just a simple example of a coin-like contract.\n// It is not standards compatible and cannot be expected to talk to other\n// coin/token contracts. If you want to create a standards-compliant\n// token, see: https://github.com/ConsenSys/Tokens. Cheers!\n\ncontract MetaCoin {\n\tmapping (address => uint) balances;\n\n\tevent Transfer(address indexed _from, address indexed _to, uint256 _value);\n\n\tconstructor() public {\n\t\tbalances[tx.origin] = 10000;\n\t}\n\n\tfunction sendCoin(address receiver, uint amount) public returns(bool sufficient) {\n\t\tif (balances[msg.sender] < amount) return false;\n\t\tbalances[msg.sender] -= amount;\n\t\tbalances[receiver] += amount;\n\t\temit Transfer(msg.sender, receiver, amount);\n\t\treturn true;\n\t}\n\n\tfunction getBalanceInEth(address addr) public view returns(uint){\n\t\treturn ConvertLib.convert(getBalance(addr),2);\n\t}\n\n\tfunction getBalance(address addr) public view returns(uint) {\n\t\treturn balances[addr];\n\t}\n}\n",
   "sourcePath": "C:/GitHub/masterthesis/truffle-1/contracts/MetaCoin.sol",
   "ast": {
@@ -337,7 +337,7 @@
                           "name": "tx",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 176,
+                          "referencedDeclaration": 139,
                           "src": "527:2:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_transaction",
@@ -468,7 +468,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 164,
+                          "referencedDeclaration": 127,
                           "src": "650:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -582,7 +582,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 164,
+                          "referencedDeclaration": 127,
                           "src": "697:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -724,7 +724,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 164,
+                          "referencedDeclaration": 127,
                           "src": "768:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1607,7 +1607,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 176,
+                                      "referencedDeclaration": 139,
                                       "type": "tx",
                                       "value": "tx"
                                     },
@@ -1835,7 +1835,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 164,
+                                      "referencedDeclaration": 127,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -1959,7 +1959,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 164,
+                                      "referencedDeclaration": 127,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -2143,7 +2143,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 164,
+                                  "referencedDeclaration": 127,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -2658,14 +2658,14 @@
         }
       },
       "links": {
-        "ConvertLib": "0x8aEdE34acCcb206724EB704F7a73545c094Ee9d6"
+        "ConvertLib": "0x0E9e129238501a6F8c5290e002fbB47Eb5B08D95"
       },
-      "address": "0x0B6edf4C6a8B46Ca321af81517177063B0144393",
-      "transactionHash": "0xe07ee1978eee806e1de0a80c227d90e1a62c3f1eb64d3f9283ab73edd1c71f2a"
+      "address": "0x975E8866557CbA86a05da7Ff30205AfF0d84Ae21",
+      "transactionHash": "0xcd41b1b9c6c05ff4837767c33f9bd3e8cf5cff464e9d1d07d28fbe0284b4230d"
     }
   },
   "schemaVersion": "3.3.3",
-  "updatedAt": "2021-02-05T19:07:19.871Z",
+  "updatedAt": "2021-02-08T12:37:05.274Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

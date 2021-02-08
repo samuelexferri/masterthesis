@@ -77,12 +77,17 @@ module.exports = {
   // Set default mocha options here, use special reporters etc.
   mocha: {
     // timeout: 100000
+    reporter: 'eth-gas-reporter',
+    reporterOptions : {
+      currency: 'USD',
+      coinmarketcap: '3d81c9fa-1368-431e-8e33-8dba9285775e' // Temporary API Key
+    }
   },
 
   // Configure your compilers
   compilers: {
     solc: {
-      //version: "0.8.1",    // Fetch exact version from solc-bin (default: truffle's version)
+      // version: "0.6.0",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       settings: {          // See the solidity docs for advice about optimization and evmVersion
         optimizer: {
