@@ -6,7 +6,7 @@
 
 **Master's thesis** - Computer Science and Engineering
 
-Smart contracts
+Smart Contracts
 
 ![alt text](https://img.shields.io/badge/Language-Italian-infomrmational?style=for-the-badge)
 
