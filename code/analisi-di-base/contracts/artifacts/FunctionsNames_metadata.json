@@ -8,13 +8,26 @@
 			{
 				"inputs": [],
 				"name": "a",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "b",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "b",
+				"name": "f",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -33,7 +46,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/FunctionsOrder.sol": "FunctionsOrder"
+			"localhost/contracts/FunctionsNames.sol": "FunctionsNames"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -47,12 +60,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/FunctionsOrder.sol": {
-			"keccak256": "0xbaaa3897c72cf9e7345468b879667e391b057301be91d163f1c47285205ae858",
+		"localhost/contracts/FunctionsNames.sol": {
+			"keccak256": "0x6f0c50e45850a7fef66912b0bf5fb3b0cfdd169496de4089fb9d66afd145f318",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d97d12f41e89950c40225990b3e3ae3a75d58db60f157e7fe19d6ab5ae361169",
-				"dweb:/ipfs/QmcRr57JMgmBUjcFinjy6GHXnfWknPdTXRSzUSugb37gM8"
+				"bzz-raw://83cdf4de8784b4b230a49dfea3797ba8ee51a22e6070a7915bfe1ebea4f5c857",
+				"dweb:/ipfs/QmRbP5mYBxo5SyJ1JrvBcG5D1T4ytLCgNRNVP6YqhMDrGt"
 			]
 		}
 	},

@@ -1,0 +1,92 @@
+{
+	"compiler": {
+		"version": "0.8.2+commit.661d1103"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint128",
+						"name": "a",
+						"type": "uint128"
+					},
+					{
+						"internalType": "uint256",
+						"name": "b",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint128",
+						"name": "c",
+						"type": "uint128"
+					}
+				],
+				"name": "saveStorageWrong",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "valuesWrong",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "a",
+						"type": "uint128"
+					},
+					{
+						"internalType": "uint256",
+						"name": "b",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint128",
+						"name": "c",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"localhost/MemoryVariables.sol": "PackVariablesWrong"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"localhost/MemoryVariables.sol": {
+			"keccak256": "0xfcb4d62b7c035f3077e9af0dfdafd64234a427b8d76bea60696db62c3e3cb970",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://79f3db426cf58d800fd88fc74f77c949a5acaf71315cfc406b70d39d475e879c",
+				"dweb:/ipfs/QmcUQrn8SqNU2a8Eqd6W3huEYwLaBpu1jzvutDXyFpXHf1"
+			]
+		}
+	},
+	"version": 1
+}
