@@ -32,7 +32,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/MemoryVariables.sol": "MemoryVariables"
+			"localhost/contracts/MemoryAndStorage.sol": "MemoryVariables"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -40,13 +40,13 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"localhost/MemoryVariables.sol": {
+		"localhost/contracts/MemoryAndStorage.sol": {
 			"keccak256": "0x9e0a9a90f432b3570b908e9c2e622f59b019528ac9698b422de8b153ed9a9e4c",
 			"license": "MIT",
 			"urls": [

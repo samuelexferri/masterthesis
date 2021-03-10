@@ -6,36 +6,36 @@
 	"output": {
 		"abi": [
 			{
-				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
 						"internalType": "uint256",
-						"name": "c",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "balance",
 						"type": "uint256"
 					}
 				],
-				"name": "Result",
-				"type": "event"
+				"name": "addAccount",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			},
 			{
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "a",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "b",
+						"name": "id",
 						"type": "uint256"
 					}
 				],
-				"name": "hasEvent",
+				"name": "getBalance",
 				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "c",
+						"name": "",
 						"type": "uint256"
 					}
 				],
@@ -46,24 +46,18 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "a",
+						"name": "id",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "b",
+						"name": "balance",
 						"type": "uint256"
 					}
 				],
-				"name": "noEvent",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "c",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "pure",
+				"name": "updateBalance",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -80,7 +74,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/EventsLogging.sol": "EventsLogging"
+			"localhost/contracts/MemoryAndStorage.sol": "MemoryStorage"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -94,12 +88,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/EventsLogging.sol": {
-			"keccak256": "0x037f4975e1af39695817e05be3ec5a2dee45c8bc7945843719f965e177a98042",
+		"localhost/contracts/MemoryAndStorage.sol": {
+			"keccak256": "0x444f7ee00179243dee0b325791d9a3785912baa40be8751efaf122c76a33d031",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e9c488153f00669173c066612fc8bdb6301d3ed1ecd676ea4fe3396c9b088a15",
-				"dweb:/ipfs/QmYnJVbiAMtqLK1FwFic9JtRk2TWeQhzoBXKwXc5qpiEvC"
+				"bzz-raw://25920dc55f36af17c60b6d4ee8c08f277380b50202e88be02c7b29404438072c",
+				"dweb:/ipfs/QmdrUhvTJiHZN6LoXs8XiE5TpRavGeZvmJjgiC3Xscxfz4"
 			]
 		}
 	},

@@ -6,64 +6,80 @@
 	"output": {
 		"abi": [
 			{
-				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
 						"internalType": "uint256",
-						"name": "c",
+						"name": "_id",
 						"type": "uint256"
 					}
 				],
-				"name": "Result",
-				"type": "event"
-			},
-			{
-				"inputs": [
+				"name": "getPerson",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					},
 					{
 						"internalType": "uint256",
-						"name": "a",
+						"name": "_dna",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "b",
+						"name": "_height",
 						"type": "uint256"
-					}
-				],
-				"name": "hasEvent",
-				"outputs": [
+					},
 					{
 						"internalType": "uint256",
-						"name": "c",
+						"name": "_weight",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_creationTime",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "nonpayable",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "a",
+						"name": "_id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_dna",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "b",
+						"name": "_height",
 						"type": "uint256"
-					}
-				],
-				"name": "noEvent",
-				"outputs": [
+					},
 					{
 						"internalType": "uint256",
-						"name": "c",
+						"name": "_weight",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_creationTime",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "pure",
+				"name": "setPerson",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -80,7 +96,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/EventsLogging.sol": "EventsLogging"
+			"localhost/contracts/PackStructs.sol": "PackStructs0"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -94,12 +110,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/EventsLogging.sol": {
-			"keccak256": "0x037f4975e1af39695817e05be3ec5a2dee45c8bc7945843719f965e177a98042",
+		"localhost/contracts/PackStructs.sol": {
+			"keccak256": "0xac7738ff65691f0d66eb4e074d7b3cfaffacd050a0ba7c07a58b9a7b0efc9120",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e9c488153f00669173c066612fc8bdb6301d3ed1ecd676ea4fe3396c9b088a15",
-				"dweb:/ipfs/QmYnJVbiAMtqLK1FwFic9JtRk2TWeQhzoBXKwXc5qpiEvC"
+				"bzz-raw://25b127cb3c47fa2a8392f2f7d21585e5a75cf6273b8406aea39da058b6c852c1",
+				"dweb:/ipfs/QmdmU31FXGAxwWMopgvYDDas4DmGxyF3w8HJQ6umvzYzwa"
 			]
 		}
 	},

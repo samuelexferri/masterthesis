@@ -27,29 +27,6 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "valuesWrong",
-				"outputs": [
-					{
-						"internalType": "uint128",
-						"name": "a",
-						"type": "uint128"
-					},
-					{
-						"internalType": "uint256",
-						"name": "b",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint128",
-						"name": "c",
-						"type": "uint128"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -65,7 +42,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/MemoryVariables.sol": "PackVariablesWrong"
+			"localhost/contracts/PackVariables.sol": "PackVariablesWrong"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -79,12 +56,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/MemoryVariables.sol": {
-			"keccak256": "0xfcb4d62b7c035f3077e9af0dfdafd64234a427b8d76bea60696db62c3e3cb970",
+		"localhost/contracts/PackVariables.sol": {
+			"keccak256": "0xfeced9b59c4ed705b3dd2dc189b06b257f800671f6d0f2462a1f98b6615c989f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://79f3db426cf58d800fd88fc74f77c949a5acaf71315cfc406b70d39d475e879c",
-				"dweb:/ipfs/QmcUQrn8SqNU2a8Eqd6W3huEYwLaBpu1jzvutDXyFpXHf1"
+				"bzz-raw://2f16bb2b6e39c216b5b916dbf5b4f3e02a8bf40dadd54d11ae0ae98dd2689ca8",
+				"dweb:/ipfs/QmTThXzPm1mzQxS1LN3ztHDM2Qi9AZo8wEPDPSZyqKxGRq"
 			]
 		}
 	},

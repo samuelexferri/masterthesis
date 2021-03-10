@@ -6,28 +6,24 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
-				"name": "a",
-				"outputs": [
+				"inputs": [
+					{
+						"internalType": "uint128",
+						"name": "a",
+						"type": "uint128"
+					},
+					{
+						"internalType": "uint128",
+						"name": "b",
+						"type": "uint128"
+					},
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "c",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "b",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "f",
+				"name": "saveStorage",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -46,7 +42,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/FunctionsNames.sol": "FunctionsNames"
+			"localhost/contracts/PackStructs.sol": "PackS"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -54,18 +50,18 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/FunctionsNames.sol": {
-			"keccak256": "0x6f0c50e45850a7fef66912b0bf5fb3b0cfdd169496de4089fb9d66afd145f318",
+		"localhost/contracts/PackStructs.sol": {
+			"keccak256": "0x3e0ee8d73d752c76297470a276c2ce95b6103d86493c8365bc7a65af74d54360",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://83cdf4de8784b4b230a49dfea3797ba8ee51a22e6070a7915bfe1ebea4f5c857",
-				"dweb:/ipfs/QmRbP5mYBxo5SyJ1JrvBcG5D1T4ytLCgNRNVP6YqhMDrGt"
+				"bzz-raw://61b56083ecd9c8c67d8201aef4ecaf91e1aecbc405f80895ca54aaae3c7efcd2",
+				"dweb:/ipfs/QmfKp62iptEVpGXJJ2BVeTVGpcBBKL8JAqzYxuKRLxbe7w"
 			]
 		}
 	},
