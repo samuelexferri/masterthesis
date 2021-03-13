@@ -1,0 +1,103 @@
+{
+	"compiler": {
+		"version": "0.8.2+commit.661d1103"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[20]",
+						"name": "x",
+						"type": "uint256[20]"
+					}
+				],
+				"name": "call",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[20]",
+						"name": "a",
+						"type": "uint256[20]"
+					}
+				],
+				"name": "fExternal",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[20]",
+						"name": "a",
+						"type": "uint256[20]"
+					}
+				],
+				"name": "fPublic",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"localhost/contracts/FunctionModifiers.sol": "FunctionModifiers"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"localhost/contracts/FunctionModifiers.sol": {
+			"keccak256": "0x5aeb599e244977b6d75b80220507c3527cd227085d971cd5f113840a9fa27f1a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://efdfb3bc7d8d1a37881e512669e9a98938218fef13322ff820c98a4024b3c4e0",
+				"dweb:/ipfs/QmdS4Vjxr59wCEiGziQYzFirJ1HRwMsEqtkXHqpWu1WN9Q"
+			]
+		}
+	},
+	"version": 1
+}

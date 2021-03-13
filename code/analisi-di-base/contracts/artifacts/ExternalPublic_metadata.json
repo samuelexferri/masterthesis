@@ -1,0 +1,103 @@
+{
+	"compiler": {
+		"version": "0.8.2+commit.661d1103"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[20]",
+						"name": "x",
+						"type": "uint256[20]"
+					}
+				],
+				"name": "call",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[20]",
+						"name": "a",
+						"type": "uint256[20]"
+					}
+				],
+				"name": "fExternal",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[20]",
+						"name": "a",
+						"type": "uint256[20]"
+					}
+				],
+				"name": "fPublic",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"localhost/contracts/ExternalPublic.sol": "ExternalPublic"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"localhost/contracts/ExternalPublic.sol": {
+			"keccak256": "0x49aed6b2dea7eda6566048200a1b9e479d3e3693809d031f6b929f804da330bc",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://dff11d862d28e8fc0e01aa96ab2b96cfa0ab2a9784f88657061091ba74938b9e",
+				"dweb:/ipfs/QmTAaQLZZJeJ1EhLgzWZFVF7xTi4bt5ihkmG1k6ccthvwD"
+			]
+		}
+	},
+	"version": 1
+}
