@@ -78,7 +78,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/ShortCircuit.sol": "S"
+			"localhost/contracts/ShortCircuit.sol": "Short"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -93,11 +93,11 @@
 	},
 	"sources": {
 		"localhost/contracts/ShortCircuit.sol": {
-			"keccak256": "0x3bab8ec2db71b81eaa2cfe3c703fad753aae4f5c6652acf66b41dab1dc3963fe",
+			"keccak256": "0x4c0bc5c131a644993256e0ff8e73d5df491bb7c93100d877dec8c02c0befaa87",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://90340fe3c6e43bf6f862ccfd486761689c0b9f097ec7c42fb6cf847d66f68866",
-				"dweb:/ipfs/QmSSjWea8KqBBcPvoCbHVVioNF9nBFVJ5xhUzrdx152Xuv"
+				"bzz-raw://19b0872494235e9d7d8d69768416b20b42831026bd06fedc6c7a16fc8c04b80b",
+				"dweb:/ipfs/QmRq7xZDxq3FSWLNmkqxmYJyATPY5dMNTa82rQRMsVDw1d"
 			]
 		}
 	},
