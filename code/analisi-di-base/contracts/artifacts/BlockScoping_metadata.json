@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.2+commit.661d1103"
+		"version": "0.7.4+commit.3f05b770"
 	},
 	"language": "Solidity",
 	"output": {
@@ -9,83 +9,59 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_id",
+						"name": "X1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X2",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X3",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X4",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X5",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X6",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X7",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X8",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X9",
 						"type": "uint256"
 					}
 				],
-				"name": "getCharacter",
+				"name": "functionStack",
 				"outputs": [
 					{
-						"internalType": "address",
-						"name": "_owner",
-						"type": "address"
-					},
-					{
 						"internalType": "uint256",
-						"name": "_creationTime",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_height",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_weight",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_dna",
+						"name": "result",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_id",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address",
-						"name": "_owner",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_creationTime",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_height",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_weight",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_dna",
-						"type": "uint256"
-					}
-				],
-				"name": "setCharacter",
-				"outputs": [
-					{
-						"internalType": "bytes32",
-						"name": "s",
-						"type": "bytes32"
-					}
-				],
-				"stateMutability": "nonpayable",
+				"stateMutability": "pure",
 				"type": "function"
 			}
 		],
@@ -102,7 +78,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/PackStorage.sol": "PackEncoding"
+			"localhost/contracts/BlockScoping.sol": "BlockScoping"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -110,18 +86,18 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/PackStorage.sol": {
-			"keccak256": "0xd9f96209690ed0a8b6b44e440f75b8c32abed9d728864cb82649bac51f629730",
+		"localhost/contracts/BlockScoping.sol": {
+			"keccak256": "0xdb1419ebd3ac8980589ed7ddcf142830f462110ce2a3b775d77e6d0fbd02c00e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3918a76fe6ac7b08b569e567b26a87f9a5c4be093b5ddb76f44b8935a4da6dd0",
-				"dweb:/ipfs/QmVgGqi3xiN3vte8GYpfgoV6rWkNT8HsdMfs6najJgRw1f"
+				"bzz-raw://bb14ef4685e356dd40383e2c507736f37cf776f2984a3b7e72a6aca237af7bf3",
+				"dweb:/ipfs/QmNMS8dcqa6tGx1ScexabcaEkQVHWLfCSnh2MV7qFQ4hJA"
 			]
 		}
 	},

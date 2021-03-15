@@ -9,80 +9,56 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_id",
+						"name": "X1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X2",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X3",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X4",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X5",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X6",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X7",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X8",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X9",
 						"type": "uint256"
 					}
 				],
-				"name": "getCharacter",
+				"name": "functionStack",
 				"outputs": [
 					{
-						"internalType": "address",
-						"name": "_owner",
-						"type": "address"
-					},
-					{
 						"internalType": "uint256",
-						"name": "_creationTime",
+						"name": "result",
 						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_height",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_weight",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_dna",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_id",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address",
-						"name": "_owner",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_creationTime",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_height",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_weight",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_dna",
-						"type": "uint256"
-					}
-				],
-				"name": "setCharacter",
-				"outputs": [
-					{
-						"internalType": "bytes32",
-						"name": "s",
-						"type": "bytes32"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -102,7 +78,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/PackStorage.sol": "PackEncoding"
+			"localhost/contracts/StackTooDeep.sol": "StackTooDeep"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -116,12 +92,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/PackStorage.sol": {
-			"keccak256": "0xd9f96209690ed0a8b6b44e440f75b8c32abed9d728864cb82649bac51f629730",
+		"localhost/contracts/StackTooDeep.sol": {
+			"keccak256": "0x98fd82eb92ca54eaaa75c28b889e7479944daf0d7a18b38a46fb1dfd28156389",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3918a76fe6ac7b08b569e567b26a87f9a5c4be093b5ddb76f44b8935a4da6dd0",
-				"dweb:/ipfs/QmVgGqi3xiN3vte8GYpfgoV6rWkNT8HsdMfs6najJgRw1f"
+				"bzz-raw://ccab87c59fb9665077999db80f6d4d284e20fc000ed92b7235eb1f588cfe9e63",
+				"dweb:/ipfs/QmSdidiyoin1KgxGqhJbpBZv8bxS8EkaNxz3nSmtxuV9jE"
 			]
 		}
 	},

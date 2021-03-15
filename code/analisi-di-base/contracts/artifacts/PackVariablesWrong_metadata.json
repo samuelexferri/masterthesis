@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.7.4+commit.3f05b770"
+		"version": "0.8.2+commit.661d1103"
 	},
 	"language": "Solidity",
 	"output": {
@@ -42,7 +42,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/AssertRequire.sol": "PackVariablesWrong"
+			"localhost/contracts/PackVariables.sol": "PackVariablesWrong"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -50,18 +50,18 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/AssertRequire.sol": {
-			"keccak256": "0x64d9c5ffd7ef7cc5b0e8346ce9bf95ed295ceb3aefd6ac9172c77fa399c7e1ca",
+		"localhost/contracts/PackVariables.sol": {
+			"keccak256": "0xfeced9b59c4ed705b3dd2dc189b06b257f800671f6d0f2462a1f98b6615c989f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2cf4e5e9a6b6f7f66dedef6d0b3cbcd4afee96da30e666ec19fb67d18c612975",
-				"dweb:/ipfs/QmWhG1qYLoFTcTJUY5Ab6jfKbtTVELkjetdsFAbYccrbdq"
+				"bzz-raw://2f16bb2b6e39c216b5b916dbf5b4f3e02a8bf40dadd54d11ae0ae98dd2689ca8",
+				"dweb:/ipfs/QmTThXzPm1mzQxS1LN3ztHDM2Qi9AZo8wEPDPSZyqKxGRq"
 			]
 		}
 	},

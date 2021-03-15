@@ -8,80 +8,90 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_id",
-						"type": "uint256"
-					}
-				],
-				"name": "getCharacter",
-				"outputs": [
-					{
 						"internalType": "address",
-						"name": "_owner",
+						"name": "adr",
 						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "_creationTime",
+						"name": "nonce",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "_height",
+						"name": "takerFee",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "_weight",
+						"name": "makerFee",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "_dna",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "isBool",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X2",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X3",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X4",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X5",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "X6",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
+				"name": "functionBig",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "out",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_id",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address",
-						"name": "_owner",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_creationTime",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_height",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_weight",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_dna",
-						"type": "uint256"
+						"internalType": "bytes32",
+						"name": "variabile",
+						"type": "bytes32"
 					}
 				],
-				"name": "setCharacter",
+				"name": "functionCompress",
 				"outputs": [
 					{
 						"internalType": "bytes32",
-						"name": "s",
+						"name": "out",
 						"type": "bytes32"
 					}
 				],
@@ -102,7 +112,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/PackStorage.sol": "PackEncoding"
+			"localhost/contracts/CompressInput.sol": "CompressInput"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -116,12 +126,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/PackStorage.sol": {
-			"keccak256": "0xd9f96209690ed0a8b6b44e440f75b8c32abed9d728864cb82649bac51f629730",
+		"localhost/contracts/CompressInput.sol": {
+			"keccak256": "0x613f272f20622aaec0e2075cc8e5954734c13e69b4f41a9e0a99e6cebc73038c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3918a76fe6ac7b08b569e567b26a87f9a5c4be093b5ddb76f44b8935a4da6dd0",
-				"dweb:/ipfs/QmVgGqi3xiN3vte8GYpfgoV6rWkNT8HsdMfs6najJgRw1f"
+				"bzz-raw://2ef019e86cd30c3c04e7a4f8e2b5f5f34e1e11796d0621a195345f19e4cf24d8",
+				"dweb:/ipfs/QmRE24VwwPMGvpJ4jRCMUVXLULWgusjn26QAJQnCuw5hyh"
 			]
 		}
 	},

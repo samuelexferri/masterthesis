@@ -2,6 +2,8 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 // Fake Address: 0x1234574773Fc4F943711e57a7542f5Af2c83210F
+// Fake Time: 1609455600
+// Fake DNA: 73616d75656c65786665727269
 
 contract PackDivided {
     
@@ -54,13 +56,14 @@ contract PackEncoding {
     mapping(uint256 => uint256) persons;
     mapping(uint256 => uint256) dnas;
     
-    function setCharacter(uint256 _id, address _owner, uint256 _creationTime, uint256 _height, uint256 _weight, uint256 _dna) external {
+    function setCharacter(uint256 _id, address _owner, uint256 _creationTime, uint256 _height, uint256 _weight, uint256 _dna) external returns (bytes32 s) {
         uint256 person = uint256(uint160(address(_owner)));
         person |= _creationTime<<160;
         person |= _height<<224;
         person |= _weight<<240;
         persons[_id] = person;
         dnas[_id] = _dna;
+        return bytes32(person);
     }
     
     function getCharacter(uint256 _id) external view returns(address _owner, uint256 _creationTime, uint256 _height, uint256 _weight, uint256 _dna) {

@@ -96,7 +96,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/PackStructs.sol": "PackDivided"
+			"localhost/contracts/PackStorage.sol": "PackDivided"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -110,12 +110,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/PackStructs.sol": {
-			"keccak256": "0xe11bc56945064ff08205873f4d5870f737a10bd2ffaeb757e2c96dc52dc268ee",
+		"localhost/contracts/PackStorage.sol": {
+			"keccak256": "0xd9f96209690ed0a8b6b44e440f75b8c32abed9d728864cb82649bac51f629730",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e0b27c2233945e3f6867aeb46c840b6d290296451897fea4295aabe2fd62a592",
-				"dweb:/ipfs/QmeMcV9Uqm8FiJdDZJ7B1CkBkD8j7Ka6i1jYmsXvfymZbJ"
+				"bzz-raw://3918a76fe6ac7b08b569e567b26a87f9a5c4be093b5ddb76f44b8935a4da6dd0",
+				"dweb:/ipfs/QmVgGqi3xiN3vte8GYpfgoV6rWkNT8HsdMfs6najJgRw1f"
 			]
 		}
 	},
