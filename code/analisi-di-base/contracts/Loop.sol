@@ -2,19 +2,19 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 contract Loop {
-    uint[] array = new uint[](0); // Storage
-
-    function find(uint x) public returns (bool) {
-        
-        bool find = false;
-        
-        for (uint i = 0; i < array.length; i++) {
-            if (x == array[i])
-                return true;
+    uint num = 0; // Storage
+    
+    function expensiveLoop(uint x) public {
+        for(uint i = 0; i < x; i++) {
+            num += 1;
         }
-        
-        array.push(x);
-        
-        return false;
+    }
+    
+    function lessExpensiveLoop(uint x) public {
+        uint temp = num;
+        for(uint i = 0; i < x; i++) {
+            temp += 1;
+        }
+        num = temp;
     }
 }

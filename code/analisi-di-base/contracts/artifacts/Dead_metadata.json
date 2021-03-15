@@ -13,22 +13,15 @@
 						"type": "uint256"
 					}
 				],
-				"name": "expensiveLoop",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
+				"name": "deadCode",
+				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "x",
+						"name": "out",
 						"type": "uint256"
 					}
 				],
-				"name": "lessExpensiveLoop",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "pure",
 				"type": "function"
 			}
 		],
@@ -45,7 +38,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/Loop.sol": "Loop"
+			"localhost/contracts/DeadCode.sol": "Dead"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -59,12 +52,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/Loop.sol": {
-			"keccak256": "0x4d07a2637c1b9d9b397bf60efff235b4f4b485285ecee2dd26836bd69d3413aa",
+		"localhost/contracts/DeadCode.sol": {
+			"keccak256": "0x156bd17ecab347f6ae491ffec2e5bc81e18ea495af91e36f9d4b1bffa044065b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5d41fc6d54288ecf731b44e90d8601d34be45c1524cdf47489a85387cd4f7d9a",
-				"dweb:/ipfs/QmbXt2WpitoBVc5p6nCitG7xg3p7VA3DUdMSX9nqfaU7xi"
+				"bzz-raw://2bf31d74e57579d3df1dd054d46f8fbbdedc8e87b551ce85cddce9a641d73297",
+				"dweb:/ipfs/QmPCV4hHKdZnAqDPmmR4vktxQswDNRAv45srke1DBr3Vm1"
 			]
 		}
 	},

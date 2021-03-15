@@ -8,58 +8,39 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256[20]",
-						"name": "x",
-						"type": "uint256[20]"
-					}
-				],
-				"name": "call",
-				"outputs": [
-					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "x",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "nonpayable",
+				"name": "deadCode",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "out",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
-						"internalType": "uint256[20]",
-						"name": "x",
-						"type": "uint256[20]"
-					}
-				],
-				"name": "callExt",
-				"outputs": [
-					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "x",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256[20]",
-						"name": "x",
-						"type": "uint256[20]"
-					}
-				],
-				"name": "callPub",
+				"name": "opaquePredicate",
 				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "out",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "nonpayable",
+				"stateMutability": "pure",
 				"type": "function"
 			}
 		],
@@ -76,7 +57,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/FunctionModifiers.sol": "AnotherContract"
+			"localhost/contracts/DeadCodeOpaquePredicate.sol": "DeadCodeOpaquePredicate"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -90,12 +71,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/FunctionModifiers.sol": {
-			"keccak256": "0x15070b2660638944118f1e76e05eb1f00902c94212c20a606aa8d87c37984ab8",
+		"localhost/contracts/DeadCodeOpaquePredicate.sol": {
+			"keccak256": "0xf60424ad42f758302b1e59cf00f92a7dc319596756e228e10d60b6b573031fcf",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ad565c27f9530baf0901aebd5ca170ebcf9e78a1238c7b5da0ab4fd25d4e5506",
-				"dweb:/ipfs/QmWZmD1GB8o9GDpAbwohr9rPWtNYpdgnEwTnAy6puMZLno"
+				"bzz-raw://071559d9373557d456a59a906997b71bb599ebe9b051c0978794c04869dec311",
+				"dweb:/ipfs/QmUndJPMCs9CKzkwVEfU9UBF1BDkPmAx1JQGDjJ7zawUso"
 			]
 		}
 	},

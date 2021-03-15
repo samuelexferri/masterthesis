@@ -1,41 +1,19 @@
 {
 	"compiler": {
-		"version": "0.4.26+commit.4563c3fc"
+		"version": "0.8.2+commit.661d1103"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
-				"constant": true,
 				"inputs": [
 					{
+						"internalType": "uint256",
 						"name": "a",
 						"type": "uint256"
 					},
 					{
-						"name": "b",
-						"type": "uint256"
-					}
-				],
-				"name": "safeAddOwn",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "pure",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "a",
-						"type": "uint256"
-					},
-					{
+						"internalType": "uint256",
 						"name": "b",
 						"type": "uint256"
 					}
@@ -43,28 +21,59 @@
 				"name": "safeAdd",
 				"outputs": [
 					{
+						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
 				],
-				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "a",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "b",
+						"type": "uint256"
+					}
+				],
+				"name": "safeAddOwn",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
 				"stateMutability": "pure",
 				"type": "function"
 			}
 		],
 		"devdoc": {
-			"methods": {}
+			"kind": "dev",
+			"methods": {},
+			"version": 1
 		},
 		"userdoc": {
-			"methods": {}
+			"kind": "user",
+			"methods": {},
+			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
 			"localhost/contracts/SafeAddition.sol": "SafeAddition"
 		},
-		"evmVersion": "byzantium",
+		"evmVersion": "istanbul",
 		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
 		"optimizer": {
 			"enabled": true,
 			"runs": 200
@@ -74,14 +83,18 @@
 	"sources": {
 		"localhost/contracts/SafeAddition.sol": {
 			"keccak256": "0x3b866dbb466bd11cf1e62c4781ed5cc53a0e7e49f1e9d47d676349b4fb825430",
+			"license": "MIT",
 			"urls": [
-				"bzzr://ffdaa972a0964ae85455bd989b4e5254657f92a341e20eb17f0faad79e563117"
+				"bzz-raw://e26247a129dfe0e5df490169d75b7e99bd9230714e3ce34e9b941b9b776c3347",
+				"dweb:/ipfs/QmTycoppBJpHyKSVZKbXwbgHR8q7r3CujAK9DabSPk7aTX"
 			]
 		},
 		"localhost/contracts/SafeMath.sol": {
 			"keccak256": "0x07c3a5e342b49213669b3d11a6767b8bbf1d91c4741395131e9adb7c5ee958fa",
+			"license": "MIT",
 			"urls": [
-				"bzzr://3080e51c941dba84835427a73c69a6e26f619f69f933f5f98408755a744dbdac"
+				"bzz-raw://bd0aab2072de810e7e1727f3fd30eaba8bf2d1cc318f2a6b99daa064c42fe5d4",
+				"dweb:/ipfs/QmZj123eDr9Ahc6Xm9Ngu6M1nF586kHDR2TqkPAmwbbx59"
 			]
 		}
 	},

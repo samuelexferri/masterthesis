@@ -64,7 +64,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/Loop.sol": "ShortCircuit"
+			"localhost/contracts/ShortCircuit.sol": "ShortCircuit"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -78,7 +78,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/Loop.sol": {
+		"localhost/contracts/ShortCircuit.sol": {
 			"keccak256": "0x238b1d6e27fbae2cb23b723fb64428e6c944cce53135cac74b161b7f5fb0c19e",
 			"license": "MIT",
 			"urls": [

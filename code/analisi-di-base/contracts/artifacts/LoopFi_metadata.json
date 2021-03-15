@@ -13,21 +13,14 @@
 						"type": "uint256"
 					}
 				],
-				"name": "expensiveLoop",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
+				"name": "find",
+				"outputs": [
 					{
-						"internalType": "uint256",
-						"name": "x",
-						"type": "uint256"
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
 					}
 				],
-				"name": "lessExpensiveLoop",
-				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			}
@@ -45,7 +38,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/Loop.sol": "Loop"
+			"localhost/contracts/LoopFind.sol": "LoopFi"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -59,12 +52,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/Loop.sol": {
-			"keccak256": "0x4d07a2637c1b9d9b397bf60efff235b4f4b485285ecee2dd26836bd69d3413aa",
+		"localhost/contracts/LoopFind.sol": {
+			"keccak256": "0xb869cff5704f4d0e93c290574e35d28831ef72fdefe3ba6449e521cbc2b18a99",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5d41fc6d54288ecf731b44e90d8601d34be45c1524cdf47489a85387cd4f7d9a",
-				"dweb:/ipfs/QmbXt2WpitoBVc5p6nCitG7xg3p7VA3DUdMSX9nqfaU7xi"
+				"bzz-raw://b6e3c26c9e89e76477daafb0f921cdb922c148b837abce70574f46e76594181b",
+				"dweb:/ipfs/QmRNXP9nWeqt5rD8zKBa4kw46hUBfxUf6gVqrNFLB1QfF1"
 			]
 		}
 	},

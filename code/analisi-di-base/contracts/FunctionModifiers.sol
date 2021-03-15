@@ -23,7 +23,7 @@ contract FunctionModifiers {
     }
     
     
-    function call(uint[20] calldata x) external returns (uint){
+    function call(uint[20] calldata x) public returns (uint){
         fPublic(x);
         this.fExternal(x); // Solo chiamata esternamente
         fInternal(x);
@@ -34,18 +34,18 @@ contract FunctionModifiers {
 contract AnotherContract {
     FunctionModifiers c = new FunctionModifiers();
     
-    function call(uint[20] calldata x) external returns (uint){
+    function call(uint[20] calldata x) public returns (uint){
         c.fPublic(x);
         c.fExternal(x);
         //c.fInternal(x); // Solo chiamata internamente o da un contratto derivato
         //c.fPrivate(x); // Solo chiamata internamente
     }
     
-    function callPub(uint[20] calldata x) external returns (uint){
+    function callPub(uint[20] calldata x) public returns (uint){
         return c.fPublic(x);
     }
     
-    function callExt(uint[20] calldata x) external returns (uint){
+    function callExt(uint[20] calldata x) public returns (uint){
         return c.fExternal(x);
     }
 }
