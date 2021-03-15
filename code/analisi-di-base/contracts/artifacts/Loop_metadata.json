@@ -38,7 +38,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/Loop.sol": "Loop"
+			"localhost/contracts/SafeAddition.sol": "Loop"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -52,7 +52,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/Loop.sol": {
+		"localhost/contracts/SafeAddition.sol": {
 			"keccak256": "0x07553097267a273fa63cd9804df170d8a13dde56953630b4a08a77060afeb387",
 			"license": "MIT",
 			"urls": [

@@ -1,0 +1,89 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "a",
+						"type": "uint256"
+					},
+					{
+						"name": "b",
+						"type": "uint256"
+					}
+				],
+				"name": "safeAddOwn",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "a",
+						"type": "uint256"
+					},
+					{
+						"name": "b",
+						"type": "uint256"
+					}
+				],
+				"name": "safeAdd",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"localhost/contracts/SafeAddition.sol": "SafeAddition"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"localhost/contracts/SafeAddition.sol": {
+			"keccak256": "0x3b866dbb466bd11cf1e62c4781ed5cc53a0e7e49f1e9d47d676349b4fb825430",
+			"urls": [
+				"bzzr://ffdaa972a0964ae85455bd989b4e5254657f92a341e20eb17f0faad79e563117"
+			]
+		},
+		"localhost/contracts/SafeMath.sol": {
+			"keccak256": "0x07c3a5e342b49213669b3d11a6767b8bbf1d91c4741395131e9adb7c5ee958fa",
+			"urls": [
+				"bzzr://3080e51c941dba84835427a73c69a6e26f619f69f933f5f98408755a744dbdac"
+			]
+		}
+	},
+	"version": 1
+}
