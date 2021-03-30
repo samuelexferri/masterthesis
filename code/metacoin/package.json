@@ -1,8 +1,8 @@
 {
-  "devDependencies": {
-    "eth-gas-reporter": "^0.2.20"
-  },
   "dependencies": {
-    "truffle": "^5.2.1-truffleLogger.0"
+    "truffle": "^5.1.65"
+  },
+  "devDependencies": {
+    "eth-gas-reporter": "^0.2.0"
   }
 }
