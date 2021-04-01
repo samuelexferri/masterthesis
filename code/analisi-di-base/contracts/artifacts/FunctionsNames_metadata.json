@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.2+commit.661d1103"
+		"version": "0.7.4+commit.3f05b770"
 	},
 	"language": "Solidity",
 	"output": {
@@ -46,7 +46,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/FunctionsNames.sol": "FunctionsNames"
+			"localhost/Unchecked.sol": "FunctionsNames"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -60,7 +60,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/FunctionsNames.sol": {
+		"localhost/Unchecked.sol": {
 			"keccak256": "0x6f0c50e45850a7fef66912b0bf5fb3b0cfdd169496de4089fb9d66afd145f318",
 			"license": "MIT",
 			"urls": [

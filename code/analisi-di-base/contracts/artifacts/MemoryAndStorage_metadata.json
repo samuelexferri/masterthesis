@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.7.4+commit.3f05b770"
+		"version": "0.8.2+commit.661d1103"
 	},
 	"language": "Solidity",
 	"output": {
@@ -74,7 +74,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/MemoryAndStorage.sol": "MemoryAndStorage"
+			"localhost/MemoryAndStorage.sol": "MemoryAndStorage"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -82,13 +82,13 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/MemoryAndStorage.sol": {
+		"localhost/MemoryAndStorage.sol": {
 			"keccak256": "0x054bab776c6274a852c822008d117d2355cb2b78f5cef03195a544751cee5612",
 			"license": "MIT",
 			"urls": [
