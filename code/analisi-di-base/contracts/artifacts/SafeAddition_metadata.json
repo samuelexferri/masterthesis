@@ -67,7 +67,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/SafeAddition.sol": "SafeAddition"
+			"SafeAddition.sol": "SafeAddition"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -81,15 +81,15 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/SafeAddition.sol": {
-			"keccak256": "0x3b866dbb466bd11cf1e62c4781ed5cc53a0e7e49f1e9d47d676349b4fb825430",
+		"SafeAddition.sol": {
+			"keccak256": "0x68a08f938d74dae5115bd43c839b7f524f59fead09709ebcac68675ef68ab115",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e26247a129dfe0e5df490169d75b7e99bd9230714e3ce34e9b941b9b776c3347",
-				"dweb:/ipfs/QmTycoppBJpHyKSVZKbXwbgHR8q7r3CujAK9DabSPk7aTX"
+				"bzz-raw://54051b1a63251b2d462510aee93ad03c57671ed064103ce8f7142d5fff87474c",
+				"dweb:/ipfs/QmZoexhCx428diEtZ3MJzAEYXgqA91QyF7dmBU8UarBeMg"
 			]
 		},
-		"localhost/contracts/SafeMath.sol": {
+		"SafeMath.sol": {
 			"keccak256": "0x07c3a5e342b49213669b3d11a6767b8bbf1d91c4741395131e9adb7c5ee958fa",
 			"license": "MIT",
 			"urls": [

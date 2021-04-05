@@ -76,7 +76,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/FunctionModifiers.sol": "AnotherContract"
+			"FunctionModifiers.sol": "AnotherContract"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -90,7 +90,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/FunctionModifiers.sol": {
+		"FunctionModifiers.sol": {
 			"keccak256": "0x15070b2660638944118f1e76e05eb1f00902c94212c20a606aa8d87c37984ab8",
 			"license": "MIT",
 			"urls": [
