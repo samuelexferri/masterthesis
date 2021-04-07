@@ -9,59 +9,66 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "X1",
+						"name": "packedBools",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "X2",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "X3",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "X4",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "X5",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "X6",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "X7",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "X8",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "X9",
+						"name": "boolNumber",
 						"type": "uint256"
 					}
 				],
-				"name": "functionStack",
+				"name": "getBoolean",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "packedBools",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "boolNumber",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "value",
+						"type": "bool"
+					}
+				],
+				"name": "setBoolean",
 				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "result",
+						"name": "",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "pure",
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "test",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -78,7 +85,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"BlockScoping.sol": "BlockScoping"
+			"Bool.sol": "Bool"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -92,12 +99,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"BlockScoping.sol": {
-			"keccak256": "0xdb1419ebd3ac8980589ed7ddcf142830f462110ce2a3b775d77e6d0fbd02c00e",
+		"Bool.sol": {
+			"keccak256": "0xa8e8295130901ed6c1731317d01bb3047ee58cfb40d0a7ac6977e6ff1c7f6cc3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://bb14ef4685e356dd40383e2c507736f37cf776f2984a3b7e72a6aca237af7bf3",
-				"dweb:/ipfs/QmNMS8dcqa6tGx1ScexabcaEkQVHWLfCSnh2MV7qFQ4hJA"
+				"bzz-raw://1cd43be1abc6fa2bf407648322cf16ed83f03d6b4c5cbb50e4178a0d66795a81",
+				"dweb:/ipfs/QmRLLTmPCm5vagWsqJqUMji3BTr2itYCAFZkW5LEz2ZfWv"
 			]
 		}
 	},
