@@ -1,0 +1,53 @@
+{
+	"compiler": {
+		"version": "0.8.2+commit.661d1103"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "fixed12",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Fixed.sol": "Fixed1"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Fixed.sol": {
+			"keccak256": "0xb46b8a0c5eab2f58f96fac3128eeee2c92fdd4e264ff1bc9c5ba1fda3f110489",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c2cc814bab8824c57ed21c6ec7569ac184e9d9b27459489b05c642304325ae67",
+				"dweb:/ipfs/QmeNWBvvBDvZVnDssoARJDMh6aMaWza4Jq7266W4HTCaJ8"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,66 @@
+{
+	"compiler": {
+		"version": "0.8.2+commit.661d1103"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "fixed12",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "get12",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Fixed.sol": "Fixed"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Fixed.sol": {
+			"keccak256": "0xaadce6bfd2c4fad1a14b94a239726ca17547f4b8d169c8eee23f68c7bdc736c4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://43e2aa40b8bf070e3c368aefcf386855a336401d515575d9f1a2396cb11b815f",
+				"dweb:/ipfs/QmPcDAUS1q131jeVtiAKRrJhFUWCgGKXhBGhLHiKwB9HvR"
+			]
+		}
+	},
+	"version": 1
+}

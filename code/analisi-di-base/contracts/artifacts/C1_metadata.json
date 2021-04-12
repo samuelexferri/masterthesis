@@ -1,0 +1,46 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "Pack1",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ZTEST.sol": "C1"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ZTEST.sol": {
+			"keccak256": "0xb4d1ce3851b76c8d1c923335e50edd9dafb3618bf229a448a5e908d555ba0ca2",
+			"urls": [
+				"bzzr://4117d58d209f8f51e3027723ec86a7ff4ad5180037dcc237942595fd4acaad1b"
+			]
+		}
+	},
+	"version": 1
+}
