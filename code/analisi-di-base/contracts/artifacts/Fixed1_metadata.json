@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.2+commit.661d1103"
+		"version": "0.8.1+commit.df193b15"
 	},
 	"language": "Solidity",
 	"output": {
@@ -8,6 +8,13 @@
 			{
 				"inputs": [],
 				"name": "fixed12",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "simple",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -26,7 +33,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Fixed.sol": "Fixed1"
+			"Fixed1.sol": "Fixed1"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -34,18 +41,18 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"Fixed.sol": {
-			"keccak256": "0xb46b8a0c5eab2f58f96fac3128eeee2c92fdd4e264ff1bc9c5ba1fda3f110489",
+		"Fixed1.sol": {
+			"keccak256": "0x92dd85438ea36fc735b23ab11307f770f99354b47580406df7300271b9540036",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c2cc814bab8824c57ed21c6ec7569ac184e9d9b27459489b05c642304325ae67",
-				"dweb:/ipfs/QmeNWBvvBDvZVnDssoARJDMh6aMaWza4Jq7266W4HTCaJ8"
+				"bzz-raw://8e7b919296466e67f516440e54a1dd65131ecfbe3819d68d0a3a8de8054adc1e",
+				"dweb:/ipfs/QmSdYCL4oWoYwX4sdCqDafGnC6zth2rEb9CrUTtBAxs7U1"
 			]
 		}
 	},
