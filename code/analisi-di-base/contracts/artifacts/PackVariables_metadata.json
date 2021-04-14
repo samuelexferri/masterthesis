@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.2+commit.661d1103"
+		"version": "0.8.1+commit.df193b15"
 	},
 	"language": "Solidity",
 	"output": {
@@ -42,7 +42,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/PackVariables.sol": "PackVariables"
+			"PackVariables.sol": "PackVariables"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -50,13 +50,13 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/PackVariables.sol": {
+		"PackVariables.sol": {
 			"keccak256": "0xfeced9b59c4ed705b3dd2dc189b06b257f800671f6d0f2462a1f98b6615c989f",
 			"license": "MIT",
 			"urls": [

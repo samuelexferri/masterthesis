@@ -86,7 +86,7 @@ contract Arrays {
         
         a_mem[0] = 1;
         a_mem[4] = 5;
-        //a_mem[100] = 1; // Errore, Out of Bound
+        // a_mem[100] = 1; // Errore, Out of Bound
         
         return a_mem.length;
     }

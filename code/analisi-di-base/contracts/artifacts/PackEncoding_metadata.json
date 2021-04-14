@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.2+commit.661d1103"
+		"version": "0.8.1+commit.df193b15"
 	},
 	"language": "Solidity",
 	"output": {
@@ -102,7 +102,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/PackStorage.sol": "PackEncoding"
+			"PackStorage.sol": "PackEncoding"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -110,13 +110,13 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/PackStorage.sol": {
+		"PackStorage.sol": {
 			"keccak256": "0xd9f96209690ed0a8b6b44e440f75b8c32abed9d728864cb82649bac51f629730",
 			"license": "MIT",
 			"urls": [
