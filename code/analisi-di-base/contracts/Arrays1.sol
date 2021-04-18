@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-contract Arrays {
+contract Arrays1 {
     bytes16[300] b_one;
     bytes b_two;
     string s_one;

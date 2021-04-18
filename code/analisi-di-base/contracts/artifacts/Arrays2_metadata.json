@@ -1,0 +1,163 @@
+{
+	"compiler": {
+		"version": "0.8.2+commit.661d1103"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "conv",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "multidimensional",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[2][]",
+						"name": "paramsArray",
+						"type": "uint256[2][]"
+					}
+				],
+				"name": "mutliParams1",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[][]",
+						"name": "paramsArray",
+						"type": "uint256[][]"
+					}
+				],
+				"name": "mutliParams1",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[2][2]",
+						"name": "paramsArray",
+						"type": "uint256[2][2]"
+					}
+				],
+				"name": "mutliParams1",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[][2]",
+						"name": "paramsArray",
+						"type": "uint256[][2]"
+					}
+				],
+				"name": "mutliParams1",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "paramsArray",
+						"type": "uint256[]"
+					}
+				],
+				"name": "params",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes[]",
+						"name": "s",
+						"type": "bytes[]"
+					}
+				],
+				"name": "retBytes",
+				"outputs": [
+					{
+						"internalType": "bytes[]",
+						"name": "",
+						"type": "bytes[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string[]",
+						"name": "s",
+						"type": "string[]"
+					}
+				],
+				"name": "retString",
+				"outputs": [
+					{
+						"internalType": "string[]",
+						"name": "",
+						"type": "string[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Arrays2.sol": "Arrays2"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Arrays2.sol": {
+			"keccak256": "0x59f4bf392eed9ebde54f7bdbaeb98a0ce5ca0b379984b20145b42a9d5f12ff07",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://325562ec459ee4333fef5da7be946335129ba480806844fa96e60b9ade2805ad",
+				"dweb:/ipfs/QmZCiXCDbHnTopu3VJhXPpZQjzgPbgLELfxetq9vVkNXR8"
+			]
+		}
+	},
+	"version": 1
+}
