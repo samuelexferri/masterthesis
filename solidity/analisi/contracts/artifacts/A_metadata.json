@@ -6,59 +6,9 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "uint256[20]",
-						"name": "x",
-						"type": "uint256[20]"
-					}
-				],
-				"name": "call",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256[20]",
-						"name": "a",
-						"type": "uint256[20]"
-					}
-				],
-				"name": "fExternal",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256[20]",
-						"name": "a",
-						"type": "uint256[20]"
-					}
-				],
-				"name": "fPublic",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
+				"inputs": [],
+				"name": "map1",
+				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			}
@@ -76,7 +26,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/ExternalPublic.sol": "A"
+			"ArraysDynamic.sol": "A"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -90,12 +40,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/ExternalPublic.sol": {
-			"keccak256": "0x84f500de68278d4f4fc6552e08c10266791b5b3e56a3f2d520be4efb795880a7",
+		"ArraysDynamic.sol": {
+			"keccak256": "0x3c6998eb9aac707d09fbc19907729b69ef5deb3787c954c71298b17fa02090ec",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e4a9510e0d2cc4b3bc905a97c55c4e8f194cfe352af560b0b249d6aad7a3bc06",
-				"dweb:/ipfs/QmNr24vV8sDVFKx1RxdUidVErAXBEUhcq4MKzSLu2jHAR2"
+				"bzz-raw://e385741d84efaecd6e640c494a27c88eb8fe030560989c622b43759a28e2c2e7",
+				"dweb:/ipfs/QmQYU3H2uyTVP4TbR6G7nXViJtroCFqDq5JFiJpbHsKy7T"
 			]
 		}
 	},

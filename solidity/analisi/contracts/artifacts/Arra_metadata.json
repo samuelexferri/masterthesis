@@ -6,27 +6,8 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "x",
-						"type": "uint256"
-					}
-				],
-				"name": "bar1",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "x",
-						"type": "uint256"
-					}
-				],
-				"name": "bar2",
+				"inputs": [],
+				"name": "map1",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -45,7 +26,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Array.sol": "Array"
+			"ArraysDynamic.sol": "Arra"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -59,12 +40,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"Array.sol": {
-			"keccak256": "0x1a727639c62c87c5a00ca8779b3189669b9d80d5a8b76b60d81df34be32bae84",
+		"ArraysDynamic.sol": {
+			"keccak256": "0xe637c23aa1259b074a1227471a12bcec5f226a5588e9f6332d84435e9cfa83eb",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8680211f4d269af4946939d13086a127682e89c4018594630424cac64a6bb44c",
-				"dweb:/ipfs/QmXoz7DiZnzCnFwE79T1xidYpe8RxbwJ8SpqKdhLZmb5oL"
+				"bzz-raw://4361abd0716bf64d3d0359c395767cb19745df57cb9eb31e7e6dc2e3e7fd7c01",
+				"dweb:/ipfs/QmeoK3PcRMmdiyEdi2NpViHHRy535TFXGLpJ42Njue1EvV"
 			]
 		}
 	},

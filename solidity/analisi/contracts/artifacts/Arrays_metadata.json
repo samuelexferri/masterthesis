@@ -1,79 +1,14 @@
 {
 	"compiler": {
-		"version": "0.8.1+commit.df193b15"
+		"version": "0.8.2+commit.661d1103"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
 				"inputs": [],
-				"name": "dynamicArray",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "dynamicBytesArray",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "dynamicMemoryArray",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "dynamicStringArray",
+				"name": "map1",
 				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "fixedArray",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "fixedByteArray",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			}
@@ -91,7 +26,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Arrays_1.sol": "Arrays"
+			"ArraysDynamic.sol": "Arrays"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -99,18 +34,18 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"Arrays_1.sol": {
-			"keccak256": "0xdbb1d9804b2d4f2f63e2230338058a366f78ba5bf0f56b796d9a2762a35e230b",
+		"ArraysDynamic.sol": {
+			"keccak256": "0xf1ea3da67b63673679a2c8bf431e99606652050a265ebb297e8e3fcc60d38983",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://43a5f66634b90e0f2461f25cb2dd14366023cdb70fad2e6fb3e3d7f0a7835c7e",
-				"dweb:/ipfs/QmTkCGq3UN4KwSmpCuBd9QPUauCcZZxLrwcRWboXx7EyNS"
+				"bzz-raw://ee88123f7405a3a66ba157636fe52f9e99bb0094a7ac31485a7e6dbdab187c03",
+				"dweb:/ipfs/QmaP8UFWRrjEGhh3Cf9PP9M3PawxGfoZT3U3Cu3mau9oBh"
 			]
 		}
 	},
