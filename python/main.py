@@ -1,6 +1,6 @@
 import binascii
 
-import sha3  # Convert a number to 32 bytes array
+from _pysha3 import keccak_256
 
 
 def bytes32(i):
@@ -8,7 +8,8 @@ def bytes32(i):
 
 
 def keccak256(x):
-    return sha3.keccak_256(str(x).encode('utf-8')).hexdigest()
+    return keccak_256(x).hexdigest()
 
 # Console
 # from main import keccak256, bytes32
+# keccak256(bytes32(1))

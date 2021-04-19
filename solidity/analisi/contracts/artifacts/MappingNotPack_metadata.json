@@ -7,7 +7,7 @@
 		"abi": [
 			{
 				"inputs": [],
-				"name": "mapStruct",
+				"name": "mapNotPack",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -26,7 +26,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Mappings.sol": "C"
+			"Mappings.sol": "MappingNotPack"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -41,11 +41,11 @@
 	},
 	"sources": {
 		"Mappings.sol": {
-			"keccak256": "0x3069dfe4dad51a183e84dfc3fa5c4c334ab0e476b2251cb94cc9c601d00d4e03",
+			"keccak256": "0xadbb4e25db70eccfd67f9cdb2033e8b2c618745534483c868ff7e8c3743ef7fa",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ddacc15e5a5616feca14131c3c78017e71a25073c96c38f2f4747fbe76eed784",
-				"dweb:/ipfs/QmQWHjPajUx68fpNpuDw7dUsUkzEAKScnUwrkoJW7zdFfp"
+				"bzz-raw://0cf66ea64ba4e4c05a584ccda341b58423210b1947f5ea606c9c3a314e13da49",
+				"dweb:/ipfs/QmU6iAtjMyuxjbij2DYtpJ3akboYWojoaeYyCXUby8ybwG"
 			]
 		}
 	},
