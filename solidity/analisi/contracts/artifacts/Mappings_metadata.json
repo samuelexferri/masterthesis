@@ -41,11 +41,11 @@
 	},
 	"sources": {
 		"Mappings.sol": {
-			"keccak256": "0x735c2b16782de937641e0d3ba43b7ab2b7008ee561fee23363f31c4c83da6ab3",
+			"keccak256": "0x40b057ea374dadb9708df28e00e721b3d3b7975f9cb2698e3bb3a8414811714b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://91c3ea985a65fbfb834215a9f3958356b6dfb93955cd261fe685b710895322cb",
-				"dweb:/ipfs/QmNxMnwg7wXXosnmHrx4XUThMwwLkkCKSCtZfdomz9dFwr"
+				"bzz-raw://b580326444ebd7988e40471262b7d5d9f7f0341205ef9e1b1e9b980c7e4ab332",
+				"dweb:/ipfs/QmWoXwpHHgRNvCXD9waLBM7hZQPyteJSSnxtjDubWtNY1Q"
 			]
 		}
 	},
