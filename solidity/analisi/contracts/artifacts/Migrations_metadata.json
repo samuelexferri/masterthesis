@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.2+commit.661d1103"
+		"version": "0.8.1+commit.df193b15"
 	},
 	"language": "Solidity",
 	"output": {
@@ -58,7 +58,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/Migrations.sol": "Migrations"
+			"Migrations.sol": "Migrations"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -66,13 +66,13 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/Migrations.sol": {
+		"Migrations.sol": {
 			"keccak256": "0x7eaedbb1a3e4e0f585d9063393872f88ded247ca3c3c3c8492ea18e7629a6411",
 			"license": "MIT",
 			"urls": [

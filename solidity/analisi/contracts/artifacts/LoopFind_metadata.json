@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.2+commit.661d1103"
+		"version": "0.8.1+commit.df193b15"
 	},
 	"language": "Solidity",
 	"output": {
@@ -38,7 +38,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/LoopFind.sol": "LoopFind"
+			"LoopFind.sol": "LoopFind"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -46,13 +46,13 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/LoopFind.sol": {
+		"LoopFind.sol": {
 			"keccak256": "0x8418e0a8b5d64e49cfff5a2c5f70cd65f77c6f22352a92bd1c186fe84b68218a",
 			"license": "MIT",
 			"urls": [

@@ -8,7 +8,7 @@ contract AssertRequire {
     }
 
     function isRequire(uint256 a, uint256 b) public pure returns(uint256 c) {
-        require(a + b != 0);
+        require(a + b != 0, 'I due numeri sommati fanno zero');
         c = a + b;
     }
 }

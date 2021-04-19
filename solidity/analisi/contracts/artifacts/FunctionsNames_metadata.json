@@ -1,0 +1,73 @@
+{
+	"compiler": {
+		"version": "0.8.1+commit.df193b15"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "a",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "b",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "f",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"FunctionsNames.sol": "FunctionsNames"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"FunctionsNames.sol": {
+			"keccak256": "0x6f0c50e45850a7fef66912b0bf5fb3b0cfdd169496de4089fb9d66afd145f318",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://83cdf4de8784b4b230a49dfea3797ba8ee51a22e6070a7915bfe1ebea4f5c857",
+				"dweb:/ipfs/QmRbP5mYBxo5SyJ1JrvBcG5D1T4ytLCgNRNVP6YqhMDrGt"
+			]
+		}
+	},
+	"version": 1
+}

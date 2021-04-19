@@ -1,32 +1,32 @@
 {
 	"compiler": {
-		"version": "0.8.2+commit.661d1103"
+		"version": "0.8.1+commit.df193b15"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
-				"inputs": [
+				"inputs": [],
+				"name": "get",
+				"outputs": [
 					{
-						"internalType": "uint256",
-						"name": "x",
-						"type": "uint256"
+						"internalType": "bytes[]",
+						"name": "",
+						"type": "bytes[]"
 					}
 				],
-				"name": "combinedLoop",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "x",
-						"type": "uint256"
+						"internalType": "bytes",
+						"name": "value",
+						"type": "bytes"
 					}
 				],
-				"name": "dividedLoops",
+				"name": "push",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -45,7 +45,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/LoopCombined.sol": "LoopCombined"
+			"Mappings.sol": "Mapping"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -53,18 +53,18 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/LoopCombined.sol": {
-			"keccak256": "0x463ce104e6fbd6be0bdbee12817ffdbeb684ce6e5c8ba6bb75a975c18c1b1946",
+		"Mappings.sol": {
+			"keccak256": "0x2469239765ddbe24d124e113e1540169a64ec42c2f40189dea191dd682c8c440",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://39123219eac86762237f4c9de966eeca99aac9cc4d723eb7aa5f18aa1da6fd87",
-				"dweb:/ipfs/QmRkFkW5gJ7ymikDeCz3z6xa9PSuT6nDixkoncycpNTbkx"
+				"bzz-raw://c54eee5bab625f55b7f2b303f3424ffeb7fb9a2a8be15bed271c77dd3be61ee6",
+				"dweb:/ipfs/Qmanu5CZi6KmFamxKERQnogGwSXHGorSTmzfJhKwq7JB8j"
 			]
 		}
 	},

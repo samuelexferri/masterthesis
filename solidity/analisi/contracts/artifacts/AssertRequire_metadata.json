@@ -1,18 +1,19 @@
 {
 	"compiler": {
-		"version": "0.4.26+commit.4563c3fc"
+		"version": "0.8.1+commit.df193b15"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
-				"constant": true,
 				"inputs": [
 					{
+						"internalType": "uint256",
 						"name": "a",
 						"type": "uint256"
 					},
 					{
+						"internalType": "uint256",
 						"name": "b",
 						"type": "uint256"
 					}
@@ -20,22 +21,23 @@
 				"name": "isAssert",
 				"outputs": [
 					{
+						"internalType": "uint256",
 						"name": "c",
 						"type": "uint256"
 					}
 				],
-				"payable": false,
 				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
-				"constant": true,
 				"inputs": [
 					{
+						"internalType": "uint256",
 						"name": "a",
 						"type": "uint256"
 					},
 					{
+						"internalType": "uint256",
 						"name": "b",
 						"type": "uint256"
 					}
@@ -43,28 +45,35 @@
 				"name": "isRequire",
 				"outputs": [
 					{
+						"internalType": "uint256",
 						"name": "c",
 						"type": "uint256"
 					}
 				],
-				"payable": false,
 				"stateMutability": "pure",
 				"type": "function"
 			}
 		],
 		"devdoc": {
-			"methods": {}
+			"kind": "dev",
+			"methods": {},
+			"version": 1
 		},
 		"userdoc": {
-			"methods": {}
+			"kind": "user",
+			"methods": {},
+			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
 			"AssertRequire.sol": "AssertRequire"
 		},
-		"evmVersion": "byzantium",
+		"evmVersion": "istanbul",
 		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
 		"optimizer": {
 			"enabled": false,
 			"runs": 200
@@ -73,9 +82,11 @@
 	},
 	"sources": {
 		"AssertRequire.sol": {
-			"keccak256": "0x893b3f5e5df170e15d1b480c02f94b327aad4b591398baa24c737bf27cfff8da",
+			"keccak256": "0xd34c9bdbcaed846178882fc2eb48fd43d1ca2dc7a1a0f5ce2427b3d0665669e2",
+			"license": "MIT",
 			"urls": [
-				"bzzr://0de9da80ff2fb86c844b4c27f090975569a8be0a3cba59fbaa70b2e253932026"
+				"bzz-raw://f167896b075693932c8b6eefa342745ced40c8f72e1a4d3e25c01cf4c43c23c3",
+				"dweb:/ipfs/QmVsduF5t7gnd4E3PeH2uHfZ1n3Hwa7gFx1GYLEehrd48s"
 			]
 		}
 	},

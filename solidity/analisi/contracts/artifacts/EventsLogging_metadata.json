@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.2+commit.661d1103"
+		"version": "0.8.1+commit.df193b15"
 	},
 	"language": "Solidity",
 	"output": {
@@ -80,7 +80,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"localhost/contracts/EventsLogging.sol": "EventsLogging"
+			"EventsLogging.sol": "EventsLogging"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -88,13 +88,13 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"localhost/contracts/EventsLogging.sol": {
+		"EventsLogging.sol": {
 			"keccak256": "0x037f4975e1af39695817e05be3ec5a2dee45c8bc7945843719f965e177a98042",
 			"license": "MIT",
 			"urls": [

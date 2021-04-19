@@ -1,32 +1,32 @@
 {
 	"compiler": {
-		"version": "0.8.2+commit.661d1103"
+		"version": "0.8.1+commit.df193b15"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
-				"name": "get",
-				"outputs": [
+				"inputs": [
 					{
-						"internalType": "bytes[]",
-						"name": "",
-						"type": "bytes[]"
+						"internalType": "uint256",
+						"name": "x",
+						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
+				"name": "combinedLoop",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
-						"internalType": "bytes",
-						"name": "value",
-						"type": "bytes"
+						"internalType": "uint256",
+						"name": "x",
+						"type": "uint256"
 					}
 				],
-				"name": "push",
+				"name": "dividedLoops",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -45,7 +45,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"ABICoderV2.sol": "ABICoderV2"
+			"LoopCombined.sol": "LoopCombined"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -53,18 +53,18 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"ABICoderV2.sol": {
-			"keccak256": "0xd86702687fa29c5601742eb8c6d4f08ed631034dcc7c05565c6fae14d5995c7c",
+		"LoopCombined.sol": {
+			"keccak256": "0x463ce104e6fbd6be0bdbee12817ffdbeb684ce6e5c8ba6bb75a975c18c1b1946",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5635540aaffece74106745155bcc634df9ec65a14b46dd8c3a5e704ed02d3917",
-				"dweb:/ipfs/QmWup5JHvMA9sMxFKSRn5T9f9wmNSvGX9MaW29Gjg3Guze"
+				"bzz-raw://39123219eac86762237f4c9de966eeca99aac9cc4d723eb7aa5f18aa1da6fd87",
+				"dweb:/ipfs/QmRkFkW5gJ7ymikDeCz3z6xa9PSuT6nDixkoncycpNTbkx"
 			]
 		}
 	},
