@@ -22,12 +22,12 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256[2][]",
+						"internalType": "uint256[][]",
 						"name": "paramsArray",
-						"type": "uint256[2][]"
+						"type": "uint256[][]"
 					}
 				],
-				"name": "mutliParams1",
+				"name": "mutliParams",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -35,12 +35,12 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256[][]",
+						"internalType": "uint256[2][]",
 						"name": "paramsArray",
-						"type": "uint256[][]"
+						"type": "uint256[2][]"
 					}
 				],
-				"name": "mutliParams1",
+				"name": "mutliParams",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -53,7 +53,7 @@
 						"type": "uint256[2][2]"
 					}
 				],
-				"name": "mutliParams1",
+				"name": "mutliParams",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -66,7 +66,7 @@
 						"type": "uint256[][2]"
 					}
 				],
-				"name": "mutliParams1",
+				"name": "mutliParams",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -151,11 +151,11 @@
 	},
 	"sources": {
 		"Arrays2.sol": {
-			"keccak256": "0x59f4bf392eed9ebde54f7bdbaeb98a0ce5ca0b379984b20145b42a9d5f12ff07",
+			"keccak256": "0xe997c8e360772e4c3b293d307628245932fa28c7a4eca7a175ca972e4e73055d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://325562ec459ee4333fef5da7be946335129ba480806844fa96e60b9ade2805ad",
-				"dweb:/ipfs/QmZCiXCDbHnTopu3VJhXPpZQjzgPbgLELfxetq9vVkNXR8"
+				"bzz-raw://fb514e6cc437360d62dc0429192a2dd4e124badece82735e80281d0775e3c0b8",
+				"dweb:/ipfs/QmSjyD8ES6j6k1SBkbD2rQWRDMcjWpoFMPSvzyDLsUTBrx"
 			]
 		}
 	},
