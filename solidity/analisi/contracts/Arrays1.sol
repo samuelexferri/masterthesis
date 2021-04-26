@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.9.0;
+pragma solidity >=0.8.0 <0.9.0; // A partire dalla versione 0.8.0 di Solidity, ABI Coder v2 è di default e si può omettere
+// pragma experimental ABIEncoderV2;
 
 contract Arrays1 {
     bytes16[300] b_one;
+    
     bytes b_two;
     string s_one;
     
@@ -11,8 +13,7 @@ contract Arrays1 {
     
     uint64[] numbers_three;    
     
-    // Execution cost: 83552 gas 
-    // Compatta due bytes16 in un unico slot
+    // Execution cost: 109859 gas
     function fixedByteArray() public returns (uint) {
         b_one[0] = bytes16('0x1111');
         b_one[1] = bytes16('0x1111');
@@ -24,33 +25,26 @@ contract Arrays1 {
         return b_one.length;
     }
     
-    // Execution cost: 31 - 158842 gas / 32 - 183394  gas 
-    // Nel caso in cui i bytes siano minori o uguali a 31, la length è salvata nel byte inferiore (Big Endian) e nei restanti i dati
-    // Nel caso in cui i bytes siano superiori a 31, il primo slot contiene solo la length
-    // https://ropsten.etherscan.io/tx/0x655c9148844ace87c814372484b3141c267a5ebd0d5688dd82722561af50983c#statechange (31 - Unico slot)
-    // https://ropsten.etherscan.io/tx/0xd0801c32f52b74185631403c5e6543e3867b70c42745a7d73525737baac57c6e#statechange (32 - Due slot)
-    // TODO: Indagare sul costo di SSTORE e SLOAD
+    // Execution cost: 31 - 75209 gas / 32 - 96579 gas 
     function dynamicBytesArray() public returns (uint) {
-        
-        for (int i = 0; i < 32; i++) { // Cambiare 31/32
+        for (int i = 0; i < 31; i++) { // Cambiare 31/32
             b_two.push('a');
         }
 
+        // b_two = '0xaaaa'; // Alternativa
         return b_two.length;
     }
     
-    // Execution cost: 21459 gas
-    // UTF-8 Encoding
+    // Execution cost: 43845 gas
     function dynamicStringArray() public {
-        s_one = 'Hello World!';
+        s_one = 'Hello World!'; // UTF-8 Encoding
     
         // s_one.push('Test'); // Non si può usare il .push
         
         // return s_one.length; // Non ha salvato la sua length
     }
      
-    // Execution cost: 62743 gas
-    // Non esiste lo slot per la length visto che è a dimensione fissa
+    // Execution cost: 87683 gas
     function fixedArray() public returns (uint) {
         numbers_one[0] = 0x1111111111111111;
         numbers_one[2] = 0x2222222222222222;
@@ -61,8 +55,7 @@ contract Arrays1 {
         return numbers_one.length;
     }
     
-    // Execution cost: 99245 gas
-    // Il primo slot contiene solamente la length
+    // Execution cost: 90313 gas
     function dynamicArray() public returns (uint) {
         // numbers_three[0] = 0x9999999999999999; // Errore, prima deve esserci un dato a quell'indice
         
@@ -72,21 +65,22 @@ contract Arrays1 {
         numbers_three.push(0x4444444444444444);
         numbers_three.push(0x5555555555555555);
         
-        numbers_three[0] = 0x9999999999999999;
+        numbers_three[0] = 0x9999999999999999; // Ora è possibile
         
-        // numbers_three.length = 10; // A partire dalla versione 0.6.0 di Solidity, è read-only anche per gli arrays dinamici nello storage
+        // numbers_three.length = 10; // A partire dalla versione 0.6.0 di Solidity, la length è read-only anche per gli arrays dinamici nello storage
         
         return numbers_three.length;
     }
     
+    // Execution cost: 21557 gas
     function dynamicMemoryArray() public returns (uint) {
-        uint64[] memory a_mem = new uint64[](5); // Operatore new
+        uint32[] memory a_mem = new uint32[](5); // Operatore new
         
         // a_mem.push(1); // Non è possibile per gli array dinamici in memoria, bisogna usare l'indice
         
-        a_mem[0] = 1;
-        a_mem[4] = 5;
-        // a_mem[100] = 1; // Errore, Out of Bound
+        a_mem[0] = 1111;
+        a_mem[4] = 5555;
+        // a_mem[100] = 1; // Errore "Out of Bound"
         
         return a_mem.length;
     }
