@@ -19,7 +19,7 @@ contract ArraysDiff {
         numbers_fix[4] = 0x5555555555555555;
     }
     
-    // Execution cost elem#1: 65498 gas
+    // Execution cost elem#1: 65498 gas (Slot aggiuntivo per la length)
     // Execution cost elem#2: 66103 gas (Delta: 605)
     // Execution cost elem#3: 66667 gas (Delta: 564)
     // Execution cost elem#4: 67231 gas (Delta: 564)
