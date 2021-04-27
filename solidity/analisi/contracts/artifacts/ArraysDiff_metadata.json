@@ -1,0 +1,60 @@
+{
+	"compiler": {
+		"version": "0.8.2+commit.661d1103"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "dynamicArray",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "fixedArray",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ArraysDiff.sol": "ArraysDiff"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ArraysDiff.sol": {
+			"keccak256": "0xe8251b197fedeb029d6b8d70ada8a6055cea3be65bf06e822e9f39ac6cc13390",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://699c307918eacadc1d85ebe81d2926a522724249a291882b6111de61312bf214",
+				"dweb:/ipfs/Qma8JvqjFowmkpf9AqMu415yAsDoZNGu3bHfSyJKTZ1qxU"
+			]
+		}
+	},
+	"version": 1
+}

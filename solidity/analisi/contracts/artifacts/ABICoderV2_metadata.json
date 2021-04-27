@@ -45,7 +45,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Mappings.sol": "ABICoderV2"
+			"ABICoderV2.sol": "ABICoderV2"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -59,7 +59,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"Mappings.sol": {
+		"ABICoderV2.sol": {
 			"keccak256": "0xd86702687fa29c5601742eb8c6d4f08ed631034dcc7c05565c6fae14d5995c7c",
 			"license": "MIT",
 			"urls": [
