@@ -6,27 +6,27 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
+				"inputs": [],
+				"name": "getStorageByPointer",
+				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "x",
+						"name": "",
 						"type": "uint256"
 					}
 				],
-				"name": "bar1",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "x",
+						"name": "_newNumber",
 						"type": "uint256"
 					}
 				],
-				"name": "bar2",
+				"name": "setStorageByPointer",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -45,7 +45,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Array.sol": "Array"
+			"AssemblySlot.sol": "Assembly"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -59,12 +59,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"Array.sol": {
-			"keccak256": "0x1a727639c62c87c5a00ca8779b3189669b9d80d5a8b76b60d81df34be32bae84",
+		"AssemblySlot.sol": {
+			"keccak256": "0x6c0f2d282b08c151ae89586158a2fb4946a0024a2f57742711b565e3c5bd4878",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8680211f4d269af4946939d13086a127682e89c4018594630424cac64a6bb44c",
-				"dweb:/ipfs/QmXoz7DiZnzCnFwE79T1xidYpe8RxbwJ8SpqKdhLZmb5oL"
+				"bzz-raw://29f83d2cb651b31d51cbfce4f2ceffc195282c6b89eb6a2641bac3b0a8650fff",
+				"dweb:/ipfs/QmPfqVmRHk1f8D8KS8V6dqMRVMPPqqtw2cKxMTwAnP992F"
 			]
 		}
 	},

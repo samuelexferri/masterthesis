@@ -1,0 +1,51 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "ad2",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"AssemblyDynamicLength.sol": "AssemblyDynamicLength2"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"AssemblyDynamicLength.sol": {
+			"keccak256": "0x1c3cc0da3ac18ffe12d0af0bbf8790c9eaded51bdea86628dbefb77efa2eb132",
+			"urls": [
+				"bzzr://5683013466f53c50bf24158ebdf3e078045a5f39ad490c0f101adc31ce274571"
+			]
+		}
+	},
+	"version": 1
+}
