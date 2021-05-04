@@ -22,7 +22,7 @@ jobs:
     - name: Use .npmrc
       uses: bduff9/use-npmrc@v1.1
       with:
-        dot-npmrc: ${{ secrets.NPMRC_DRACULA_UI_TOKEN }}
+        dot-npmrc: ${{ secrets.DRACULA_UI_TOKEN }}
         working-directory: 'react/notarizeth'
     - name: Yarn Install
       run: |
