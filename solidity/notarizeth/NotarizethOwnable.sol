@@ -3,7 +3,7 @@ pragma solidity >=0.8.0 <0.9.0;
 
 import "./Ownable.sol"; // TODO: Owner non unico, gli utenti hanno controlli sui propri certificati
 
-contract DigitalAssetsNotary is Ownable {
+contract NotarizethOwnable is Ownable {
     // Structured data that describes a certified file
     struct Certificate {
         bool exist; // TODO: Compattare nello stesso slot di author (Usare anche un singolo byte)

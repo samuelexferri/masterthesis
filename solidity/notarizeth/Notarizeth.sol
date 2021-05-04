@@ -3,7 +3,7 @@ pragma solidity >=0.8.0 <0.9.0;
 
 import "./AccessControl.sol";
 
-contract DigitalAssetsNotaryRole is AccessControl {
+contract Notarizeth is AccessControl {
     // Structured data that describes a certified file
     struct Certificate {
         // TODO: Altri booleani da compattare (usare anche un solo byte)
