@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
+import '@dracula/dracula-ui/styles/dracula-ui.css'
+import { Paragraph } from '@dracula/dracula-ui'
+
 function App() {
   return (
     <div className="App">
@@ -17,6 +20,7 @@ function App() {
         >
           Learn React
         </a>
+		<Paragraph color="black">Hello Vampire</Paragraph>
       </header>
     </div>
   );
