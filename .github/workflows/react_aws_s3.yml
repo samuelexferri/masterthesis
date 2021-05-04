@@ -19,10 +19,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Use .npmrc
+    - name: Create .npmrc
       uses: bduff9/use-npmrc@v1.1
       with:
-        dot-npmrc: ${{ secrets.DRACULA_UI_TOKEN }}
+        dot-npmrc: ${{ secrets.NPMRC_DRACULA_UI }} # Contains all three line of the .npmrc file, token included
         working-directory: ./react/notarizeth
     - name: Yarn Install
       run: |
