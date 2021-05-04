@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import '@dracula/dracula-ui/styles/dracula-ui.css'
-import { Paragraph } from '@dracula/dracula-ui'
+import { Button, Paragraph } from '@dracula/dracula-ui'
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
         >
           Learn React
         </a>
-		<Paragraph color="black">Hello Vampire Test</Paragraph>
+		    <Paragraph color="black">Hello Vampire</Paragraph>
+        <Button variant='ghost'>Button</Button>
       </header>
     </div>
   );
