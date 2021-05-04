@@ -11,7 +11,7 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [12.x]
     
     steps:
     - uses: actions/checkout@master
@@ -22,12 +22,15 @@ jobs:
     - name: Yarn Install
       run: |
         yarn install
+      working-directory: 'react/notarizeth'
     - name: Production Build
       run: |
         yarn build
+      working-directory: 'react/notarizeth'
     - name: Unit Tests
       run: |
         yarn test
+      working-directory: 'react/notarizeth'
     - name: Deploy to S3 (S3 Sync)
       uses: jakejarvis/s3-sync-action@master
       with:
