@@ -20,7 +20,7 @@ function App() {
         >
           Learn React
         </a>
-		<Paragraph color="black">Hello Vampire</Paragraph>
+		<Paragraph color="black">Hello Vampire Test</Paragraph>
       </header>
     </div>
   );
