@@ -8,6 +8,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env: 
+      DRACULA_UI_TOKEN: ${{ secrets.DRACULA_UI_TOKEN }}
     
     strategy:
       matrix:
