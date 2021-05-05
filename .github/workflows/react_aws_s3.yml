@@ -30,11 +30,11 @@ jobs:
       working-directory: ./react/notarizeth
     - name: Yarn Production Build
       run: |
-        yarn build
+        yarn react-app:build
       working-directory: ./react/notarizeth
     - name: Yarn Unit Tests
       run: |
-        yarn test
+        yarn react-app:test
       working-directory: 'react/notarizeth'
     - name: Deploy to S3 (S3 Sync)
       uses: jakejarvis/s3-sync-action@master
