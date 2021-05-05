@@ -25,4 +25,3 @@ packages/subgraph/build/
 packages/subgraph/src/types/
 
 .env
-.npmrc
