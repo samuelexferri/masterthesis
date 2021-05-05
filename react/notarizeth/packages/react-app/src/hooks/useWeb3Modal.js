@@ -5,9 +5,9 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 
 // Enter a valid infura key here to avoid being rate limited
 // You can get a key for free at https://infura.io/register
-const INFURA_ID = "INVALID_INFURA_KEY";
+const INFURA_ID = "773217385b694a6ea60c4cea1a430a09";
 
-const NETWORK_NAME = "mainnet";
+const NETWORK_NAME = "ropsten";
 
 function useWeb3Modal(config = {}) {
   const [provider, setProvider] = useState();
