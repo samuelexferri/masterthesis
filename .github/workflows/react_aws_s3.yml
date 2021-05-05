@@ -28,9 +28,9 @@ jobs:
       run: |
         yarn install
       working-directory: ./react/notarizeth
-    - name: Yarn Production Build
+    - name: Yarn Production Build # CI='' Not treating warnings as errors
       run: |
-        yarn react-app:build
+        CI='' yarn react-app:build 
       working-directory: ./react/notarizeth
     - name: Yarn Unit Tests
       run: |
