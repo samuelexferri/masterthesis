@@ -29,6 +29,8 @@ import Dropzone, { useDropzone } from 'react-dropzone';
 // Infura Project ID
 const INFURA_ID = "773217385b694a6ea60c4cea1a430a09";
 
+
+
 // TODO Delete
 async function readOnChainData() {
   // Should replace with the end-user wallet, e.g. Metamask
@@ -58,6 +60,18 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
   );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 // App
 function App() {
   const { loading, error, data } = useQuery(GET_TRANSFERS);
@@ -65,6 +79,15 @@ function App() {
 
   // Web3
   const web3 = new Web3("wss://ropsten.infura.io/ws/v3/" + INFURA_ID);
+  console.log("Web3 instance is", web3);
+
+  // Chain
+  const chainId = web3.eth.getChainId();
+
+  const evmChains = window.evmChains;
+  console.log(evmChains)
+  const chainData = evmChains.getChain(chainId);
+  document.querySelector("#network-name").textContent = chainData.name;
 
   // Accounts
   const accounts = web3.eth.getAccounts();
@@ -86,10 +109,25 @@ function App() {
     return CryptoJS.lib.WordArray.create(a, i8a.length);
   }
 
+  // React Dropzone Helper
+  const maxLength = 20;
+
+  function nameLengthValidator(file) {
+    if (file.name.length > maxLength) {
+      return {
+        code: "name-too-large",
+        message: `Name is larger than ${maxLength} characters`
+      };
+    }
+  
+    return null
+  }
+
   // React Dropzone
   function MyDropzone() {
+    // Only acceptedFiles
     const onDrop = useCallback((acceptedFiles) => {
-      acceptedFiles.forEach((file) => {
+        acceptedFiles.forEach((file) => {
         const reader = new FileReader()
 
         reader.onabort = () => console.log('file reading was aborted')
@@ -103,13 +141,41 @@ function App() {
         reader.readAsArrayBuffer(file)
       })
     }, [])
-    const { getRootProps, getInputProps } = useDropzone({ onDrop })
+
+    const {  acceptedFiles, fileRejections, getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles:2 })
+
+    const acceptedFileItems = acceptedFiles.map(file => (
+      <li key={file.path}>
+        {file.path} - {file.size} bytes
+      </li>
+    ));
+  
+    const fileRejectionItems = fileRejections.map(({ file, errors  }) => { 
+     return (
+       <li key={file.path}>
+            {file.path} - {file.size} bytes
+            <ul>
+              {errors.map(e => <li key={e.code}>{e.message}</li>)}
+           </ul>
+  
+       </li>
+     ) 
+    });
 
     return (
-      <div {...getRootProps()}>
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
-      </div>
+      <section className="container">
+        <div {...getRootProps()}>
+          <input {...getInputProps()} />
+          <p>Drag 'n' drop some files here, or click to select files</p>
+          <em>(2 files are the maximum number of files you can drop here)</em>
+        </div>
+        <aside>
+          <h4>Accepted files (Only One)</h4>
+          <ul>{acceptedFileItems}</ul>
+          <h4>Rejected files</h4>
+          <ul>{fileRejectionItems}</ul>
+        </aside>
+      </section>
     )
   }
 
@@ -124,7 +190,6 @@ function App() {
     NotarizETHContract.methods.certifyFile().call().then(console.log)
   }
 
-
   // React
   React.useEffect(() => {
     if (!loading && !error && data && data.transfers) {
@@ -132,10 +197,16 @@ function App() {
     }
   }, [loading, error, data]);
 
+  console.log(provider)
+  console.log(loadWeb3Modal)
+  console.log(logoutOfWeb3Modal)
+
+  // Return
   return (
     <div>
       <Header>
         <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
+        Ropsten
       </Header>
       <Body>
         <Image src={logo} alt="react-logo" />
@@ -150,6 +221,17 @@ function App() {
         <Button onClick={() => certifyFile()}>
           certifyFile
         </Button>
+
+        <div id="network">
+              <p>
+                <strong>Connected blockchain:</strong> <span id="network-name"></span>
+              </p>
+
+              <p>
+                <strong>Selected account:</strong> <span id="selected-account"></span>
+              </p>
+
+            </div>
 
 
         <MyDropzone />

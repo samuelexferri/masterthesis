@@ -19,6 +19,7 @@ function useWeb3Modal(config = {}) {
   const web3Modal = new Web3Modal({
     network: NETWORK,
     cacheProvider: true,
+    disableInjectedProvider: false,
     providerOptions: {
       walletconnect: {
         package: WalletConnectProvider,
