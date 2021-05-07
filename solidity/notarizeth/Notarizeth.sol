@@ -66,6 +66,7 @@ contract NotarizETH is AccessControl {
 
     // Function that reset a file certificate from records (Modifier onlyOwner)
     function resetFile(bytes32 file_hash) public onlyRole(file_hash) {
+        // Aggiungere require che esista se no inutile farlo
         revokeRoleHash(file_hash, records[file_hash].author);
 
         delete records[file_hash];
