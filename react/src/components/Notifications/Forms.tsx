@@ -18,6 +18,9 @@ import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Text } from
 
 import NOTARIZETH_ABI from '../../abi/NotarizETH.json'
 
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
 const NOTARIZETH_ADDRESS = "0x908d02931EA40670EFe810E295936A5CA62050Bc"
 const NOTARIZETH_ABI_INTERFACE = new utils.Interface(NOTARIZETH_ABI)
 
@@ -334,10 +337,26 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
 
 // VERIFY
 // TODO Result
-var result = 'ciao'
+var result='Click to verify!'
+
+
+
+
+
+
+
+
+function Welcome() {
+  return <h1>Hello</h1>;
+}
+
+
+
+
 
 interface InputComponentPropsVerify {
   ticker: string
+  result: string
   library: Web3Provider
 }
 
@@ -345,7 +364,9 @@ const InputComponentVerify = ({ ticker, library }: InputComponentPropsVerify) =>
   const { account } = useEthers()
   const [value, setValue] = useState('0x1000000000000000000000000000000000000000000000000000000000000000')
 
-  const [result, setResult] = useState('Click to verify!')
+
+  const returnedValue = 'X'
+  
 
   const onClick = () => {
     setValue('0x2000000000000000000000000000000000000000000000000000000000000000')
@@ -354,11 +375,13 @@ const InputComponentVerify = ({ ticker, library }: InputComponentPropsVerify) =>
     if (typeof library !== 'undefined' && value.length == 66) {
       var contractEther = new ethers.Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library)
       contractEther.verifyFile(value).then(
-        function (value) { setResult(value[0]), console.log("MANUAL ETHERS", value)},
+        function (value) { result = value[0], console.log("MANUAL ETHERS", value), alert(value[0].toString()), document.getElementById('idHolder').textContent = value[0], console.log(document.getElementById('idHolder').textContent) },
       );
 
+      
+      console.log("CE", contractEther)
       // TODO Estrarre il valore e stamparlo in qualche modo (Alert)
-      /// Inoltre ritornare true, mittente, timestamp, se è stato gia fatto...
+      // Inoltre ritornare true, mittente, timestamp, se è stato gia fatto...
     } else {
       // TODO Messaggio errore libreria no disponibile o lunghezza
     }
@@ -377,21 +400,23 @@ const InputComponentVerify = ({ ticker, library }: InputComponentPropsVerify) =>
         onChange={(e) => handleChange(e.currentTarget.value)}
       />
       <FormTicker>{ticker}</FormTicker>
-      <Button onClick={onClick}>
-        Verify
-      </Button>
+        <Button onClick={onClick}>
+          Verify
+        </Button>
+        {result}
+        <span id="idHolder">Coglioni</span>	
     </InputRow>
+
   )
 }
 
 interface TransactionFormVerify {
   title: string
   ticker: string
-  result: string
   library: Web3Provider
 }
 
-const TransactionFormVerify = ({ title, ticker, result, library, }: TransactionFormVerify) => {
+const TransactionFormVerify = ({ title, ticker, library, }: TransactionFormVerify) => {
   return (
     <SmallContentBlock>
       <TitleBasic title={title} ticker={ticker} />
@@ -399,7 +424,6 @@ const TransactionFormVerify = ({ title, ticker, result, library, }: TransactionF
         <Label htmlFor={`${ticker}Input`}>TODO FILE</Label>
       </LabelRow>
       <InputComponentVerify ticker={ticker} library={library} />
-      <div>{result}</div>
     </SmallContentBlock>
   )
 }
@@ -452,7 +476,6 @@ export const VerifyFile = () => {
     <TransactionFormVerify
       title="VerifyFile"
       ticker="BYTE"
-      result={result}
       library={library}
     />
   )
