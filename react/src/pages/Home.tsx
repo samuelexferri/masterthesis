@@ -9,8 +9,6 @@ import { TextInline } from '../typography/Text'
 import { Title } from '../typography/Title'
 //import Alert from 'react-native'
 
-import { NETWORK, NETWORKS } from "../constants";
-
 import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Text } from '@dracula/dracula-ui'
 
 import { ethers } from "ethers";

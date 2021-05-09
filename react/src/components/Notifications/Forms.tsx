@@ -2,7 +2,7 @@ import { Contract } from '@ethersproject/contracts'
 import { formatEther } from '@ethersproject/units'
 import { TransactionStatus, useContractCall, useContractFunction, useEtherBalance, useEthers } from '@usedapp/core'
 import { utils } from 'ethers'
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { TextBold } from '../../typography/Text'
 import { ContentBlock } from '../base/base'
@@ -14,12 +14,16 @@ import { SpinnerIcon } from './Icons'
 
 import { ethers } from "ethers";
 
-import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Text } from '@dracula/dracula-ui'
+import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Input, Text } from '@dracula/dracula-ui'
 
 import NOTARIZETH_ABI from '../../abi/NotarizETH.json'
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+
+// Dropzone
+import Dropzone, { useDropzone } from 'react-dropzone';
+
 
 const NOTARIZETH_ADDRESS = "0x908d02931EA40670EFe810E295936A5CA62050Bc"
 const NOTARIZETH_ABI_INTERFACE = new utils.Interface(NOTARIZETH_ABI)
@@ -176,7 +180,7 @@ interface TitlePropsBasic {
 const TitleBasic = ({ title, ticker }: TitlePropsBasic) => {
   return (
     <TitleRow>
-      <CellTitle>{title}</CellTitle>
+      <Heading size="md">{title}</Heading>
     </TitleRow>
   )
 }
@@ -190,7 +194,7 @@ interface InputComponentPropsReset {
 
 const InputComponentReset = ({ ticker, transactionStatus, send }: InputComponentPropsReset) => {
   const { account, chainId } = useEthers()
-  const [value, setValue] = useState('0')
+  const [value, setValue] = useState('')
   const isMining = transactionStatus === 'Mining'
   const buttonContent = isMining ? (
     <IconContainer>
@@ -204,14 +208,18 @@ const InputComponentReset = ({ ticker, transactionStatus, send }: InputComponent
     // TODO Controls
 
     send(value)
-    setValue('0x00')
+    setValue('')
   }
 
   return (
     <InputRow>
       <Input
         id={`${ticker}Input`}
-        type="string"
+        size="medium"
+        color="white"
+        placeholder="0xBYTES"
+        type="text"
+        maxLength={66}
         value={value}
         onChange={(e) => setValue(e.currentTarget.value)}
       />
@@ -232,14 +240,16 @@ interface TransactionFormReset {
 
 const TransactionFormReset = ({ send, title, ticker, transaction }: TransactionFormReset) => {
   return (
-    <SmallContentBlock>
+
+    <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} ticker={ticker} />
       <LabelRow>
         <Label htmlFor={`${ticker}Input`}>TODO FILE</Label>
       </LabelRow>
       <InputComponentReset ticker={ticker} transactionStatus={transaction.status} send={send} />
       <ErrorMessageReset transaction={transaction} />
-    </SmallContentBlock>
+    </Card>
+
   )
 }
 
@@ -251,7 +261,7 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
   // TODO Error (chainID, Verifiche, RPC MetaMask)
   const error_1 = 'cannot estimate gas; transaction may fail or may require manual gas limit'
 
-  if (error_1 == transaction.errorMessage) {
+  if (error_1 == ('errorMessage' in transaction && transaction.errorMessage)) {
     return <ErrorRow>{'It is possible that the file hash not exists on the blockchain! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}</ErrorRow>
   } else {
     return <ErrorRow>{'errorMessage' in transaction && transaction.errorMessage}</ErrorRow>
@@ -267,7 +277,7 @@ interface InputComponentPropsCertify {
 
 const InputComponentCertify = ({ ticker, transactionStatus, send }: InputComponentPropsCertify) => {
   const { account, chainId } = useEthers()
-  const [value, setValue] = useState('0')
+  const [value, setValue] = useState('')
   const isMining = transactionStatus === 'Mining'
   const buttonContent = isMining ? (
     <IconContainer>
@@ -279,16 +289,20 @@ const InputComponentCertify = ({ ticker, transactionStatus, send }: InputCompone
   const onClick = () => {
 
     // TODO Controls
-
-    send(value)
-    setValue('0x00')
+    send(hashCertify)
+    //send(value)
+    setValue('')
   }
 
   return (
     <InputRow>
       <Input
         id={`${ticker}Input`}
-        type="string"
+        size="medium"
+        color="white"
+        placeholder="0xBYTES"
+        type="text"
+        maxLength={66}
         value={value}
         onChange={(e) => setValue(e.currentTarget.value)}
       />
@@ -309,14 +323,16 @@ interface TransactionFormCertify {
 
 const TransactionFormCertify = ({ send, title, ticker, transaction }: TransactionFormCertify) => {
   return (
-    <SmallContentBlock>
+    <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} ticker={ticker} />
       <LabelRow>
         <Label htmlFor={`${ticker}Input`}>TODO FILE</Label>
       </LabelRow>
       <InputComponentCertify ticker={ticker} transactionStatus={transaction.status} send={send} />
+
+      <MyDropzoneCertify />
       <ErrorMessageCertify transaction={transaction} />
-    </SmallContentBlock>
+    </Card>
   )
 }
 
@@ -328,57 +344,151 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
   // TODO Error (chainID, Verifiche, RPC MetaMask)
   const error_1 = 'cannot estimate gas; transaction may fail or may require manual gas limit'
 
-  if (error_1 == transaction.errorMessage) {
+  if (error_1 == ('errorMessage' in transaction && transaction.errorMessage)) {
     return <ErrorRow>{'It is possible that the file hash already exists on the blockchain! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}</ErrorRow>
   } else {
     return <ErrorRow>{'errorMessage' in transaction && transaction.errorMessage}</ErrorRow>
   }
 }
 
-// VERIFY
-// TODO Result
-var result='Click to verify!'
+// CryptoJS
+var CryptoJS = require("crypto-js");
 
+var hashCertify = '0x0'
 
+// CryptoJS Helper
+function arrayBufferToWordArray(arrayBuffer: ArrayBuffer | string | null) {
+  if (arrayBuffer instanceof ArrayBuffer) {
+  var i8a = new Uint8Array(arrayBuffer);
+  var a = [];
+  for (var i = 0; i < i8a.length; i += 4) {
+    a.push(i8a[i] << 24 | i8a[i + 1] << 16 | i8a[i + 2] << 8 | i8a[i + 3]);
+  }
+  return CryptoJS.lib.WordArray.create(a, i8a.length);
+} else {
+  return
+}
+}
 
+// React Dropzone Helper
+/*
+const maxLength = 20;
 
+function nameLengthValidator(file :) {
+  if (file.name.length > maxLength) {
+    return {
+      code: "name-too-large",
+      message: `Name is larger than ${maxLength} characters`
+    };
+  }
 
+  return null
+}
+*/
 
+// React Dropzone
+function MyDropzoneCertify() {
+  // Only acceptedFiles
+  const onDrop = useCallback((acceptedFiles) => {
+    acceptedFiles.forEach((file: Blob) => {
+      const reader = new FileReader()
 
+      reader.onabort = () => console.log('file reading was aborted')
+      reader.onerror = () => console.log('file reading has failed')
+      reader.onload = () => {
+        // Do whatever you want with the file contents
 
-function Welcome() {
-  return <h1>Hello</h1>;
+      
+ 
+        var arrayBuffer = reader.result
+        
+        console.log("ArrayBuffer Plain", arrayBufferToWordArray(arrayBuffer))
+        console.log("ArrayBuffer Hash", CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), { outputLength: 256 }).toString(CryptoJS.enc.Hex))
+        hashCertify = '0x' + CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), { outputLength: 256 }).toString(CryptoJS.enc.Hex)
+      }
+      reader.readAsArrayBuffer(file)
+    })
+  }, [])
+
+  const { acceptedFiles, fileRejections, getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles: 1 })
+
+  const acceptedFileItems = acceptedFiles.map((file: { path: {} | null | undefined; size: string | number | boolean | {} | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactNodeArray | React.ReactPortal | null | undefined }) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ));
+
+  const fileRejectionItems = fileRejections.map(({ file, errors }) => {
+    return (
+      <li key={file.path}>
+        {file.path} - {file.size} bytes
+        <ul>
+          {errors.map((e: { code: React.Key | null | undefined; message: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined }) => <li key={e.code}>{e.message}</li>)}
+        </ul>
+
+      </li>
+    )
+  });
+
+  return (
+    <section className="container">
+      <div {...getRootProps()}>
+        <input {...getInputProps()} />
+        <p>Drag 'n' drop some files here, or click to select files</p>
+        <em>(1 file is the maximum number of files you can drop here)</em>
+      </div>
+      <aside>
+        <h4>Accepted file (Only One)</h4>
+        <ul>{acceptedFileItems}</ul>
+        <h4>Rejected files</h4>
+        <ul>{fileRejectionItems}</ul>
+      </aside>
+    </section>
+  )
 }
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// VERIFY
 interface InputComponentPropsVerify {
   ticker: string
-  result: string
-  library: Web3Provider
+  library: any
 }
 
 const InputComponentVerify = ({ ticker, library }: InputComponentPropsVerify) => {
   const { account } = useEthers()
-  const [value, setValue] = useState('0x1000000000000000000000000000000000000000000000000000000000000000')
-
+  const [value, setValue] = useState('')
+  //0x1000000000000000000000000000000000000000000000000000000000000000
 
   const returnedValue = 'X'
-  
+
 
   const onClick = () => {
-    setValue('0x2000000000000000000000000000000000000000000000000000000000000000')
+    setValue('')
 
     // TODO Manual, Length...
     if (typeof library !== 'undefined' && value.length == 66) {
       var contractEther = new ethers.Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library)
       contractEther.verifyFile(value).then(
-        function (value) { result = value[0], console.log("MANUAL ETHERS", value), alert(value[0].toString()), document.getElementById('idHolder').textContent = value[0], console.log(document.getElementById('idHolder').textContent) },
+        function (value: (string | null)[]) { console.log("MANUAL ETHERS", value), alert(value[0]!.toString()), document.getElementById('idHolder')!.textContent = value[0], console.log(document.getElementById('idHolder')!.textContent) },
       );
 
-      
+
       console.log("CE", contractEther)
       // TODO Estrarre il valore e stamparlo in qualche modo (Alert)
       // Inoltre ritornare true, mittente, timestamp, se è stato gia fatto...
@@ -387,44 +497,44 @@ const InputComponentVerify = ({ ticker, library }: InputComponentPropsVerify) =>
     }
   }
 
-  function handleChange(event) {
-    setValue(event);
-  }
-
   return (
-    <InputRow>
-      <Input
-        id={`${ticker}Input`}
-        type="string"
-        value={value}
-        onChange={(e) => handleChange(e.currentTarget.value)}
-      />
-      <FormTicker>{ticker}</FormTicker>
+    <section className="container">
+      <InputRow>
+        <Input
+          id={`${ticker}Input`}
+          size="medium"
+          color="white"
+          placeholder="0xBYTES"
+          type="text"
+          maxLength={66}
+          value={value}
+          onChange={(e) => setValue(e.currentTarget.value)}
+        />
+        <FormTicker>{ticker}</FormTicker>
         <Button onClick={onClick}>
           Verify
-        </Button>
-        {result}
-        <span id="idHolder">Coglioni</span>	
-    </InputRow>
-
+      </Button>
+      </InputRow>
+      <span id="idHolder">X</span>
+    </section>
   )
 }
 
 interface TransactionFormVerify {
   title: string
   ticker: string
-  library: Web3Provider
+  library: any
 }
 
 const TransactionFormVerify = ({ title, ticker, library, }: TransactionFormVerify) => {
   return (
-    <SmallContentBlock>
+    <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} ticker={ticker} />
       <LabelRow>
         <Label htmlFor={`${ticker}Input`}>TODO FILE</Label>
       </LabelRow>
       <InputComponentVerify ticker={ticker} library={library} />
-    </SmallContentBlock>
+    </Card>
   )
 }
 
@@ -475,7 +585,7 @@ export const VerifyFile = () => {
   return (
     <TransactionFormVerify
       title="VerifyFile"
-      ticker="BYTE"
+      ticker=""
       library={library}
     />
   )
@@ -492,7 +602,7 @@ export const CertifyFile = () => {
     <TransactionFormCertify
       send={(value: string) => send(value)}
       title="CertifyFile"
-      ticker="BYTE"
+      ticker=""
       transaction={state}
     />
   )
@@ -509,7 +619,7 @@ export const ResetFile = () => {
     <TransactionFormReset
       send={(value: string) => send(value)}
       title="ResetFile"
-      ticker="BYTE"
+      ticker=""
       transaction={state}
     />
   )
@@ -534,7 +644,7 @@ const SmallButton = styled(Button)`
     color: unset;
   }
 `
-
+/*
 const Input = styled.input`
   height: 100%;
   width: 500px;
@@ -558,6 +668,7 @@ const Input = styled.input`
     box-shadow: inset 0 0 0 2px ${Colors.Black['900']};
   }
 `
+*/
 
 const CellTitle = styled(TextBold)`
   font-size: 18px;
