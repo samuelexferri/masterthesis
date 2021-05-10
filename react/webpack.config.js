@@ -1,5 +1,5 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require('webpack')
+const path = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
@@ -13,24 +13,24 @@ const config = {
     './src/index.tsx'
   ],
   output: {
-	path: path.resolve(__dirname, "dist"),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
   },
   devtool: isDevelopment ? 'eval' : 'source-map',
   plugins: [
     isDevelopment && new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './src/index.html'
     }),
     new CopyPlugin({
       patterns: [
         { from: 'src/_redirects', to: '' },
         {
           from: 'src/assets/images/favicon.ico',
-          to: 'favicon.ico',
-        },
-      ],
-    }),
+          to: 'favicon.ico'
+        }
+      ]
+    })
   ].filter(Boolean),
   module: {
     rules: [
@@ -51,9 +51,9 @@ const config = {
         test: /\.ts(x)?$/,
         loader: 'esbuild-loader',
         exclude: /node_modules/,
-		options: {
+        options: {
           loader: 'tsx',
-          target: 'es2018',
+          target: 'es2018'
         }
       },
       {
@@ -101,18 +101,18 @@ const config = {
   optimization: {
     minimizer: [
       new ESBuildMinifyPlugin({
-        target: 'es2018',
-      }),
-    ],
+        target: 'es2018'
+      })
+    ]
   },
   devServer: {
-	index: 'index.html',
+    index: 'index.html',
     historyApiFallback: true,
     host: '127.0.0.1',
     stats: 'errors-only',
     overlay: true,
-    hot: true,
-  },
-};
+    hot: true
+  }
+}
 
-module.exports = config;
+module.exports = config

@@ -54,7 +54,7 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
   const [value, setValue] = useState('')
 
   const onClick = () => {
-    var valuehash = value
+    let valuehash = value
 
     if (valuehash.length == 66 && valuehash.substring(0, 2) == '0x') {
       // Ok
@@ -69,7 +69,7 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
     }
 
     if (typeof library !== 'undefined') {
-      var contractEther = new ethers.Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library)
+      const contractEther = new ethers.Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library)
       contractEther.verifyFile(valuehash).then(
         function (res: boolean[]) { 
           console.log("VerifyFile", res),
@@ -225,13 +225,13 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
     return <ErrorRow><Text color='green'>{'Successfull! Your file hash is stored on the blockchain!'}</Text></ErrorRow>
   }
 
-  var error_temp = ('errorMessage' in transaction && transaction.errorMessage)
+  const error_temp = ('errorMessage' in transaction && transaction.errorMessage)
 
   // Exception
   if (error_temp == error_1) {
     return <ErrorRow><Text color='yellow'>{'Upload your file before! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}</Text></ErrorRow>
   } else if (error_temp == error_2) {
-    var contractEther = new ethers.Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library)
+    const contractEther = new ethers.Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library)
       contractEther.verifyFile(hashCertify).then(
         function (res: boolean[]) { 
           console.log("CertifyErrorVerifyFile", res),
@@ -336,7 +336,7 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
     return <ErrorRow><Text color='green'>{'Successfull! Your file hash is removed from the blockchain!'}</Text></ErrorRow>
   }
 
-  var error_temp = ('errorMessage' in transaction && transaction.errorMessage)
+  const error_temp = ('errorMessage' in transaction && transaction.errorMessage)
 
   // Exception
   if (error_temp == error_1) {
@@ -355,7 +355,7 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
 
 
 // CRYPTOJS
-var CryptoJS = require("crypto-js");
+const CryptoJS = require("crypto-js");
 var hashCertify = '0x0'
 var hashVerify = '0x0'
 
@@ -363,9 +363,9 @@ var hashVerify = '0x0'
 // HELPER
 function arrayBufferToWordArray(arrayBuffer: ArrayBuffer | string | null) {
   if (arrayBuffer instanceof ArrayBuffer) {
-    var i8a = new Uint8Array(arrayBuffer);
-    var a = [];
-    for (var i = 0; i < i8a.length; i += 4) {
+    const i8a = new Uint8Array(arrayBuffer);
+    const a = [];
+    for (let i = 0; i < i8a.length; i += 4) {
       a.push(i8a[i] << 24 | i8a[i + 1] << 16 | i8a[i + 2] << 8 | i8a[i + 3]);
     }
     return CryptoJS.lib.WordArray.create(a, i8a.length);
@@ -431,7 +431,7 @@ function StyledDropzoneCertify(props: any) {
       reader.onload = () => {
         // Do whatever you want with the file contents
 
-        var arrayBuffer = reader.result
+        const arrayBuffer = reader.result
         console.log("ArrayBufferToWordArray", arrayBufferToWordArray(arrayBuffer))
 
         hashCertify = '0x' + CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), { outputLength: 256 }).toString(CryptoJS.enc.Hex)
@@ -502,7 +502,7 @@ function StyledDropzoneVerify(props: any) {
       reader.onload = () => {
         // Do whatever you want with the file contents
 
-        var arrayBuffer = reader.result
+        const arrayBuffer = reader.result
         console.log("ArrayBufferToWordArray", arrayBufferToWordArray(arrayBuffer))
 
         hashVerify = '0x' + CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), { outputLength: 256 }).toString(CryptoJS.enc.Hex)

@@ -17,7 +17,7 @@ export function Transactions() {
   const { activateBrowserWallet, deactivate, account, library, chainId, active } = useEthers()
 
   // Right/Wrong Network Alert
-  var networkDisplay = (<Box rounded="lg" color="animated" p="md"><Text color="black">{"X"}</Text></Box>)
+  let networkDisplay = (<Box rounded="lg" color="animated" p="md"><Text color="black">{"X"}</Text></Box>)
 
   if (chainId == NETWORK_ALLOWED_ID && account != null) {
     networkDisplay = (<Box rounded="lg" color="animated" p="md"><Text color="black">{"MetaMask " + NETWORK_ALLOWED_NAME + " Network"}</Text></Box>)
