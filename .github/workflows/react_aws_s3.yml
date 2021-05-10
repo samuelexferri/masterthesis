@@ -27,7 +27,7 @@ jobs:
     - name: Yarn Install
       run: |
         yarn install
-      working-directory: ./react/notarizeth
+      working-directory: ./react/
     - name: Yarn Production Build (Dist) # CI='' Not treating warnings as errors
       run: |
         CI='' yarn dist 
