@@ -31,7 +31,7 @@ jobs:
     - name: Yarn Production Build (Dist) # CI='' Not treating warnings as errors
       run: |
         CI='' yarn dist 
-      working-directory: ./react/notarizeth
+      working-directory: ./react/
     - name: Deploy to S3 (S3 Sync)
       uses: jakejarvis/s3-sync-action@master
       with:
