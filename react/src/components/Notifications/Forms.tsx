@@ -458,7 +458,6 @@ function formatBytes(bytes: number, decimals = 2) {
 const baseStyle = {
   flex: 1,
   display: 'flex',
-  flexDirection: 'column',
   alignItems: 'center',
   padding: '20px',
   borderWidth: 3,
@@ -482,6 +481,13 @@ const acceptStyle = {
 const rejectStyle = {
   borderColor: '#ff1744',
 }
+
+
+// DROPZONE WORKAROUND
+interface MyFile extends File {
+  path: string;
+}
+
 
 // DROPZONE CERTIFY
 function StyledDropzoneCertify(props: any) {
@@ -515,8 +521,8 @@ function StyledDropzoneCertify(props: any) {
   })
 
   const files = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      "{file.path}" - {formatBytes(file.size)}
+    <li key={(file as MyFile).path}>
+      "{(file as MyFile).path}" - {formatBytes(file.size)}
     </li>
   ))
 
@@ -580,8 +586,8 @@ function StyledDropzoneVerify(props: any) {
   })
 
   const files = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      "{file.path}" - {formatBytes(file.size)}
+    <li key={(file as MyFile).path}>
+      "{(file as MyFile).path}" - {formatBytes(file.size)}
     </li>
   ))
 
