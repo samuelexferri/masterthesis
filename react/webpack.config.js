@@ -1,4 +1,6 @@
-const path = require('path')
+const webpack = require('webpack');
+const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const { ESBuildMinifyPlugin } = require('esbuild-loader')
@@ -6,8 +8,14 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
-module.exports = {
-  entry: './src',
+const config = {
+  entry: [
+    './src/index.tsx'
+  ],
+  output: {
+	path: path.resolve(__dirname, "dist"),
+    filename: 'bundle.js',
+  },
   devtool: isDevelopment ? 'eval' : 'source-map',
   plugins: [
     isDevelopment && new ReactRefreshWebpackPlugin(),
@@ -27,31 +35,68 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(js|jsx)$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ],
+        exclude: /\.module\.css$/
+      },
+      {
+        test: /\.ts(x)?$/,
         loader: 'esbuild-loader',
         exclude: /node_modules/,
-        options: {
+		options: {
           loader: 'tsx',
           target: 'es2018',
-        },
+        }
+      },
+      {
+        test: /\.(sass|less|css)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true
+            }
+          }
+        ],
+        include: /\.module\.css$/
       },
       {
         test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf|ico)$/,
-        use: ['file-loader'],
+        use: 'file-loader'
       },
-	    {
-		test: /\.(sass|less|css)$/,
-		loaders: ['style-loader', 'css-loader']
-	  }
-    ],
-	
+      {
+        test: /\.png$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              mimetype: 'image/png'
+            }
+          }
+        ]
+      }
+    ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-  },
-  output: {
-    filename: '[name].[hash].js',
-    path: path.resolve(__dirname, 'build'),
+    extensions: [
+      '.js',
+      '.jsx',
+      '.tsx',
+      '.ts'
+    ],
+    alias: {
+    },
+    fallback: { crypto: false }
   },
   optimization: {
     minimizer: [
@@ -61,10 +106,13 @@ module.exports = {
     ],
   },
   devServer: {
+	index: 'index.html',
     historyApiFallback: true,
     host: '127.0.0.1',
     stats: 'errors-only',
     overlay: true,
     hot: true,
   },
-}
+};
+
+module.exports = config;
