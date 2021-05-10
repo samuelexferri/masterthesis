@@ -2,7 +2,7 @@ import { Contract } from '@ethersproject/contracts'
 import { formatEther } from '@ethersproject/units'
 import { TransactionStatus, useContractCall, useContractFunction, useEtherBalance, useEthers } from '@usedapp/core'
 import { utils } from 'ethers'
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useMemo } from 'react'
 import styled from 'styled-components'
 import { TextBold } from '../../typography/Text'
 import { ContentBlock } from '../base/base'
@@ -14,7 +14,9 @@ import { SpinnerIcon } from './Icons'
 
 import { ethers } from "ethers";
 
-import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Input, Text } from '@dracula/dracula-ui'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+
+import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Input, List, Text } from '@dracula/dracula-ui'
 
 import NOTARIZETH_ABI from '../../abi/NotarizETH.json'
 
@@ -23,6 +25,8 @@ import 'reactjs-popup/dist/index.css';
 
 // Dropzone
 import Dropzone, { useDropzone } from 'react-dropzone';
+
+
 
 
 const NOTARIZETH_ADDRESS = "0x908d02931EA40670EFe810E295936A5CA62050Bc"
@@ -244,7 +248,7 @@ const TransactionFormReset = ({ send, title, ticker, transaction }: TransactionF
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} ticker={ticker} />
       <LabelRow>
-        <Label htmlFor={`${ticker}Input`}>TODO FILE</Label>
+        <Text>TODO FILE</Text>
       </LabelRow>
       <InputComponentReset ticker={ticker} transactionStatus={transaction.status} send={send} />
       <ErrorMessageReset transaction={transaction} />
@@ -269,6 +273,7 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
 }
 
 // CERTIFY
+
 interface InputComponentPropsCertify {
   send: (value: string) => void
   ticker: string
@@ -277,8 +282,10 @@ interface InputComponentPropsCertify {
 
 const InputComponentCertify = ({ ticker, transactionStatus, send }: InputComponentPropsCertify) => {
   const { account, chainId } = useEthers()
+  const [copied, setCopied] = useState('Copy')
   const [value, setValue] = useState('')
   const isMining = transactionStatus === 'Mining'
+  const isSuccess = transactionStatus === 'Success'
   const buttonContent = isMining ? (
     <IconContainer>
       <SpinnerIcon />
@@ -287,30 +294,40 @@ const InputComponentCertify = ({ ticker, transactionStatus, send }: InputCompone
     'Certify'
   )
   const onClick = () => {
-
+    setCopied('Copy')
     // TODO Controls
     send(hashCertify)
     //send(value)
-    setValue('')
+    setValue(hashCertify)
   }
 
   return (
-    <InputRow>
-      <Input
-        id={`${ticker}Input`}
-        size="medium"
-        color="white"
-        placeholder="0xBYTES"
-        type="text"
-        maxLength={66}
-        value={value}
-        onChange={(e) => setValue(e.currentTarget.value)}
-      />
+    <div>
+      <InputRow>
+        <Input
+          id={`${ticker}Input`}
+          size="medium"
+          color="white"
+          placeholder="0xBYTES"
+          type="text"
+          maxLength={66}
+          value={value}
+          onChange={(e) => setValue(e.currentTarget.value)}
+          disabled={true}
+        />
+
+        <span>&nbsp;</span>
+        <CopyToClipboard text={value}
+          onCopy={() => setCopied('Copied')}>
+          <Button disabled={(value == '') || !isSuccess}>{copied}</Button>
+        </CopyToClipboard>
+      </InputRow>
       <FormTicker>{ticker}</FormTicker>
-      <Button disabled={!account || isMining || chainId != NETWORK_ALLOWED_ID} onClick={onClick}>
+      <br></br>
+      <center><Button disabled={!account || isMining || (chainId != NETWORK_ALLOWED_ID) || (hashCertify == '0x0')} onClick={onClick}>
         {buttonContent}
-      </Button>
-    </InputRow>
+      </Button></center>
+    </div>
   )
 }
 
@@ -322,15 +339,19 @@ interface TransactionFormCertify {
 }
 
 const TransactionFormCertify = ({ send, title, ticker, transaction }: TransactionFormCertify) => {
+  const { account, chainId } = useEthers()
+
   return (
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} ticker={ticker} />
       <LabelRow>
-        <Label htmlFor={`${ticker}Input`}>TODO FILE</Label>
+        <Text>TODO FILE</Text>
       </LabelRow>
+ 
+        <Text hidden={account && (chainId == NETWORK_ALLOWED_ID)} color='yellow'>You must be connected with MetaMask on Ropsten Network to perform this operation</Text>
+      <StyledDropzone />
+      <br></br>
       <InputComponentCertify ticker={ticker} transactionStatus={transaction.status} send={send} />
-
-      <MyDropzoneCertify />
       <ErrorMessageCertify transaction={transaction} />
     </Card>
   )
@@ -342,12 +363,18 @@ interface ErrorRowPropsCertify {
 
 const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
   // TODO Error (chainID, Verifiche, RPC MetaMask)
+  // Fare un verify se esiste già e dire di chi è
   const error_1 = 'cannot estimate gas; transaction may fail or may require manual gas limit'
+  console.log("TTT", transaction)
+
+  if (transaction.status == 'Success') {
+    return <ErrorRow><Text color='green'>{'Successfull! Your file hash is stored in the blockchain, try to verify it!'}</Text></ErrorRow>
+  }
 
   if (error_1 == ('errorMessage' in transaction && transaction.errorMessage)) {
-    return <ErrorRow>{'It is possible that the file hash already exists on the blockchain! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}</ErrorRow>
-  } else {
-    return <ErrorRow>{'errorMessage' in transaction && transaction.errorMessage}</ErrorRow>
+    return <ErrorRow><Text color='red'>{'It is possible that the file hash already exists on the blockchain! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}</Text></ErrorRow>
+  } else if (('errorMessage' in transaction && transaction.errorMessage) != null) {
+    return <ErrorRow><Text color='red'>{'errorMessage' in transaction && transaction.errorMessage}</Text></ErrorRow>
   }
 }
 
@@ -359,15 +386,15 @@ var hashCertify = '0x0'
 // CryptoJS Helper
 function arrayBufferToWordArray(arrayBuffer: ArrayBuffer | string | null) {
   if (arrayBuffer instanceof ArrayBuffer) {
-  var i8a = new Uint8Array(arrayBuffer);
-  var a = [];
-  for (var i = 0; i < i8a.length; i += 4) {
-    a.push(i8a[i] << 24 | i8a[i + 1] << 16 | i8a[i + 2] << 8 | i8a[i + 3]);
+    var i8a = new Uint8Array(arrayBuffer);
+    var a = [];
+    for (var i = 0; i < i8a.length; i += 4) {
+      a.push(i8a[i] << 24 | i8a[i + 1] << 16 | i8a[i + 2] << 8 | i8a[i + 3]);
+    }
+    return CryptoJS.lib.WordArray.create(a, i8a.length);
+  } else {
+    return
   }
-  return CryptoJS.lib.WordArray.create(a, i8a.length);
-} else {
-  return
-}
 }
 
 // React Dropzone Helper
@@ -386,9 +413,59 @@ function nameLengthValidator(file :) {
 }
 */
 
-// React Dropzone
-function MyDropzoneCertify() {
-  // Only acceptedFiles
+
+
+
+
+
+
+
+
+
+function formatBytes(bytes, decimals = 2) {
+  if (bytes === 0) return '0 Bytes';
+
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
+
+// Dropzone
+const baseStyle = {
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '20px',
+  borderWidth: 3,
+  borderRadius: 10,
+  borderColor: '#eeeeee',
+  borderStyle: 'dashed',
+  backgroundColor: 'trasparent',
+  color: '#eeeeee',
+  outline: 'none',
+  transition: 'border .24s ease-in-out'
+};
+
+const activeStyle = {
+  borderColor: '#2196f3'
+};
+
+const acceptStyle = {
+  borderColor: '#00e676'
+};
+
+const rejectStyle = {
+  borderColor: '#ff1744'
+};
+
+function StyledDropzone(props: any) {
+
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.forEach((file: Blob) => {
       const reader = new FileReader()
@@ -398,58 +475,68 @@ function MyDropzoneCertify() {
       reader.onload = () => {
         // Do whatever you want with the file contents
 
-      
- 
+
+
         var arrayBuffer = reader.result
-        
+
         console.log("ArrayBuffer Plain", arrayBufferToWordArray(arrayBuffer))
         console.log("ArrayBuffer Hash", CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), { outputLength: 256 }).toString(CryptoJS.enc.Hex))
         hashCertify = '0x' + CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), { outputLength: 256 }).toString(CryptoJS.enc.Hex)
+        console.log("Hash", hashCertify)
       }
       reader.readAsArrayBuffer(file)
     })
   }, [])
 
-  const { acceptedFiles, fileRejections, getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles: 1 })
+  const {
+    acceptedFiles,
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+    isDragReject
+  } = useDropzone({
+    onDrop,
+    // accept: 'image/*',
+    maxFiles: 1,
+  });
 
-  const acceptedFileItems = acceptedFiles.map((file: { path: {} | null | undefined; size: string | number | boolean | {} | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactNodeArray | React.ReactPortal | null | undefined }) => (
+  const files = acceptedFiles.map(file => (
     <li key={file.path}>
-      {file.path} - {file.size} bytes
+      "{file.path}" - {formatBytes(file.size)}
     </li>
   ));
 
-  const fileRejectionItems = fileRejections.map(({ file, errors }) => {
-    return (
-      <li key={file.path}>
-        {file.path} - {file.size} bytes
-        <ul>
-          {errors.map((e: { code: React.Key | null | undefined; message: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined }) => <li key={e.code}>{e.message}</li>)}
-        </ul>
+  const style = useMemo(() => ({
+    ...baseStyle,
+    ...(isDragActive ? activeStyle : {}),
+    ...(isDragAccept ? acceptStyle : {}),
+    ...(isDragReject ? rejectStyle : {})
+  }), [
+    isDragActive,
+    isDragReject,
+    isDragAccept
+  ]);
 
-      </li>
-    )
-  });
+
 
   return (
-    <section className="container">
-      <div {...getRootProps()}>
+    <div className="container">
+      <br></br>
+      <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
-        <em>(1 file is the maximum number of files you can drop here)</em>
+        <p>Drag 'n' drop one file here, or click to select file</p>
       </div>
-      <aside>
-        <h4>Accepted file (Only One)</h4>
-        <ul>{acceptedFileItems}</ul>
-        <h4>Rejected files</h4>
-        <ul>{fileRejectionItems}</ul>
-      </aside>
-    </section>
-  )
+      <br></br>
+      <div>
+        <Text>File accepted:</Text>
+        <List>
+          <li className="drac-text drac-text-white">{files}</li>
+        </List>
+      </div>
+    </div>
+  );
 }
-
-
-
-
 
 
 
@@ -531,7 +618,7 @@ const TransactionFormVerify = ({ title, ticker, library, }: TransactionFormVerif
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} ticker={ticker} />
       <LabelRow>
-        <Label htmlFor={`${ticker}Input`}>TODO FILE</Label>
+        <Text>TODO FILE</Text>
       </LabelRow>
       <InputComponentVerify ticker={ticker} library={library} />
     </Card>
@@ -676,7 +763,7 @@ const CellTitle = styled(TextBold)`
 
 const InputRow = styled.div`
   display: flex;
-  margin: 0 auto;
+  margin: 0 auso;
   align-items: center;
   border-radius: ${BorderRad.s};
   overflow: hidden;
@@ -722,5 +809,4 @@ const ErrorRow = styled.div`
   height: 20px;
   font-size: 14px;
   margin: 8px auto 32px auto;
-  color: ${Colors.Red};
 `

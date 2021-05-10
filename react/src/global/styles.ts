@@ -21,7 +21,7 @@ export const Colors = {
 }
 
 export const Fonts = {
-  Helvetica: '"HelveticaNeue", sans-serif',
+  FiraCode: '"FiraCode"',
 }
 
 export const Shadows = {

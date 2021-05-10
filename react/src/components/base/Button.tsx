@@ -9,7 +9,7 @@ export const Button = styled.button`
   width: fit-content;
   min-width: 160px;
   height: 40px;
-  font-family: ${Fonts.Helvetica};
+  font-family: ${Fonts.FiraCode};
   font-size: 14px;
   line-height: 24px;
   font-weight: 700;
