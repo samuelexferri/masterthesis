@@ -13,5 +13,9 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "importsNotUsedAsValues": "error",
+	"lib": [
+		"dom",
+		"dom.iterable"
+	]
   }
 }

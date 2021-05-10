@@ -1224,6 +1224,13 @@
   "resolved" "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz"
   "version" "15.7.3"
 
+"@types/react-copy-to-clipboard@^5.0.0":
+  "integrity" "sha512-faUg6Kx3Dfv0MBIcs+xzIptlRtjEVSaNjqyC14YAp4UwSiTHghnKtBOt9ERRTZZJfoJgnw10tomVaqG86GzdAw=="
+  "resolved" "https://registry.npmjs.org/@types/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.0.tgz"
+  "version" "5.0.0"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^17.0.0":
   "integrity" "sha512-4NnJbCeWE+8YBzupn/YrJxZ8VnjcJq5iR1laqQ1vkpQgBiA7bwk0Rp24fxsdNinzJY2U+HHS4dJJDPdoMjdJ7w=="
   "resolved" "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.3.tgz"
