@@ -11,7 +11,7 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [15.x]
+        node-version: [12.x]
     
     steps:
     - uses: actions/checkout@master
@@ -28,14 +28,10 @@ jobs:
       run: |
         yarn install
       working-directory: ./react/notarizeth
-    - name: Yarn Production Build # CI='' Not treating warnings as errors
+    - name: Yarn Production Build (Dist) # CI='' Not treating warnings as errors
       run: |
-        CI='' yarn react-app:build 
+        CI='' yarn dist 
       working-directory: ./react/notarizeth
-    - name: Yarn Unit Tests
-      run: |
-        yarn react-app:test
-      working-directory: 'react/notarizeth'
     - name: Deploy to S3 (S3 Sync)
       uses: jakejarvis/s3-sync-action@master
       with:
@@ -45,5 +41,5 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'eu-south-1'
-        SOURCE_DIR: './react/notarizeth/packages/react-app/build'
+        SOURCE_DIR: './react/notarizeth/packages/react-app/dist'
         # DEST_DIR: ''  
