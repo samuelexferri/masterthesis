@@ -41,7 +41,7 @@ export function Transactions() {
               <Text></Text>
             )}
 
-            <Avatar title="Count Dracula" src="https://ui.draculatheme.com/static/images/avatar.png"/> 
+            <Avatar title="Samuele Ferri" src="https://i.ibb.co/Zm5Qhqb/Poly-White-2.png"/> 
           </SectionRow>
 
           {networkDisplay}
