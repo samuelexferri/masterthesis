@@ -12,12 +12,12 @@ export const Colors = {
     500: '#F2C94C',
     100: '#FFF4D4',
   },
-  Red:'#FF5555',
+  Red: '#FF5555',
   Comment: '#6272A4',
   Current: '#44475A',
   Foreground: '#F8F8F2',
   Green: '#50FA7B',
-  Pink: '#FF79C6'
+  Pink: '#FF79C6',
 }
 
 export const Fonts = {

@@ -33,7 +33,7 @@ export const MainContent = styled.main`
   width: 100%;
   height: 100%;
   min-height: calc(100vh - ${Sizes.headerHeight});
-  background: #282a36
+  background: #282a36;
 `
 
 export const Section = styled.section`

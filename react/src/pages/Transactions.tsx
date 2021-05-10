@@ -7,25 +7,39 @@ import { CertifyFile, ResetFile, VerifyFile } from '../components/Notifications/
 import { NotificationsList, TransactionsList } from '../components/Notifications/History'
 import { Title } from '../typography/Title'
 
-
 const NETWORK_ALLOWED_ID = 3
 const NETWORK_ALLOWED_NAME = 'Ropsten'
 
-import { Avatar, Badge, Box,Button ,Card, Divider, Heading, Text  } from '@dracula/dracula-ui'
+import { Avatar, Badge, Box, Button, Card, Divider, Heading, Text } from '@dracula/dracula-ui'
 
 export function Transactions() {
   const { activateBrowserWallet, deactivate, account, library, chainId, active } = useEthers()
 
   // Right/Wrong Network Alert
-  let networkDisplay = (<Box rounded="lg" color="animated" p="md"><Text color="black">{"X"}</Text></Box>)
+  let networkDisplay = (
+    <Box rounded="lg" color="animated" p="md">
+      <Text color="black">{'X'}</Text>
+    </Box>
+  )
 
   if (chainId == NETWORK_ALLOWED_ID && account != null) {
-    networkDisplay = (<Box rounded="lg" color="animated" p="md"><Text color="black">{"MetaMask " + NETWORK_ALLOWED_NAME + " Network"}</Text></Box>)
-  }
-  else if (chainId == NETWORK_ALLOWED_ID && account == null) {
-    networkDisplay = (<Box rounded="lg" color="animated" p="md"><Text color="black">{"Infura " + NETWORK_ALLOWED_NAME + " Network (read-only), connect with MetaMask!"}</Text></Box>)
+    networkDisplay = (
+      <Box rounded="lg" color="animated" p="md">
+        <Text color="black">{'MetaMask ' + NETWORK_ALLOWED_NAME + ' Network'}</Text>
+      </Box>
+    )
+  } else if (chainId == NETWORK_ALLOWED_ID && account == null) {
+    networkDisplay = (
+      <Box rounded="lg" color="animated" p="md">
+        <Text color="black">{'Infura ' + NETWORK_ALLOWED_NAME + ' Network (read-only), connect with MetaMask!'}</Text>
+      </Box>
+    )
   } else {
-    networkDisplay = (<Box rounded="lg" color="red" p="md"><Text color="black">{"You need to be on " + NETWORK_ALLOWED_NAME + " Network, change the network!"}</Text></Box>)
+    networkDisplay = (
+      <Box rounded="lg" color="red" p="md">
+        <Text color="black">{'You need to be on ' + NETWORK_ALLOWED_NAME + ' Network, change the network!'}</Text>
+      </Box>
+    )
   }
 
   return (
@@ -35,19 +49,14 @@ export function Transactions() {
           <SectionRow>
             <Heading>Transactions</Heading>
 
-            {account ? (
-              <Text>{account}</Text>
-            ) : (
-              <Text></Text>
-            )}
+            {account ? <Text>{account}</Text> : <Text></Text>}
 
-            <Avatar title="Samuele Ferri" src="https://i.ibb.co/Zm5Qhqb/Poly-White-2.png"/> 
+            <Avatar title="Samuele Ferri" src="https://i.ibb.co/Zm5Qhqb/Poly-White-2.png" />
           </SectionRow>
 
           {networkDisplay}
 
           <Box p="sm"></Box>
-
 
           <TableGrid>
             <TransactionsList />

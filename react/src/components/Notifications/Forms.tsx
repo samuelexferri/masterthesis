@@ -9,26 +9,25 @@ import { ContentBlock } from '../base/base'
 import { BorderRad, Colors } from '../../global/styles'
 import { SpinnerIcon } from './Icons'
 
-import { ethers } from "ethers";
+import { ethers } from 'ethers'
 
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Input, List, Text } from '@dracula/dracula-ui'
 
 import NOTARIZETH_ABI from '../../abi/NotarizETH.json'
 
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css'
 
-import Dropzone, { useDropzone } from 'react-dropzone';
+import Dropzone, { useDropzone } from 'react-dropzone'
 
 // CONSTANTS
-const NOTARIZETH_ADDRESS = "0x908d02931EA40670EFe810E295936A5CA62050Bc"
+const NOTARIZETH_ADDRESS = '0x908d02931EA40670EFe810E295936A5CA62050Bc'
 const NOTARIZETH_ABI_INTERFACE = new utils.Interface(NOTARIZETH_ABI)
 
 const NETWORK_ALLOWED_ID = 3
 const NETWORK_ALLOWED_NAME = 'Ropsten'
-
 
 // BASIC
 interface TitlePropsBasic {
@@ -42,7 +41,6 @@ const TitleBasic = ({ title }: TitlePropsBasic) => {
     </TitleRow>
   )
 }
-
 
 // VERIFY
 interface InputComponentPropsVerify {
@@ -63,20 +61,32 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
       valuehash = '0x' + valuehash
     } else {
       // Input error
-      console.log("Input Error", valuehash)
+      console.log('Input Error', valuehash)
       document.getElementById('idHolderVerify')!.textContent = 'Input Error! Must be in 32 Byte Format (64 length)'
       return
     }
 
     if (typeof library !== 'undefined') {
       const contractEther = new ethers.Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library)
-      contractEther.verifyFile(valuehash).then(
-        function (res: boolean[]) { 
-          console.log("VerifyFile", res),
-          document.getElementById('idHolderVerify')!.innerHTML = ((res[0] == false) ? 'File hash ' + valuehash + ' not exist on the blockchain' : 'File hash ' + valuehash + ' exist on the blockchain:' + '<br>' + 'Owner: <a href="https://ropsten.etherscan.io/address/' + res[1] + '" target="_blank"  class="drac-anchor drac-text drac-text-cyan-green drac-text-yellow-pink--hover drac-mb-sm">' + res[1] + '</a>' + '<br>' + 'Timestamp: TODO'),
-          document.getElementById('idHolderVerify')!.className = ((res[0] == false) ? 'drac-text drac-line-height drac-text-red' : 'drac-text drac-line-height drac-text-green')
-        },
-      );
+      contractEther.verifyFile(valuehash).then(function (res: boolean[]) {
+        console.log('VerifyFile', res),
+          (document.getElementById('idHolderVerify')!.innerHTML =
+            res[0] == false
+              ? 'File hash ' + valuehash + ' not exist on the blockchain'
+              : 'File hash ' +
+                valuehash +
+                ' exist on the blockchain:' +
+                '<br>' +
+                'Owner: <a href="https://ropsten.etherscan.io/address/' +
+                res[1] +
+                '" target="_blank"  class="drac-anchor drac-text drac-text-cyan-green drac-text-yellow-pink--hover drac-mb-sm">' +
+                res[1] +
+                '</a>' +
+                '<br>' +
+                'Timestamp: TODO'),
+          (document.getElementById('idHolderVerify')!.className =
+            res[0] == false ? 'drac-text drac-line-height drac-text-red' : 'drac-text drac-line-height drac-text-green')
+      })
     } else {
       document.getElementById('idHolderVerify')!.innerHTML = 'Library is undefined'
       document.getElementById('idHolderVerify')!.className = 'drac-text drac-line-height drac-text-red'
@@ -99,9 +109,7 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
           onChange={(e) => setValue(e.currentTarget.value)}
         />
         <span>&nbsp;</span>
-        <Button onClick={onClick}>
-          Verify
-        </Button>
+        <Button onClick={onClick}>Verify</Button>
       </InputRow>
       <br></br>
       <Text id="idHolderVerify"></Text>
@@ -114,7 +122,7 @@ interface TransactionFormVerify {
   library: any
 }
 
-const TransactionFormVerify = ({ title, library, }: TransactionFormVerify) => {
+const TransactionFormVerify = ({ title, library }: TransactionFormVerify) => {
   return (
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} />
@@ -125,7 +133,6 @@ const TransactionFormVerify = ({ title, library, }: TransactionFormVerify) => {
     </Card>
   )
 }
-
 
 // CERTIFY
 interface InputComponentPropsCertify {
@@ -171,14 +178,19 @@ const InputComponentCertify = ({ send, transactionStatus }: InputComponentPropsC
           disabled={true}
         />
         <span>&nbsp;</span>
-        <CopyToClipboard text={value}
-          onCopy={() => setCopied('Copied')}>
-          <Button disabled={(value == '') || !isSuccess}>{copied}</Button>
+        <CopyToClipboard text={value} onCopy={() => setCopied('Copied')}>
+          <Button disabled={value == '' || !isSuccess}>{copied}</Button>
         </CopyToClipboard>
       </InputRow>
       <br></br>
-      <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-        <Button disabled={!account || isMining || (chainId != NETWORK_ALLOWED_ID)} onClick={onClick}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Button disabled={!account || isMining || chainId != NETWORK_ALLOWED_ID} onClick={onClick}>
           {buttonContent}
         </Button>
       </div>
@@ -201,7 +213,9 @@ const TransactionFormCertify = ({ send, title, transaction }: TransactionFormCer
       <LabelRow>
         <Text>Certify your file on the Ethereum blockchain and save the Keccak256 hash as proof.</Text>
       </LabelRow>
-      <Text hidden={(account != null) && (chainId === NETWORK_ALLOWED_ID)} color='yellow'>You must be connected with MetaMask on Ropsten Network to perform this operation!</Text>
+      <Text hidden={account != null && chainId === NETWORK_ALLOWED_ID} color="yellow">
+        You must be connected with MetaMask on Ropsten Network to perform this operation!
+      </Text>
       <StyledDropzoneCertify />
       <br></br>
       <InputComponentCertify transactionStatus={transaction.status} send={send} />
@@ -222,32 +236,58 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
 
   // Success
   if (transaction.status == 'Success') {
-    return <ErrorRow><Text color='green'>{'Successfull! Your file hash is stored on the blockchain!'}</Text></ErrorRow>
+    return (
+      <ErrorRow>
+        <Text color="green">{'Successfull! Your file hash is stored on the blockchain!'}</Text>
+      </ErrorRow>
+    )
   }
 
-  const error_temp = ('errorMessage' in transaction && transaction.errorMessage)
+  const error_temp = 'errorMessage' in transaction && transaction.errorMessage
 
   // Exception
   if (error_temp == error_1) {
-    return <ErrorRow><Text color='yellow'>{'Upload your file before! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}</Text></ErrorRow>
+    return (
+      <ErrorRow>
+        <Text color="yellow">
+          {'Upload your file before! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}
+        </Text>
+      </ErrorRow>
+    )
   } else if (error_temp == error_2) {
     const contractEther = new ethers.Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library)
-      contractEther.verifyFile(hashCertify).then(
-        function (res: boolean[]) { 
-          console.log("CertifyErrorVerifyFile", res),
-          // General error or already exist on the blockchain
-          document.getElementById('idHolderCertify')!.innerHTML = ((res[0] == false) ? 'General Error!' : 'File hash already exists on the Ethereum blockchain!' + '<br>' + 'Owner: <a href="https://ropsten.etherscan.io/address/' + res[1] + '" target="_blank"  class="drac-anchor drac-text drac-text-cyan-green drac-text-yellow-pink--hover drac-mb-sm">' + res[1] + '</a>' + '<br>' + 'Timestamp: TODO'),
-          document.getElementById('idHolderCertify')!.className = 'drac-text drac-line-height drac-text-red'
-        },
-      );
-    
-    return <ErrorRow><Text color='red' id='idHolderCertify'></Text></ErrorRow>
-  }
-  
-  // Other error
-  return <ErrorRow><Text color='red'>{'errorMessage' in transaction && transaction.errorMessage}</Text></ErrorRow>
-}
+    contractEther.verifyFile(hashCertify).then(function (res: boolean[]) {
+      console.log('CertifyErrorVerifyFile', res),
+        // General error or already exist on the blockchain
+        (document.getElementById('idHolderCertify')!.innerHTML =
+          res[0] == false
+            ? 'General Error!'
+            : 'File hash already exists on the Ethereum blockchain!' +
+              '<br>' +
+              'Owner: <a href="https://ropsten.etherscan.io/address/' +
+              res[1] +
+              '" target="_blank"  class="drac-anchor drac-text drac-text-cyan-green drac-text-yellow-pink--hover drac-mb-sm">' +
+              res[1] +
+              '</a>' +
+              '<br>' +
+              'Timestamp: TODO'),
+        (document.getElementById('idHolderCertify')!.className = 'drac-text drac-line-height drac-text-red')
+    })
 
+    return (
+      <ErrorRow>
+        <Text color="red" id="idHolderCertify"></Text>
+      </ErrorRow>
+    )
+  }
+
+  // Other error
+  return (
+    <ErrorRow>
+      <Text color="red">{'errorMessage' in transaction && transaction.errorMessage}</Text>
+    </ErrorRow>
+  )
+}
 
 // RESET
 interface InputComponentPropsReset {
@@ -277,7 +317,7 @@ const InputComponentReset = ({ send, transactionStatus }: InputComponentPropsRes
   return (
     <div>
       <InputRow>
-        <Input  
+        <Input
           id={`Input`}
           size="medium"
           color="white"
@@ -290,7 +330,13 @@ const InputComponentReset = ({ send, transactionStatus }: InputComponentPropsRes
         />
       </InputRow>
       <br></br>
-      <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <Button disabled={!account || isMining || chainId != NETWORK_ALLOWED_ID} onClick={onClick}>
           {buttonContent}
         </Button>
@@ -314,7 +360,9 @@ const TransactionFormReset = ({ send, title, transaction }: TransactionFormReset
       <LabelRow>
         <Text>If you are the owner of a file, you can remove it from the Ethereum blockchain if you want.</Text>
       </LabelRow>
-      <Text hidden={(account != null) && (chainId === NETWORK_ALLOWED_ID)} color='yellow'>You must be connected with MetaMask on Ropsten Network to perform this operation!</Text>
+      <Text hidden={account != null && chainId === NETWORK_ALLOWED_ID} color="yellow">
+        You must be connected with MetaMask on Ropsten Network to perform this operation!
+      </Text>
       <StyledDropzoneVerify />
       <br></br>
       <InputComponentReset transactionStatus={transaction.status} send={send} />
@@ -333,61 +381,78 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
 
   // Success
   if (transaction.status == 'Success') {
-    return <ErrorRow><Text color='green'>{'Successfull! Your file hash is removed from the blockchain!'}</Text></ErrorRow>
+    return (
+      <ErrorRow>
+        <Text color="green">{'Successfull! Your file hash is removed from the blockchain!'}</Text>
+      </ErrorRow>
+    )
   }
 
-  const error_temp = ('errorMessage' in transaction && transaction.errorMessage)
+  const error_temp = 'errorMessage' in transaction && transaction.errorMessage
 
   // Exception
   if (error_temp == error_1) {
-    return <ErrorRow><Text color='yellow'>{'Upload your file before! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}</Text></ErrorRow>
+    return (
+      <ErrorRow>
+        <Text color="yellow">
+          {'Upload your file before! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}
+        </Text>
+      </ErrorRow>
+    )
   } else if (error_temp == error_2) {
     // TODO You are not the owner, the owner is...
 
     // TODO Not exist on the blockchain
     // TODO Verify e stampare le variabili
-    return <ErrorRow><Text color='red'>{'It is possible that the file hash not exists on the blockchain! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}</Text></ErrorRow>
+    return (
+      <ErrorRow>
+        <Text color="red">
+          {'It is possible that the file hash not exists on the blockchain! Full details: '}{' '}
+          {'errorMessage' in transaction && transaction.errorMessage}
+        </Text>
+      </ErrorRow>
+    )
   }
-  
+
   // Other Error
-  return <ErrorRow><Text color='red'>{'errorMessage' in transaction && transaction.errorMessage}</Text></ErrorRow>
+  return (
+    <ErrorRow>
+      <Text color="red">{'errorMessage' in transaction && transaction.errorMessage}</Text>
+    </ErrorRow>
+  )
 }
 
-
 // CRYPTOJS
-const CryptoJS = require("crypto-js");
+const CryptoJS = require('crypto-js')
 var hashCertify = '0x0'
 var hashVerify = '0x0'
-
 
 // HELPER
 function arrayBufferToWordArray(arrayBuffer: ArrayBuffer | string | null) {
   if (arrayBuffer instanceof ArrayBuffer) {
-    const i8a = new Uint8Array(arrayBuffer);
-    const a = [];
+    const i8a = new Uint8Array(arrayBuffer)
+    const a = []
     for (let i = 0; i < i8a.length; i += 4) {
-      a.push(i8a[i] << 24 | i8a[i + 1] << 16 | i8a[i + 2] << 8 | i8a[i + 3]);
+      a.push((i8a[i] << 24) | (i8a[i + 1] << 16) | (i8a[i + 2] << 8) | i8a[i + 3])
     }
-    return CryptoJS.lib.WordArray.create(a, i8a.length);
+    return CryptoJS.lib.WordArray.create(a, i8a.length)
   } else {
     return
   }
 }
 
-
 // HELPER
 function formatBytes(bytes: number, decimals = 2) {
-  if (bytes === 0) return '0 Bytes';
+  if (bytes === 0) return '0 Bytes'
 
-  const k = 1024;
-  const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const k = 1024
+  const dm = decimals < 0 ? 0 : decimals
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
 
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  const i = Math.floor(Math.log(bytes) / Math.log(k))
 
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
 }
-
 
 // DROPZONE CSS
 const baseStyle = {
@@ -403,25 +468,23 @@ const baseStyle = {
   backgroundColor: 'trasparent',
   color: '#eeeeee',
   outline: 'none',
-  transition: 'border .24s ease-in-out'
-};
+  transition: 'border .24s ease-in-out',
+}
 
 const activeStyle = {
-  borderColor: '#2196f3'
-};
+  borderColor: '#2196f3',
+}
 
 const acceptStyle = {
-  borderColor: '#00e676'
-};
+  borderColor: '#00e676',
+}
 
 const rejectStyle = {
-  borderColor: '#ff1744'
-};
-
+  borderColor: '#ff1744',
+}
 
 // DROPZONE CERTIFY
 function StyledDropzoneCertify(props: any) {
-
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.forEach((file: Blob) => {
       const reader = new FileReader()
@@ -432,44 +495,40 @@ function StyledDropzoneCertify(props: any) {
         // Do whatever you want with the file contents
 
         const arrayBuffer = reader.result
-        console.log("ArrayBufferToWordArray", arrayBufferToWordArray(arrayBuffer))
+        console.log('ArrayBufferToWordArray', arrayBufferToWordArray(arrayBuffer))
 
-        hashCertify = '0x' + CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), { outputLength: 256 }).toString(CryptoJS.enc.Hex)
-        console.log("Hash", hashCertify)
+        hashCertify =
+          '0x' +
+          CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), {
+            outputLength: 256,
+          }).toString(CryptoJS.enc.Hex)
+        console.log('Hash', hashCertify)
       }
       reader.readAsArrayBuffer(file)
     })
   }, [])
 
-  const {
-    acceptedFiles,
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragAccept,
-    isDragReject
-  } = useDropzone({
+  const { acceptedFiles, getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
     onDrop,
     // accept: 'image/*',
     maxFiles: 1,
-  });
+  })
 
-  const files = acceptedFiles.map(file => (
+  const files = acceptedFiles.map((file) => (
     <li key={file.path}>
       "{file.path}" - {formatBytes(file.size)}
     </li>
-  ));
+  ))
 
-  const style = useMemo(() => ({
-    ...baseStyle,
-    ...(isDragActive ? activeStyle : {}),
-    ...(isDragAccept ? acceptStyle : {}),
-    ...(isDragReject ? rejectStyle : {})
-  }), [
-    isDragActive,
-    isDragReject,
-    isDragAccept
-  ]);
+  const style = useMemo(
+    () => ({
+      ...baseStyle,
+      ...(isDragActive ? activeStyle : {}),
+      ...(isDragAccept ? acceptStyle : {}),
+      ...(isDragReject ? rejectStyle : {}),
+    }),
+    [isDragActive, isDragReject, isDragAccept]
+  )
 
   return (
     <div className="container">
@@ -486,13 +545,11 @@ function StyledDropzoneCertify(props: any) {
         </List>
       </div>
     </div>
-  );
+  )
 }
-
 
 // DROPZONE VERIFY
 function StyledDropzoneVerify(props: any) {
-
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.forEach((file: Blob) => {
       const reader = new FileReader()
@@ -503,44 +560,40 @@ function StyledDropzoneVerify(props: any) {
         // Do whatever you want with the file contents
 
         const arrayBuffer = reader.result
-        console.log("ArrayBufferToWordArray", arrayBufferToWordArray(arrayBuffer))
+        console.log('ArrayBufferToWordArray', arrayBufferToWordArray(arrayBuffer))
 
-        hashVerify = '0x' + CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), { outputLength: 256 }).toString(CryptoJS.enc.Hex)
-        console.log("Hash", hashVerify)
+        hashVerify =
+          '0x' +
+          CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), {
+            outputLength: 256,
+          }).toString(CryptoJS.enc.Hex)
+        console.log('Hash', hashVerify)
       }
       reader.readAsArrayBuffer(file)
     })
   }, [])
 
-  const {
-    acceptedFiles,
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragAccept,
-    isDragReject
-  } = useDropzone({
+  const { acceptedFiles, getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
     onDrop,
     // accept: 'image/*',
     maxFiles: 1,
-  });
+  })
 
-  const files = acceptedFiles.map(file => (
+  const files = acceptedFiles.map((file) => (
     <li key={file.path}>
       "{file.path}" - {formatBytes(file.size)}
     </li>
-  ));
+  ))
 
-  const style = useMemo(() => ({
-    ...baseStyle,
-    ...(isDragActive ? activeStyle : {}),
-    ...(isDragAccept ? acceptStyle : {}),
-    ...(isDragReject ? rejectStyle : {})
-  }), [
-    isDragActive,
-    isDragReject,
-    isDragAccept
-  ]);
+  const style = useMemo(
+    () => ({
+      ...baseStyle,
+      ...(isDragActive ? activeStyle : {}),
+      ...(isDragAccept ? acceptStyle : {}),
+      ...(isDragReject ? rejectStyle : {}),
+    }),
+    [isDragActive, isDragReject, isDragAccept]
+  )
 
   return (
     <div className="container">
@@ -557,52 +610,37 @@ function StyledDropzoneVerify(props: any) {
         </List>
       </div>
     </div>
-  );
+  )
 }
-
 
 // FUNCTIONS
 export const VerifyFile = () => {
   const { library } = useEthers()
 
-  return (
-    <TransactionFormVerify
-      title="VerifyFile"
-      library={library}
-    />
-  )
+  return <TransactionFormVerify title="VerifyFile" library={library} />
 }
 
 export const CertifyFile = () => {
   const { library } = useEthers()
 
   const contract = new Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library?.getSigner())
-  const { state, send } = useContractFunction(contract, 'certifyFile', { transactionName: 'certifyFile' })
+  const { state, send } = useContractFunction(contract, 'certifyFile', {
+    transactionName: 'certifyFile',
+  })
 
-  return (
-    <TransactionFormCertify
-      send={(value: string) => send(value)}
-      title="CertifyFile"
-      transaction={state}
-    />
-  )
+  return <TransactionFormCertify send={(value: string) => send(value)} title="CertifyFile" transaction={state} />
 }
 
 export const ResetFile = () => {
   const { library } = useEthers()
 
   const contract = new Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library?.getSigner())
-  const { state, send } = useContractFunction(contract, 'resetFile', { transactionName: 'resetFile' })
+  const { state, send } = useContractFunction(contract, 'resetFile', {
+    transactionName: 'resetFile',
+  })
 
-  return (
-    <TransactionFormReset
-      send={(value: string) => send(value)}
-      title="ResetFile"
-      transaction={state}
-    />
-  )
+  return <TransactionFormReset send={(value: string) => send(value)} title="ResetFile" transaction={state} />
 }
-
 
 // CSS
 const SmallButton = styled(Button)`

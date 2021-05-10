@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Colors, Shadows, Sizes, Transitions } from '../global/styles'
 import { HeaderContainer } from './base/base'
-import {SectionRow } from '../components/base/base'
+import { SectionRow } from '../components/base/base'
 import { useEtherBalance, useEthers } from '@usedapp/core'
 //import { Button } from '../components/base/Button'
 import { TextInline } from '../typography/Text'
 
-import { Avatar, Badge, Box,Button ,Card, Divider, Heading, Text  } from '@dracula/dracula-ui'
+import { Avatar, Badge, Box, Button, Card, Divider, Heading, Text } from '@dracula/dracula-ui'
 
 export function TopBar() {
   const { activateBrowserWallet, deactivate, account } = useEthers()
@@ -20,7 +20,7 @@ export function TopBar() {
           <ToMain href="/">
             <Text size="lg">NotarizETH</Text>
             <ToMainBottom>
-            <Text size="xs">by Samuele Ferri 🚀</Text>
+              <Text size="xs">by Samuele Ferri 🚀</Text>
             </ToMainBottom>
           </ToMain>
           <HeaderNavLinks>
@@ -40,7 +40,7 @@ export function TopBar() {
         </HeaderNav>
       </HeaderContainer>
 
-      {account ? ( 
+      {account ? (
         <Button onClick={() => deactivate()}>Disconnect</Button>
       ) : (
         <Button onClick={() => activateBrowserWallet()}>Connect</Button>

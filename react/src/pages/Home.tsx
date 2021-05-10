@@ -1,7 +1,14 @@
 import React from 'react'
 import { formatEther } from '@ethersproject/units'
 import { utils } from 'ethers'
-import { useEtherBalance, useEthers, useContractCall, useContractFunction, useBlockMeta, useBlockNumber } from '@usedapp/core'
+import {
+  useEtherBalance,
+  useEthers,
+  useContractCall,
+  useContractFunction,
+  useBlockMeta,
+  useBlockNumber,
+} from '@usedapp/core'
 import { Container, ContentBlock, ContentRow, MainContent, Section, SectionRow } from '../components/base/base'
 //import { Button } from '../components/base/Button'
 import { Label } from '../typography/Label'
@@ -11,7 +18,7 @@ import { Title } from '../typography/Title'
 
 import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Text } from '@dracula/dracula-ui'
 
-import { ethers } from "ethers";
+import { ethers } from 'ethers'
 
 import NOTARIZETH_ABI from '../abi/NotarizETH.json'
 
@@ -19,7 +26,7 @@ import NOTARIZETH_ABI from '../abi/NotarizETH.json'
 const NETWORK_ALLOWED_ID = 3
 const NETWORK_ALLOWED_NAME = 'Ropsten'
 
-const NOTARIZETH_ADDRESS = "0x908d02931EA40670EFe810E295936A5CA62050Bc"
+const NOTARIZETH_ADDRESS = '0x908d02931EA40670EFe810E295936A5CA62050Bc'
 const NOTARIZETH_ABI_INTERFACE = new utils.Interface(NOTARIZETH_ABI)
 
 export function Home() {
@@ -39,15 +46,30 @@ export function Home() {
   */
 
   // Right/Wrong Network Alert
-  let networkDisplay = (<Box rounded="lg" color="animated" p="md"><Text color="black">{"X"}</Text></Box>)
+  let networkDisplay = (
+    <Box rounded="lg" color="animated" p="md">
+      <Text color="black">{'X'}</Text>
+    </Box>
+  )
 
   if (chainId == NETWORK_ALLOWED_ID && account != null) {
-    networkDisplay = (<Box rounded="lg" color="animated" p="md"><Text color="black">{"MetaMask " + NETWORK_ALLOWED_NAME + " Network"}</Text></Box>)
-  }
-  else if (chainId == NETWORK_ALLOWED_ID && account == null) {
-    networkDisplay = (<Box rounded="lg" color="animated" p="md"><Text color="black">{"Infura " + NETWORK_ALLOWED_NAME + " Network (read-only), connect with MetaMask!"}</Text></Box>)
+    networkDisplay = (
+      <Box rounded="lg" color="animated" p="md">
+        <Text color="black">{'MetaMask ' + NETWORK_ALLOWED_NAME + ' Network'}</Text>
+      </Box>
+    )
+  } else if (chainId == NETWORK_ALLOWED_ID && account == null) {
+    networkDisplay = (
+      <Box rounded="lg" color="animated" p="md">
+        <Text color="black">{'Infura ' + NETWORK_ALLOWED_NAME + ' Network (read-only), connect with MetaMask!'}</Text>
+      </Box>
+    )
   } else {
-    networkDisplay = (<Box rounded="lg" color="red" p="md"><Text color="black">{"You need to be on " + NETWORK_ALLOWED_NAME + " Network, change the network!"}</Text></Box>)
+    networkDisplay = (
+      <Box rounded="lg" color="red" p="md">
+        <Text color="black">{'You need to be on ' + NETWORK_ALLOWED_NAME + ' Network, change the network!'}</Text>
+      </Box>
+    )
   }
 
   return (
@@ -57,11 +79,7 @@ export function Home() {
           <SectionRow>
             <Heading>Home</Heading>
 
-            {account ? (
-              <Text>{account}</Text>
-            ) : (
-              <Text></Text>
-            )}
+            {account ? <Text>{account}</Text> : <Text></Text>}
 
             <Avatar title="Samuele Ferri" src="https://i.ibb.co/Zm5Qhqb/Poly-White-2.png" />
           </SectionRow>
@@ -83,7 +101,16 @@ export function Home() {
             )}
 
             <ContentRow>
-              <Text color="black">NotarizETH Contract Address:</Text> <Anchor href={"https://ropsten.etherscan.io/address/" + NOTARIZETH_ADDRESS} target="_blank" color="cyanGreen" hoverColor="yellowPink" mb="sm">{NOTARIZETH_ADDRESS}</Anchor>
+              <Text color="black">NotarizETH Contract Address:</Text>{' '}
+              <Anchor
+                href={'https://ropsten.etherscan.io/address/' + NOTARIZETH_ADDRESS}
+                target="_blank"
+                color="cyanGreen"
+                hoverColor="yellowPink"
+                mb="sm"
+              >
+                {NOTARIZETH_ADDRESS}
+              </Anchor>
             </ContentRow>
           </Card>
 
