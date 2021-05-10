@@ -4,7 +4,6 @@ import { TransactionStatus, useContractCall, useContractFunction, useEtherBalanc
 import { utils } from 'ethers'
 import React, { useState, useCallback, useMemo } from 'react'
 import styled from 'styled-components'
-import { TextBold } from '../../typography/Text'
 import { ContentBlock } from '../base/base'
 import { BorderRad, Colors } from '../../global/styles'
 import { SpinnerIcon } from './Icons'
@@ -48,7 +47,6 @@ interface InputComponentPropsVerify {
 }
 
 const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
-  const { account } = useEthers()
   const [value, setValue] = useState('')
 
   const onClick = () => {
@@ -85,7 +83,9 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
                 '<br>' +
                 'Timestamp: TODO'),
           (document.getElementById('idHolderVerify')!.className =
-            res[0] == false ? 'drac-text drac-line-height drac-text-red' : 'drac-text drac-line-height drac-text-green')
+            res[0] == false
+              ? 'drac-text drac-line-height drac-text-yellow'
+              : 'drac-text drac-line-height drac-text-green')
       })
     } else {
       document.getElementById('idHolderVerify')!.innerHTML = 'Library is undefined'
@@ -112,7 +112,9 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
         <Button onClick={onClick}>Verify</Button>
       </InputRow>
       <br></br>
-      <Text id="idHolderVerify"></Text>
+      <MyBreakText>
+        <Text id="idHolderVerify"></Text>
+      </MyBreakText>
     </section>
   )
 }
@@ -127,7 +129,9 @@ const TransactionFormVerify = ({ title, library }: TransactionFormVerify) => {
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} />
       <LabelRow>
-        <Text>Verify the timestamp and owner of a file by uploading it or entering its Keccak256 hash.</Text>
+        <Text color="blackSecondary">
+          Verify the timestamp and owner of a file by uploading it or entering its Keccak256 hash.
+        </Text>
       </LabelRow>
       <InputComponentVerify library={library} />
     </Card>
@@ -164,7 +168,7 @@ const InputComponentCertify = ({ send, transactionStatus }: InputComponentPropsC
   }
 
   return (
-    <div>
+    <section className="container">
       <InputRow>
         <Input
           id={`Input`}
@@ -194,7 +198,7 @@ const InputComponentCertify = ({ send, transactionStatus }: InputComponentPropsC
           {buttonContent}
         </Button>
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -211,7 +215,9 @@ const TransactionFormCertify = ({ send, title, transaction }: TransactionFormCer
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} />
       <LabelRow>
-        <Text>Certify your file on the Ethereum blockchain and save the Keccak256 hash as proof.</Text>
+        <Text color="blackSecondary">
+          Certify your file on the Ethereum blockchain and save the Keccak256 hash as proof.
+        </Text>
       </LabelRow>
       <Text hidden={account != null && chainId === NETWORK_ALLOWED_ID} color="yellow">
         You must be connected with MetaMask on Ropsten Network to perform this operation!
@@ -219,7 +225,9 @@ const TransactionFormCertify = ({ send, title, transaction }: TransactionFormCer
       <StyledDropzoneCertify />
       <br></br>
       <InputComponentCertify transactionStatus={transaction.status} send={send} />
-      <ErrorMessageCertify transaction={transaction} />
+      <MyBreakText>
+        <ErrorMessageCertify transaction={transaction} />
+      </MyBreakText>
     </Card>
   )
 }
@@ -276,7 +284,9 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
 
     return (
       <ErrorRow>
-        <Text color="red" id="idHolderCertify"></Text>
+        <MyBreakText>
+          <Text color="red" id="idHolderCertify"></Text>
+        </MyBreakText>
       </ErrorRow>
     )
   }
@@ -315,7 +325,7 @@ const InputComponentReset = ({ send, transactionStatus }: InputComponentPropsRes
   }
 
   return (
-    <div>
+    <section className="container">
       <InputRow>
         <Input
           id={`Input`}
@@ -341,7 +351,7 @@ const InputComponentReset = ({ send, transactionStatus }: InputComponentPropsRes
           {buttonContent}
         </Button>
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -358,7 +368,9 @@ const TransactionFormReset = ({ send, title, transaction }: TransactionFormReset
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} />
       <LabelRow>
-        <Text>If you are the owner of a file, you can remove it from the Ethereum blockchain if you want.</Text>
+        <Text color="blackSecondary">
+          If you are the owner of a file, you can remove it from the Ethereum blockchain if you want.
+        </Text>
       </LabelRow>
       <Text hidden={account != null && chainId === NETWORK_ALLOWED_ID} color="yellow">
         You must be connected with MetaMask on Ropsten Network to perform this operation!
@@ -482,12 +494,10 @@ const rejectStyle = {
   borderColor: '#ff1744',
 }
 
-
 // DROPZONE WORKAROUND
 interface MyFile extends File {
-  path: string;
+  path: string
 }
-
 
 // DROPZONE CERTIFY
 function StyledDropzoneCertify(props: any) {
@@ -545,7 +555,7 @@ function StyledDropzoneCertify(props: any) {
       </div>
       <br></br>
       <div>
-        <Text>File accepted:</Text>
+        <Text color="blackSecondary">File accepted:</Text>
         <List>
           <li className="drac-text drac-text-white">{files}</li>
         </List>
@@ -610,7 +620,7 @@ function StyledDropzoneVerify(props: any) {
       </div>
       <br></br>
       <div>
-        <Text>File accepted:</Text>
+        <Text color="blackSecondary">File accepted:</Text>
         <List>
           <li className="drac-text drac-text-white">{files}</li>
         </List>
@@ -668,10 +678,6 @@ const SmallButton = styled(Button)`
   }
 `
 
-const CellTitle = styled(TextBold)`
-  font-size: 18px;
-`
-
 const InputRow = styled.div`
   display: flex;
   margin: 0 auso;
@@ -688,10 +694,6 @@ const LabelRow = styled.div`
   display: flex;
   justify-content: center;
   margin: 32px 0 24px 0;
-`
-
-const Label = styled.label`
-  font-weight: 700;
 `
 
 const TitleRow = styled.div`
@@ -717,7 +719,23 @@ const IconContainer = styled.div`
 `
 
 const ErrorRow = styled.div`
-  height: 20px;
   font-size: 14px;
   margin: 8px auto 32px auto;
+`
+const MyBreakText = styled.text`
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 `

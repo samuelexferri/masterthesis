@@ -3,12 +3,9 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Colors, Shadows, Sizes, Transitions } from '../global/styles'
 import { HeaderContainer } from './base/base'
-import { SectionRow } from '../components/base/base'
-import { useEtherBalance, useEthers } from '@usedapp/core'
-//import { Button } from '../components/base/Button'
-import { TextInline } from '../typography/Text'
+import { useEthers } from '@usedapp/core'
 
-import { Avatar, Badge, Box, Button, Card, Divider, Heading, Text } from '@dracula/dracula-ui'
+import { Avatar, Box, Button, Text } from '@dracula/dracula-ui'
 
 export function TopBar() {
   const { activateBrowserWallet, deactivate, account } = useEthers()
@@ -18,13 +15,21 @@ export function TopBar() {
       <HeaderContainer>
         <HeaderNav>
           <ToMain href="/">
+            <Avatar
+              title="NotarizETH"
+              src="https://i.ibb.co/Zm5Qhqb/Poly-White-2.png"
+              mb="xs"
+              style={{ width: '50px' }}
+            />
+          </ToMain>
+          <ToMain>
             <Text size="lg">NotarizETH</Text>
             <ToMainBottom>
               <Text size="xs">by Samuele Ferri 🚀</Text>
             </ToMainBottom>
           </ToMain>
           <HeaderNavLinks>
-            <HeaderLink activeClassName="active-page" to="/">
+            <HeaderLink activeClassName="active-page" to="/home">
               {' '}
               <Text>Home</Text>{' '}
             </HeaderLink>
@@ -32,9 +37,9 @@ export function TopBar() {
               {' '}
               <Text>Transactions</Text>{' '}
             </HeaderLink>
-            <HeaderLink activeClassName="active-page" to="/tokens">
+            <HeaderLink activeClassName="active-page" to="/info">
               {' '}
-              <Text>Info (TODO)</Text>{' '}
+              <Text>Info</Text>{' '}
             </HeaderLink>
           </HeaderNavLinks>
         </HeaderNav>

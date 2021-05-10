@@ -4,8 +4,9 @@ import uniswapToken from '@uniswap/default-token-list'
 import { ChainId, ERC20Interface, useContractCalls, useEthers } from '@usedapp/core'
 import styled from 'styled-components'
 import { Colors } from '../../global/styles'
-import { TextBold } from '../../typography/Text'
 import { TokenIcon } from './TokenIcon'
+
+import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Input, List, Text } from '@dracula/dracula-ui'
 
 function getTokenList(chainId?: ChainId) {
   return uniswapToken.tokens.filter((token) => token.chainId == chainId)
@@ -29,29 +30,16 @@ export function TokensList() {
   const tokenList = getTokenList(chainId)
   const balances = useTokensBalance(tokenList, account)
 
-  return (
-    <List>
-      {tokenList &&
-        tokenList.map((token, idx) => (
-          <TokenItem key={token.address}>
-            <TokenIconContainer>
-              <TokenIcon src={token.logoURI} alt={`${token.symbol} logo`} />
-            </TokenIconContainer>
-            <TokenName>{token.name}</TokenName>
-            <TokenTicker>{token.symbol}</TokenTicker>
-            {balances?.[idx] && <TokenBalance>{formatUnits(balances[idx]![0], token.decimals)}</TokenBalance>}
-          </TokenItem>
-        ))}
-    </List>
-  )
+  return <List></List>
 }
 
+/*
 const List = styled.ul`
   display: flex;
   flex-direction: column;
   width: 100%;
 `
-
+*/
 const TokenItem = styled.li`
   display: grid;
   grid-template-areas:
@@ -84,19 +72,4 @@ const TokenIconContainer = styled.div`
   line-height: 36px;
   border: 1px solid ${Colors.Gray[300]};
   border-radius: 50%;
-`
-
-const TokenName = styled(TextBold)`
-  grid-area: name;
-`
-
-const TokenTicker = styled(TextBold)`
-  grid-area: ticker;
-  color: ${Colors.Gray[600]};
-`
-
-const TokenBalance = styled(TextBold)`
-  grid-area: balance;
-  font-size: 20px;
-  line-height: 32px;
 `

@@ -5,7 +5,6 @@ import { Container, MainContent, Section, SectionRow } from '../components/base/
 //import { Button } from '../components/base/Button'
 import { CertifyFile, ResetFile, VerifyFile } from '../components/Notifications/Forms'
 import { NotificationsList, TransactionsList } from '../components/Notifications/History'
-import { Title } from '../typography/Title'
 
 const NETWORK_ALLOWED_ID = 3
 const NETWORK_ALLOWED_NAME = 'Ropsten'

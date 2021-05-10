@@ -8,24 +8,42 @@ import {
 } from '@usedapp/core'
 import React, { ReactElement, ReactNode } from 'react'
 import styled from 'styled-components'
-import { TextBold } from '../../typography/Text'
 import { ContentBlock } from '../base/base'
 import { CheckIcon, ClockIcon, ExclamationIcon, ShareIcon, UnwrapIcon, WalletIcon, WrapIcon } from './Icons'
 import { Colors } from '../../global/styles'
 import { AnimatePresence, motion } from 'framer-motion'
 
+import {
+  Anchor,
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  Card,
+  Divider,
+  Heading,
+  Input,
+  List,
+  Table,
+  Text,
+} from '@dracula/dracula-ui'
+
+// TABLE WRAPPER
 interface TableWrapperProps {
   children: ReactNode
   title: string
 }
 
 const TableWrapper = ({ children, title }: TableWrapperProps) => (
-  <SmallContentBlock>
-    <TitleRow>{title}</TitleRow>
-    <Table>{children}</Table>
-  </SmallContentBlock>
+  <Card color="pinkPurple" p="sm">
+    <TitleRow>
+      <Heading size="md">{title}</Heading>
+    </TitleRow>
+    <MyTable>{children}</MyTable>
+  </Card>
 )
 
+// TRANSACTIONS
 interface DateProps {
   date: number
   className?: string
@@ -60,7 +78,7 @@ const TransactionName = ({ transactionName }: TransactionNameProps) => {
       <IconContainer>
         <Icon />
       </IconContainer>
-      <TextBold>{transactionName}</TextBold>
+      <Text color="black">{transactionName}</Text>
     </IconRow>
   )
 }
@@ -92,31 +110,12 @@ export const TransactionsList = () => {
   )
 }
 
+// NOTIFICATIONS
 const notificationContent: { [key in Notification['type']]: { title: string; icon: ReactElement } } = {
   transactionFailed: { title: 'Transaction failed', icon: <ExclamationIcon /> },
   transactionStarted: { title: 'Transaction started', icon: <ClockIcon /> },
   transactionSucceed: { title: 'Transaction succeed', icon: <CheckIcon /> },
   walletConnected: { title: 'Wallet connected', icon: <WalletIcon /> },
-}
-
-interface NotificationPanelProps {
-  type: Notification['type']
-  transaction?: TransactionResponse
-}
-
-const NotificationPanel = ({ transaction, type }: NotificationPanelProps) => {
-  const notificationDate = Date.now()
-
-  return (
-    <NotificationWrapper layout initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-      <NotificationIconContainer>{notificationContent[type].icon}</NotificationIconContainer>
-      <NotificationDetailsWrapper>
-        <TextBold>{notificationContent[type].title}</TextBold>
-        <NotificationLink transaction={transaction} />
-      </NotificationDetailsWrapper>
-      <NotificationDate date={notificationDate} />
-    </NotificationWrapper>
-  )
 }
 
 interface NotificationLinkProps {
@@ -139,6 +138,26 @@ const NotificationLink = ({ transaction }: NotificationLinkProps) => (
     )}
   </>
 )
+
+interface NotificationPanelProps {
+  type: Notification['type']
+  transaction?: TransactionResponse
+}
+
+const NotificationPanel = ({ transaction, type }: NotificationPanelProps) => {
+  const notificationDate = Date.now()
+
+  return (
+    <NotificationWrapper layout initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+      <NotificationIconContainer>{notificationContent[type].icon}</NotificationIconContainer>
+      <NotificationDetailsWrapper>
+        <Text color="black">{notificationContent[type].title}</Text>
+        <NotificationLink transaction={transaction} />
+      </NotificationDetailsWrapper>
+      <NotificationDate date={notificationDate} />
+    </NotificationWrapper>
+  )
+}
 
 interface NotificationItemProps {
   notification: Notification
@@ -194,7 +213,7 @@ const NotificationDetailsWrapper = styled.div`
   padding: 4px 0;
 `
 
-const Table = styled.div`
+const MyTable = styled(Table)`
   height: 300px;
   overflow: scroll;
   padding: 12px;
@@ -214,14 +233,13 @@ const Link = styled.a`
   display: flex;
   font-size: 12px;
   text-decoration: underline;
-  color: ${Colors.Gray['600']};
 `
 
 const SmallContentBlock = styled(ContentBlock)`
   padding: 0;
 `
 
-const TitleRow = styled(TextBold)`
+const TitleRow = styled(Text)`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -252,5 +270,4 @@ const DateDisplay = styled.div`
 `
 const HourDisplay = styled.div`
   font-size: 12px;
-  color: ${Colors.Gray['600']};
 `

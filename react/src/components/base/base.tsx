@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { BorderRad, Colors, Gradients, Shadows, Sizes } from '../../global/styles'
-import { Title } from '../../typography/Title'
 
 export const Page = styled.div`
   display: flex;
@@ -52,10 +51,6 @@ export const SectionRow = styled.div`
   align-items: center;
   width: 100%;
   margin-bottom: 24px;
-
-  ${Title} {
-    margin-bottom: 0;
-  }
 `
 
 export const ContentRow = styled.div`

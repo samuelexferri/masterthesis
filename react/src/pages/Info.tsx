@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { formatEther } from '@ethersproject/units'
 import { utils } from 'ethers'
 import {
@@ -25,7 +26,7 @@ const NETWORK_ALLOWED_NAME = 'Ropsten'
 const NOTARIZETH_ADDRESS = '0x908d02931EA40670EFe810E295936A5CA62050Bc'
 const NOTARIZETH_ABI_INTERFACE = new utils.Interface(NOTARIZETH_ABI)
 
-export function Home() {
+export function Info() {
   const { activateBrowserWallet, deactivate, account, library, chainId, active } = useEthers()
 
   const userBalance = useEtherBalance(account)
@@ -64,7 +65,7 @@ export function Home() {
       <Container>
         <Section>
           <SectionRow>
-            <Heading>Home</Heading>
+            <Heading>Info</Heading>
 
             {account ? <Text>{account}</Text> : <Text></Text>}
 
@@ -76,50 +77,13 @@ export function Home() {
           <Box p="sm"></Box>
 
           <Card color="pinkPurple" p="sm">
-            {account && (
-              <ContentRow>
-                <Text color="black">Account:</Text> <Text>{account}</Text>
-              </ContentRow>
-            )}
-            {userBalance && (
-              <ContentRow>
-                <Text color="black">Ether Balance:</Text> <Text>{formatEther(userBalance)}</Text> <Text>ETH</Text>
-              </ContentRow>
-            )}
-
-            <ContentRow>
-              <Text color="black">NotarizETH Contract Address:</Text>{' '}
-              <Anchor
-                href={'https://ropsten.etherscan.io/address/' + NOTARIZETH_ADDRESS}
-                target="_blank"
-                color="cyanGreen"
-                hoverColor="yellowPink"
-                mb="sm"
-              >
-                <MyBreakText>{NOTARIZETH_ADDRESS}</MyBreakText>
-              </Anchor>
-            </ContentRow>
+            TODO
           </Card>
 
           <Box p="sm"></Box>
 
           <Card color="pinkPurple" p="sm">
-            <ContentRow>
-              <Text color="black">Chain ID:</Text> <Text>{chainId}</Text>
-            </ContentRow>
-            <ContentRow>
-              <Text color="black">Current Block:</Text> <Text>{blockNumber}</Text>
-            </ContentRow>
-            {difficulty && (
-              <ContentRow>
-                <Text color="black">Current Difficulty:</Text> <Text>{difficulty.toString()}</Text>
-              </ContentRow>
-            )}
-            {timestamp && (
-              <ContentRow>
-                <Text color="black">Current Block Timestamp:</Text> <Text>{timestamp.toLocaleString()}</Text>
-              </ContentRow>
-            )}
+            TODO
           </Card>
         </Section>
       </Container>
