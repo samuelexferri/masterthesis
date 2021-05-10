@@ -28,9 +28,9 @@ jobs:
       run: |
         yarn install
       working-directory: ./react/
-    - name: Yarn Production Build (Dist) # CI='' Not treating warnings as errors
+    - name: Yarn Production Build # CI='' Not treating warnings as errors
       run: |
-        CI='' yarn dist 
+        CI='' yarn build 
       working-directory: ./react/
     - name: Deploy to S3 (S3 Sync)
       uses: jakejarvis/s3-sync-action@master
