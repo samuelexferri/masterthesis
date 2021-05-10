@@ -72,18 +72,15 @@ export function Transactions() {
   )
 }
 
-/*
-          <TableGrid>
-            <DepositEth />
-            <WithdrawEth />
-          </TableGrid>
-*/
-
 const TableGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   padding: 5px 0px;
+
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
 `
 const TableGridSingle = styled.div`
   display: grid;

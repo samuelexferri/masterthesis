@@ -5,55 +5,92 @@ import { Colors, Shadows, Sizes, Transitions } from '../global/styles'
 import { HeaderContainer } from './base/base'
 import { useEthers } from '@usedapp/core'
 
-import { Avatar, Box, Button, Text } from '@dracula/dracula-ui'
+import { Anchor, Avatar, Box, Button, Text } from '@dracula/dracula-ui'
+
+import { slide as Menu } from 'react-burger-menu'
 
 export function TopBar() {
   const { activateBrowserWallet, deactivate, account } = useEthers()
 
-  return (
-    <Header>
-      <HeaderContainer>
-        <HeaderNav>
-          <ToMain href="/">
-            <Avatar
-              title="NotarizETH"
-              src="https://i.ibb.co/Zm5Qhqb/Poly-White-2.png"
-              mb="xs"
-              style={{ width: '50px' }}
-            />
-          </ToMain>
-          <ToMain>
-            <Text size="lg">NotarizETH</Text>
-            <ToMainBottom>
-              <Text size="xs">by Samuele Ferri 🚀</Text>
-            </ToMainBottom>
-          </ToMain>
-          <HeaderNavLinks>
-            <HeaderLink activeClassName="active-page" to="/home">
-              {' '}
-              <Text>Home</Text>{' '}
-            </HeaderLink>
-            <HeaderLink activeClassName="active-page" to="/transactions">
-              {' '}
-              <Text>Transactions</Text>{' '}
-            </HeaderLink>
-            <HeaderLink activeClassName="active-page" to="/info">
-              {' '}
-              <Text>Info</Text>{' '}
-            </HeaderLink>
-          </HeaderNavLinks>
-        </HeaderNav>
-      </HeaderContainer>
+  console.log(window.innerWidth)
+  if (window.innerWidth > 1000) {
+    return (
+      <Header>
+        <HeaderContainer>
+          <HeaderNav>
+            <ToMain href="/">
+              <Avatar title="NotarizETH" src="https://i.ibb.co/60g4cNv/notarizeth.png" mb="xs" borderVariant="none" />
+            </ToMain>
+            <span>&nbsp;</span>
+            <ToMain>
+              <Text size="lg">NotarizETH</Text>
+              <ToMainBottom>
+                <Text size="xs">by Samuele Ferri 🚀</Text>
+              </ToMainBottom>
+            </ToMain>
+            <HeaderNavLinks>
+              <HeaderLink activeClassName="active-page" to="/home">
+                {' '}
+                <Text>Home</Text>{' '}
+              </HeaderLink>
+              <HeaderLink activeClassName="active-page" to="/transactions">
+                {' '}
+                <Text>Transactions</Text>{' '}
+              </HeaderLink>
+              <HeaderLink activeClassName="active-page" to="/info">
+                {' '}
+                <Text>Info</Text>{' '}
+              </HeaderLink>
+            </HeaderNavLinks>
+          </HeaderNav>
+        </HeaderContainer>
 
-      {account ? (
-        <Button onClick={() => deactivate()}>Disconnect</Button>
-      ) : (
-        <Button onClick={() => activateBrowserWallet()}>Connect</Button>
-      )}
+        {account ? (
+          <Button onClick={() => deactivate()}>Disconnect</Button>
+        ) : (
+          <Button onClick={() => activateBrowserWallet()}>Connect</Button>
+        )}
 
-      <Box p="sm"></Box>
-    </Header>
-  )
+        <Box p="sm"></Box>
+      </Header>
+    )
+  } else {
+    return (
+      <Header>
+        <Menu styles={burgerMenuStyle}>
+          <br></br>
+          <br></br>
+          <Anchor href="/home" href="/home" size="lg" weight="bold" color="cyanGreen">
+            Home
+          </Anchor>
+          <br></br>
+          <br></br>
+          <Anchor href="/transactions" href="/transactions" size="lg" weight="bold" color="cyanGreen">
+            Transactions
+          </Anchor>
+          <br></br>
+          <br></br>
+          <Anchor href="/info" href="/info" size="lg" weight="bold" color="cyanGreen">
+            Info
+          </Anchor>
+        </Menu>
+
+        <Text size="lg" style={{ marginLeft: '75px' }}>
+          NotarizETH
+        </Text>
+
+        {account ? (
+          <Button style={{ marginLeft: 'auto', marginRight: '16px' }} onClick={() => deactivate()}>
+            Disconnect
+          </Button>
+        ) : (
+          <Button style={{ marginLeft: 'auto', marginRight: '16px' }} onClick={() => activateBrowserWallet()}>
+            Connect
+          </Button>
+        )}
+      </Header>
+    )
+  }
 }
 
 const Header = styled.header`
@@ -155,3 +192,48 @@ const HeaderLink = styled(NavLink)`
     }
   }
 `
+
+var burgerMenuStyle = {
+  bmBurgerButton: {
+    position: 'fixed',
+    width: '36px',
+    height: '30px',
+    left: '18px',
+    top: '18px',
+  },
+  bmBurgerBars: {
+    background: Colors.Background,
+  },
+  bmBurgerBarsHover: {
+    background: Colors.Foreground,
+  },
+  bmCrossButton: {
+    height: '24px',
+    width: '24px',
+  },
+  bmCross: {
+    background: Colors.Foreground,
+  },
+  bmMenuWrap: {
+    position: 'fixed',
+    height: '100%',
+  },
+  bmMenu: {
+    background: Colors.Current,
+    padding: '2.5em 1.5em 0',
+    fontSize: '1.15em',
+    margin: '-30px 0 0 0',
+  },
+  bmMorphShape: {
+    fill: Colors.Foreground,
+  },
+  bmItemList: {
+    padding: '0.8em',
+  },
+  bmItem: {
+    display: 'inline-block',
+  },
+  bmOverlay: {
+    background: 'rgba(0, 0, 0, 0)',
+  },
+}

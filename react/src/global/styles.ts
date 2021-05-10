@@ -12,6 +12,7 @@ export const Colors = {
     500: '#F2C94C',
     100: '#FFF4D4',
   },
+  Background: '#282A36',
   Red: '#FF5555',
   Comment: '#6272A4',
   Current: '#44475A',
