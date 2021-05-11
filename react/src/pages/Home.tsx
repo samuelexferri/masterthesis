@@ -3,7 +3,7 @@ import React from 'react'
 import { formatEther } from '@ethersproject/units'
 import { useEtherBalance, useEthers, useBlockMeta, useBlockNumber } from '@usedapp/core'
 
-import { Container, ContentRow, MainContent, MyBreakText, Section, SectionRow } from '../components/Base/Base'
+import { Container, ContentRow, MainContent, MyBreakText, Section, SectionRow } from '../components/base/base'
 
 import { Anchor, Avatar, Box, Card, Heading, Text } from '@dracula/dracula-ui'
 

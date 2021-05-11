@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useEthers } from '@usedapp/core'
 
-import { Container, MainContent, MyBreakText, Section, SectionRow } from '../components/Base/Base'
+import { Container, MainContent, MyBreakText, Section, SectionRow } from '../components/base/base'
 
 import { Avatar, Box, Card, Heading, Text } from '@dracula/dracula-ui'
 

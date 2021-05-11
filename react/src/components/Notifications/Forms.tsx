@@ -9,7 +9,7 @@ import { useDropzone } from 'react-dropzone'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import styled from 'styled-components'
-import { MyBreakText } from '../Base/Base'
+import { MyBreakText } from '../base/base'
 import { BorderRad, Colors } from '../../global/styles'
 import { SpinnerIcon } from './Icons'
 
