@@ -14,7 +14,7 @@ UPDATE ETHERSCAN ADDRESS
 
 LINK
 
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fsamuelexferri%2Fmasterthesis%2Fbadge%3Fref%3Dmaster%26token%3D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&style=for-the-badge)](https://actions-badge.atrox.dev/samuelexferri/masterthesis/goto?ref=master&token=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)
+[![Build Status](<https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fsamuelexferri%2Fmasterthesis%2Fbadge%3Fref%3Dmaster%26token%3D${{ secrets.GH_ACTIONS_BADGE }}&style=for-the-badge>)](<https://actions-badge.atrox.dev/samuelexferri/masterthesis/goto?ref=master&token=${{ secrets.GH_ACTIONS_BADGE }}>)
 ![alt text](https://img.shields.io/badge/Dracula%20UI-Made%20for%20Vampires%20%F0%9F%A7%9B%E2%80%8D%E2%99%82%EF%B8%8F-6272a4?style=for-the-badge)
 ![alt text](https://img.shields.io/badge/Language-English-infomrmational?style=for-the-badge)
 
@@ -52,7 +52,7 @@ Run with the `--watch` flag (`npm test -- --watch`) to run in interactive watch 
 
 ## Version
 
-![alt text](https://img.shields.io/badge/Version-1.0.0a-blue.svg?style=for-the-badge)
+![alt text](https://img.shields.io/badge/Version-1.0.0-blue.svg?style=for-the-badge)
 
 ## License
 
