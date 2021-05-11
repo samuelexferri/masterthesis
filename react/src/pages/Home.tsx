@@ -18,6 +18,8 @@ import { ethers } from 'ethers'
 import NOTARIZETH_ABI from '../abi/NotarizETH.json'
 import styled from 'styled-components'
 
+import polyIMG from '../assets/images/poly.png'
+
 // TODO Metterle in un file
 const NETWORK_ALLOWED_ID = 3
 const NETWORK_ALLOWED_NAME = 'Ropsten'
@@ -68,7 +70,7 @@ export function Home() {
 
             {account ? <Text>{account}</Text> : <Text></Text>}
 
-            <Avatar title="Samuele Ferri" src="https://i.ibb.co/Zm5Qhqb/Poly-White-2.png" />
+            <Avatar title="Samuele Ferri" src={polyIMG} />
           </SectionRow>
 
           {networkDisplay}

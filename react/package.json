@@ -31,7 +31,8 @@
     "react-transition-group": "^4.4.1",
     "reactjs-popup": "^2.0.4",
     "style-loader": "^2.0.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "url-loader": "^4.1.1"
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",

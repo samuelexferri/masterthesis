@@ -74,17 +74,6 @@ const config = {
         test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf|ico)$/,
         use: 'file-loader'
       },
-      {
-        test: /\.png$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              mimetype: 'image/png'
-            }
-          }
-        ]
-      }
     ]
   },
   resolve: {

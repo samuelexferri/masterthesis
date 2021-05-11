@@ -6,6 +6,8 @@ import { Container, MainContent, Section, SectionRow } from '../components/base/
 import { CertifyFile, ResetFile, VerifyFile } from '../components/Notifications/Forms'
 import { NotificationsList, TransactionsList } from '../components/Notifications/History'
 
+import polyIMG from '../assets/images/poly.png'
+
 const NETWORK_ALLOWED_ID = 3
 const NETWORK_ALLOWED_NAME = 'Ropsten'
 
@@ -50,7 +52,7 @@ export function Transactions() {
 
             {account ? <Text>{account}</Text> : <Text></Text>}
 
-            <Avatar title="Samuele Ferri" src="https://i.ibb.co/Zm5Qhqb/Poly-White-2.png" />
+            <Avatar title="Samuele Ferri" src={polyIMG} />
           </SectionRow>
 
           {networkDisplay}

@@ -9,6 +9,8 @@ import { Anchor, Avatar, Box, Button, Text } from '@dracula/dracula-ui'
 
 import { slide as Menu } from 'react-burger-menu'
 
+import notarizethIMG from '../assets/images/notarizeth.png'
+
 export function TopBar() {
   const { activateBrowserWallet, deactivate, account } = useEthers()
 
@@ -19,13 +21,17 @@ export function TopBar() {
         <HeaderContainer>
           <HeaderNav>
             <ToMain href="/">
-              <Avatar title="NotarizETH" src="https://i.ibb.co/60g4cNv/notarizeth.png" mb="xs" borderVariant="none" />
+              <img
+                title="NotarizETH"
+                src={notarizethIMG}
+                style={{ width: '50px', height: '50px', borderRadius: '50%' }}
+              />
             </ToMain>
             <span>&nbsp;</span>
             <ToMain>
               <Text size="lg">NotarizETH</Text>
               <ToMainBottom>
-                <Text size="xs">by Samuele Ferri 🚀</Text>
+                <Text size="xs">by Samuele Ferri</Text>
               </ToMainBottom>
             </ToMain>
             <HeaderNavLinks>
@@ -60,17 +66,17 @@ export function TopBar() {
         <Menu styles={burgerMenuStyle}>
           <br></br>
           <br></br>
-          <Anchor href="/home" href="/home" size="lg" weight="bold" color="cyanGreen">
+          <Anchor href="/home" size="lg" weight="bold" color="cyanGreen">
             Home
           </Anchor>
           <br></br>
           <br></br>
-          <Anchor href="/transactions" href="/transactions" size="lg" weight="bold" color="cyanGreen">
+          <Anchor href="/transactions" size="lg" weight="bold" color="cyanGreen">
             Transactions
           </Anchor>
           <br></br>
           <br></br>
-          <Anchor href="/info" href="/info" size="lg" weight="bold" color="cyanGreen">
+          <Anchor href="/info" size="lg" weight="bold" color="cyanGreen">
             Info
           </Anchor>
         </Menu>

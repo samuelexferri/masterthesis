@@ -16,6 +16,8 @@ import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Text } from
 
 import { ethers } from 'ethers'
 
+import polyIMG from '../assets/images/poly.png'
+
 import NOTARIZETH_ABI from '../abi/NotarizETH.json'
 import styled from 'styled-components'
 
@@ -69,7 +71,7 @@ export function Info() {
 
             {account ? <Text>{account}</Text> : <Text></Text>}
 
-            <Avatar title="Samuele Ferri" src="https://i.ibb.co/Zm5Qhqb/Poly-White-2.png" />
+            <Avatar title="Samuele Ferri" src={polyIMG} />
           </SectionRow>
 
           {networkDisplay}
