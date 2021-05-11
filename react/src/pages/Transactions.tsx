@@ -1,20 +1,21 @@
 import React from 'react'
+
 import { useEthers } from '@usedapp/core'
-import styled from 'styled-components'
-import { Container, MainContent, Section, SectionRow } from '../components/base/base'
-//import { Button } from '../components/base/Button'
+
 import { CertifyFile, ResetFile, VerifyFile } from '../components/Notifications/Forms'
 import { NotificationsList, TransactionsList } from '../components/Notifications/History'
 
+import styled from 'styled-components'
+import { Container, MainContent, Section, SectionRow } from '../components/Base/Base'
+
+import { Avatar, Box, Heading, Text } from '@dracula/dracula-ui'
+
 import polyIMG from '../assets/images/poly.png'
 
-const NETWORK_ALLOWED_ID = 3
-const NETWORK_ALLOWED_NAME = 'Ropsten'
-
-import { Avatar, Badge, Box, Button, Card, Divider, Heading, Text } from '@dracula/dracula-ui'
+import { NETWORK_ALLOWED_ID, NETWORK_ALLOWED_NAME } from '../Constants'
 
 export function Transactions() {
-  const { activateBrowserWallet, deactivate, account, library, chainId, active } = useEthers()
+  const { account, chainId } = useEthers()
 
   // Right/Wrong Network Alert
   let networkDisplay = (
@@ -74,6 +75,7 @@ export function Transactions() {
   )
 }
 
+// CSS
 const TableGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;

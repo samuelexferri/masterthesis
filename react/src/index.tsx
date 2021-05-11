@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ChainId, Config, DAppProvider } from '@usedapp/core'
+
 import { App } from './App'
 
-const INFURA_ID = '773217385b694a6ea60c4cea1a430a09'
+import { ChainId, Config, DAppProvider } from '@usedapp/core'
+
+import { INFURA_ID } from './Constants'
 
 const config: Config = {
   readOnlyChainId: ChainId.Ropsten,

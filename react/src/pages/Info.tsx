@@ -1,39 +1,17 @@
 import React from 'react'
 
-import { formatEther } from '@ethersproject/units'
-import { utils } from 'ethers'
-import {
-  useEtherBalance,
-  useEthers,
-  useContractCall,
-  useContractFunction,
-  useBlockMeta,
-  useBlockNumber,
-} from '@usedapp/core'
-import { Container, ContentBlock, ContentRow, MainContent, Section, SectionRow } from '../components/base/base'
+import { useEthers } from '@usedapp/core'
 
-import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Text } from '@dracula/dracula-ui'
+import { Container, MainContent, MyBreakText, Section, SectionRow } from '../components/Base/Base'
 
-import { ethers } from 'ethers'
+import { Avatar, Box, Card, Heading, Text } from '@dracula/dracula-ui'
 
 import polyIMG from '../assets/images/poly.png'
 
-import NOTARIZETH_ABI from '../abi/NotarizETH.json'
-import styled from 'styled-components'
-
-// TODO Metterle in un file
-const NETWORK_ALLOWED_ID = 3
-const NETWORK_ALLOWED_NAME = 'Ropsten'
-
-const NOTARIZETH_ADDRESS = '0x908d02931EA40670EFe810E295936A5CA62050Bc'
-const NOTARIZETH_ABI_INTERFACE = new utils.Interface(NOTARIZETH_ABI)
+import { NETWORK_ALLOWED_ID, NETWORK_ALLOWED_NAME } from '../Constants'
 
 export function Info() {
-  const { activateBrowserWallet, deactivate, account, library, chainId, active } = useEthers()
-
-  const userBalance = useEtherBalance(account)
-  const blockNumber = useBlockNumber()
-  const { timestamp, difficulty } = useBlockMeta()
+  const { account, chainId } = useEthers()
 
   // Right/Wrong Network Alert
   let networkDisplay = (
@@ -79,34 +57,16 @@ export function Info() {
           <Box p="sm"></Box>
 
           <Card color="pinkPurple" p="sm">
-            TODO
+            <MyBreakText>TODO</MyBreakText>
           </Card>
 
           <Box p="sm"></Box>
 
           <Card color="pinkPurple" p="sm">
-            TODO
+            <MyBreakText>TODO</MyBreakText>
           </Card>
         </Section>
       </Container>
     </MainContent>
   )
 }
-
-const MyBreakText = styled.text`
-  /* These are technically the same, but use both */
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  -ms-word-break: break-all;
-  /* This is the dangerous one in WebKit, as it breaks things wherever */
-  word-break: break-all;
-  /* Instead use this non-standard one: */
-  word-break: break-word;
-
-  /* Adds a hyphen where the word breaks, if supported (No Blink) */
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-`

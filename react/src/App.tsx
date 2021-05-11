@@ -1,12 +1,14 @@
 import React from 'react'
 import { Redirect, Route, Switch } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
-import { Page } from './components/base/base'
+
+import { Page } from './components/Base/Base'
 import { TopBar } from './components/TopBar'
 import { GlobalStyle } from './global/GlobalStyle'
+
 import { Home } from './pages/Home'
-import { Info } from './pages/Info'
 import { Transactions } from './pages/Transactions'
+import { Info } from './pages/Info'
 
 // Dracula UI
 import '@dracula/dracula-ui/styles/dracula-ui.css'

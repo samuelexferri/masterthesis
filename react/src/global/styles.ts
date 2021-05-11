@@ -1,24 +1,16 @@
+// Dracula Colors
 export const Colors = {
-  Black: {
-    900: '#23242A',
-    200: '#DDE2EB',
-  },
-  Gray: {
-    600: '#757575',
-    300: '#E0E0E0',
-  },
-  White: '#ffffff',
-  Yellow: {
-    500: '#F2C94C',
-    100: '#FFF4D4',
-  },
   Background: '#282A36',
-  Red: '#FF5555',
-  Comment: '#6272A4',
   Current: '#44475A',
   Foreground: '#F8F8F2',
+  Comment: '#6272A4',
+  Cyan: '#8BE9FD',
   Green: '#50FA7B',
+  Orange: '#FFB86C',
   Pink: '#FF79C6',
+  Purple: '#BD93F9',
+  Red: '#FF5555',
+  Yellow: 'F1FA8C',
 }
 
 export const Fonts = {
@@ -34,7 +26,7 @@ export const Sizes = {
 }
 
 export const Gradients = {
-  bodyBackground: `linear-gradient(180deg, ${Colors.Yellow[100]}, ${Colors.White})`,
+  bodyBackground: `linear-gradient(180deg, ${Colors.Yellow[100]}, ${Colors.Foreground})`,
 }
 
 export const Transitions = {

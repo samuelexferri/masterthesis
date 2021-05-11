@@ -1,3 +1,5 @@
+import React, { ReactElement, ReactNode } from 'react'
+
 import type { TransactionResponse } from '@ethersproject/providers'
 import {
   getExplorerTransactionLink,
@@ -6,27 +8,13 @@ import {
   useNotifications,
   useTransactions,
 } from '@usedapp/core'
-import React, { ReactElement, ReactNode } from 'react'
-import styled from 'styled-components'
-import { ContentBlock } from '../base/base'
-import { CheckIcon, ClockIcon, ExclamationIcon, ShareIcon, UnwrapIcon, WalletIcon, WrapIcon } from './Icons'
-import { Colors } from '../../global/styles'
 import { AnimatePresence, motion } from 'framer-motion'
 
-import {
-  Anchor,
-  Avatar,
-  Badge,
-  Box,
-  Button,
-  Card,
-  Divider,
-  Heading,
-  Input,
-  List,
-  Table,
-  Text,
-} from '@dracula/dracula-ui'
+import styled from 'styled-components'
+import { Colors } from '../../global/Styles'
+import { CheckIcon, ClockIcon, ExclamationIcon, ShareIcon, UnwrapIcon, WalletIcon, WrapIcon } from './Icons'
+
+import { Card, Heading, Table, Text } from '@dracula/dracula-ui'
 
 // TABLE WRAPPER
 interface TableWrapperProps {
@@ -185,6 +173,7 @@ export const NotificationsList = () => {
   )
 }
 
+// CSS
 const IconContainer = styled.div`
   width: 48px;
   height: 48px;
@@ -235,15 +224,11 @@ const Link = styled.a`
   text-decoration: underline;
 `
 
-const SmallContentBlock = styled(ContentBlock)`
-  padding: 0;
-`
-
 const TitleRow = styled(Text)`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  border-bottom: ${Colors.Gray['300']} 1px solid;
+  border-bottom: ${Colors.Foreground} 2px solid;
   padding: 16px;
   font-size: 18px;
 `

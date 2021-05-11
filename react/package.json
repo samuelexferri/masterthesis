@@ -37,6 +37,7 @@
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@testing-library/react": "^11.0.0",
+    "@types/crypto-js": "^4.0.1",
     "@types/react": "^17.0.0",
     "@types/react-burger-menu": "^2.8.0",
     "@types/react-copy-to-clipboard": "^5.0.0",

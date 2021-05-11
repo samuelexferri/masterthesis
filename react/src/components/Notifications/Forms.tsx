@@ -1,32 +1,23 @@
-import { Contract } from '@ethersproject/contracts'
-import { formatEther } from '@ethersproject/units'
-import { TransactionStatus, useContractCall, useContractFunction, useEtherBalance, useEthers } from '@usedapp/core'
-import { utils } from 'ethers'
 import React, { useState, useCallback, useMemo } from 'react'
-import styled from 'styled-components'
-import { ContentBlock } from '../base/base'
-import { BorderRad, Colors } from '../../global/styles'
-import { SpinnerIcon } from './Icons'
 
 import { ethers } from 'ethers'
+import { Contract } from '@ethersproject/contracts'
+import { TransactionStatus, useContractFunction, useEthers } from '@usedapp/core'
+import CryptoJS from 'crypto-js'
+import { useDropzone } from 'react-dropzone'
 
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
-import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Input, List, Text } from '@dracula/dracula-ui'
+import styled from 'styled-components'
+import { MyBreakText } from '../Base/Base'
+import { BorderRad, Colors } from '../../global/Styles'
+import { SpinnerIcon } from './Icons'
 
-import NOTARIZETH_ABI from '../../abi/NotarizETH.json'
-
-import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css'
 
-import Dropzone, { useDropzone } from 'react-dropzone'
+import { Button, Card, Heading, Input, List, Text } from '@dracula/dracula-ui'
 
-// CONSTANTS
-const NOTARIZETH_ADDRESS = '0x908d02931EA40670EFe810E295936A5CA62050Bc'
-const NOTARIZETH_ABI_INTERFACE = new utils.Interface(NOTARIZETH_ABI)
-
-const NETWORK_ALLOWED_ID = 3
-const NETWORK_ALLOWED_NAME = 'Ropsten'
+import { NETWORK_ALLOWED_ID, NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE } from '../../Constants'
 
 // BASIC
 interface TitlePropsBasic {
@@ -53,14 +44,15 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
     let valuehash = value
 
     if (valuehash.length == 66 && valuehash.substring(0, 2) == '0x') {
-      // Ok
+      // OK
     } else if (valuehash.length == 64) {
       // Add 0x at the start
       valuehash = '0x' + valuehash
     } else {
-      // Input error
+      // Input Error
       console.log('Input Error', valuehash)
-      document.getElementById('idHolderVerify')!.textContent = 'Input Error! Must be in 32 Byte Format (64 length)'
+      document.getElementById('idHolderVerify')!.textContent =
+        'Input Error! The file hash must be in byte format (32 bytes, string length is 64 or 66 with 0x prefix)'
       return
     }
 
@@ -264,13 +256,14 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
     )
   } else if (error_temp == error_2) {
     const contractEther = new ethers.Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library)
+
     contractEther.verifyFile(hashCertify).then(function (res: boolean[]) {
       console.log('CertifyErrorVerifyFile', res),
         // General error or already exist on the blockchain
         (document.getElementById('idHolderCertify')!.innerHTML =
           res[0] == false
             ? 'General Error!'
-            : 'File hash already exists on the Ethereum blockchain!' +
+            : 'The file hash does already exists on the Ethereum blockchain!' +
               '<br>' +
               'Owner: <a href="https://ropsten.etherscan.io/address/' +
               res[1] +
@@ -320,8 +313,8 @@ const InputComponentReset = ({ send, transactionStatus }: InputComponentPropsRes
     'Reset'
   )
   const onClick = () => {
-    setValue(hashVerify) // Set Input Hash
-    send(hashVerify) // Send Web3 Transaction
+    setValue(hashReset) // Set Input Hash
+    send(hashReset) // Send Web3 Transaction
   }
 
   return (
@@ -375,7 +368,7 @@ const TransactionFormReset = ({ send, title, transaction }: TransactionFormReset
       <Text hidden={account != null && chainId === NETWORK_ALLOWED_ID} color="yellow">
         You must be connected with MetaMask on Ropsten Network to perform this operation!
       </Text>
-      <StyledDropzoneVerify />
+      <StyledDropzoneReset />
       <br></br>
       <InputComponentReset transactionStatus={transaction.status} send={send} />
       <ErrorMessageReset transaction={transaction} />
@@ -388,6 +381,8 @@ interface ErrorRowPropsReset {
 }
 
 const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
+  const { library } = useEthers()
+
   const error_1 = 'hex data is odd-length'
   const error_2 = 'cannot estimate gas; transaction may fail or may require manual gas limit'
 
@@ -412,16 +407,31 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
       </ErrorRow>
     )
   } else if (error_temp == error_2) {
-    // TODO You are not the owner, the owner is...
+    const contractEther = new ethers.Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library)
 
-    // TODO Not exist on the blockchain
-    // TODO Verify e stampare le variabili
+    contractEther.verifyFile(hashReset).then(function (res: boolean[]) {
+      console.log('ResetErrorVerifyFile', res),
+        // Not exist on the blockchain or you are not the owner
+        ((document.getElementById('idHolderReset')!.innerHTML =
+          res[0] == false
+            ? 'The file hash does not exists on the Ethereum blockchain!'
+            : 'You are not the owner of the file hash!' +
+              '<br>' +
+              'Owner: <a href="https://ropsten.etherscan.io/address/' +
+              res[1] +
+              '" target="_blank"  class="drac-anchor drac-text drac-text-cyan-green drac-text-yellow-pink--hover drac-mb-sm">' +
+              res[1] +
+              '</a>' +
+              '<br>' +
+              'Timestamp: TODO'),
+        (document.getElementById('idHolderReset')!.className = 'drac-text drac-line-height drac-text-red'))
+    })
+
     return (
       <ErrorRow>
-        <Text color="red">
-          {'It is possible that the file hash not exists on the blockchain! Full details: '}{' '}
-          {'errorMessage' in transaction && transaction.errorMessage}
-        </Text>
+        <MyBreakText>
+          <Text color="red" id="idHolderReset"></Text>
+        </MyBreakText>
       </ErrorRow>
     )
   }
@@ -435,9 +445,8 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
 }
 
 // CRYPTOJS
-const CryptoJS = require('crypto-js')
-var hashCertify = '0x0'
-var hashVerify = '0x0'
+let hashCertify = '0x0'
+let hashReset = '0x0'
 
 // HELPER
 function arrayBufferToWordArray(arrayBuffer: ArrayBuffer | string | null) {
@@ -449,7 +458,7 @@ function arrayBufferToWordArray(arrayBuffer: ArrayBuffer | string | null) {
     }
     return CryptoJS.lib.WordArray.create(a, i8a.length)
   } else {
-    return
+    return ''
   }
 }
 
@@ -494,7 +503,7 @@ const rejectStyle = {
   borderColor: '#ff1744',
 }
 
-// DROPZONE WORKAROUND
+// DROPZONE FILE WORKAROUND
 interface MyFile extends File {
   path: string
 }
@@ -509,7 +518,6 @@ function StyledDropzoneCertify(props: any) {
       reader.onerror = () => console.log('file reading has failed')
       reader.onload = () => {
         // Do whatever you want with the file contents
-
         const arrayBuffer = reader.result
         console.log('ArrayBufferToWordArray', arrayBufferToWordArray(arrayBuffer))
 
@@ -564,8 +572,8 @@ function StyledDropzoneCertify(props: any) {
   )
 }
 
-// DROPZONE VERIFY
-function StyledDropzoneVerify(props: any) {
+// DROPZONE RESET
+function StyledDropzoneReset(props: any) {
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.forEach((file: Blob) => {
       const reader = new FileReader()
@@ -574,16 +582,15 @@ function StyledDropzoneVerify(props: any) {
       reader.onerror = () => console.log('file reading has failed')
       reader.onload = () => {
         // Do whatever you want with the file contents
-
         const arrayBuffer = reader.result
         console.log('ArrayBufferToWordArray', arrayBufferToWordArray(arrayBuffer))
 
-        hashVerify =
+        hashReset =
           '0x' +
           CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), {
             outputLength: 256,
           }).toString(CryptoJS.enc.Hex)
-        console.log('Hash', hashVerify)
+        console.log('Hash', hashReset)
       }
       reader.readAsArrayBuffer(file)
     })
@@ -659,35 +666,12 @@ export const ResetFile = () => {
 }
 
 // CSS
-const SmallButton = styled(Button)`
-  display: flex;
-  justify-content: center;
-  min-width: 95px;
-  height: unset;
-  padding: 8px 24px;
-
-  &:disabled {
-    color: ${Colors.Gray['600']};
-    cursor: unset;
-  }
-
-  &:disabled:hover,
-  &:disabled:focus {
-    background-color: unset;
-    color: unset;
-  }
-`
-
 const InputRow = styled.div`
   display: flex;
   margin: 0 auso;
   align-items: center;
   border-radius: ${BorderRad.s};
   overflow: hidden;
-`
-
-const FormTicker = styled.div`
-  padding: 0 16px;
 `
 
 const LabelRow = styled.div`
@@ -700,17 +684,8 @@ const TitleRow = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  border-bottom: ${Colors.Gray['300']} 1px solid;
+  border-bottom: ${Colors.Foreground} 2px solid;
   padding: 16px;
-`
-
-const BalanceWrapper = styled.div`
-  color: ${Colors.Gray['600']};
-  font-size: 14px;
-`
-
-const SmallContentBlock = styled(ContentBlock)`
-  padding: 0;
 `
 
 const IconContainer = styled.div`
@@ -721,21 +696,4 @@ const IconContainer = styled.div`
 const ErrorRow = styled.div`
   font-size: 14px;
   margin: 8px auto 32px auto;
-`
-const MyBreakText = styled.text`
-  /* These are technically the same, but use both */
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  -ms-word-break: break-all;
-  /* This is the dangerous one in WebKit, as it breaks things wherever */
-  word-break: break-all;
-  /* Instead use this non-standard one: */
-  word-break: break-word;
-
-  /* Adds a hyphen where the word breaks, if supported (No Blink) */
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
 `

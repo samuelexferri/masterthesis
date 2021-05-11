@@ -1,8 +1,10 @@
 import { createGlobalStyle } from 'styled-components'
+
+import { Colors, Fonts } from './Styles'
+
 import FiraCodeRegular from '../assets/fonts/FiraCode-Regular.woff2'
 import FiraCodeBold from '../assets/fonts/FiraCode-Bold.woff2'
 import FiraCodeMedium from '../assets/fonts/FiraCode-Medium.woff2'
-import { Colors, Fonts } from './styles'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -40,10 +42,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     width: 100%;
     height: 100%;
-    background-color: ${Colors.White};
+    background-color: ${Colors.Foreground};
     font-family: ${Fonts.FiraCode};
     font-size: 16px;
-    color: ${Colors.Black[900]};
+    color: ${Colors.Background};
   }
   
   button {
@@ -63,11 +65,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: ${Colors.Black[900]};
+    color: ${Colors.Background};
     text-decoration: none;
 
     &:visited {
-      color: ${Colors.Black[900]};
+      color: ${Colors.Background};
     }
   }
 

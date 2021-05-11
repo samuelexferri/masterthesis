@@ -1,20 +1,28 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styled from 'styled-components'
-import { Colors, Shadows, Sizes, Transitions } from '../global/styles'
-import { HeaderContainer } from './base/base'
+
 import { useEthers } from '@usedapp/core'
-
-import { Anchor, Avatar, Box, Button, Text } from '@dracula/dracula-ui'
-
 import { slide as Menu } from 'react-burger-menu'
 
+import styled from 'styled-components'
+import { Colors, Shadows, Sizes, Transitions } from '../global/Styles'
+import { HeaderContainer } from './Base/Base'
+
+import { Anchor, Box, Button, Text } from '@dracula/dracula-ui'
+
 import notarizethIMG from '../assets/images/notarizeth.png'
+
+// Extend Window Interface
+declare global {
+  interface Window {
+    ethereum: any
+    web3: any
+  }
+}
 
 export function TopBar() {
   const { activateBrowserWallet, deactivate, account } = useEthers()
 
-  console.log(window.innerWidth)
   if (window.innerWidth > 1000) {
     return (
       <Header>

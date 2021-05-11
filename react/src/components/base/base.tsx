@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BorderRad, Colors, Gradients, Shadows, Sizes } from '../../global/styles'
+import { BorderRad, Colors, Shadows, Sizes } from '../../global/Styles'
 
 export const Page = styled.div`
   display: flex;
@@ -66,8 +66,27 @@ export const ContentBlock = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: ${Colors.White};
+  background-color: ${Colors.Foreground};
   border-radius: ${BorderRad.s};
   box-shadow: ${Shadows.main};
   padding: 32px 32px;
+`
+
+// MYBREAKTEXT
+export const MyBreakText = styled.text`
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 `

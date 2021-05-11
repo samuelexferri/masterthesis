@@ -1,34 +1,18 @@
 import React from 'react'
+
 import { formatEther } from '@ethersproject/units'
-import { utils } from 'ethers'
-import {
-  useEtherBalance,
-  useEthers,
-  useContractCall,
-  useContractFunction,
-  useBlockMeta,
-  useBlockNumber,
-} from '@usedapp/core'
-import { Container, ContentBlock, ContentRow, MainContent, Section, SectionRow } from '../components/base/base'
+import { useEtherBalance, useEthers, useBlockMeta, useBlockNumber } from '@usedapp/core'
 
-import { Anchor, Avatar, Badge, Box, Button, Card, Divider, Heading, Text } from '@dracula/dracula-ui'
+import { Container, ContentRow, MainContent, MyBreakText, Section, SectionRow } from '../components/Base/Base'
 
-import { ethers } from 'ethers'
-
-import NOTARIZETH_ABI from '../abi/NotarizETH.json'
-import styled from 'styled-components'
+import { Anchor, Avatar, Box, Card, Heading, Text } from '@dracula/dracula-ui'
 
 import polyIMG from '../assets/images/poly.png'
 
-// TODO Metterle in un file
-const NETWORK_ALLOWED_ID = 3
-const NETWORK_ALLOWED_NAME = 'Ropsten'
-
-const NOTARIZETH_ADDRESS = '0x908d02931EA40670EFe810E295936A5CA62050Bc'
-const NOTARIZETH_ABI_INTERFACE = new utils.Interface(NOTARIZETH_ABI)
+import { NETWORK_ALLOWED_ID, NETWORK_ALLOWED_NAME, NOTARIZETH_ADDRESS } from '../Constants'
 
 export function Home() {
-  const { activateBrowserWallet, deactivate, account, library, chainId, active } = useEthers()
+  const { account, chainId } = useEthers()
 
   const userBalance = useEtherBalance(account)
   const blockNumber = useBlockNumber()
@@ -128,21 +112,3 @@ export function Home() {
     </MainContent>
   )
 }
-
-const MyBreakText = styled.text`
-  /* These are technically the same, but use both */
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  -ms-word-break: break-all;
-  /* This is the dangerous one in WebKit, as it breaks things wherever */
-  word-break: break-all;
-  /* Instead use this non-standard one: */
-  word-break: break-word;
-
-  /* Adds a hyphen where the word breaks, if supported (No Blink) */
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-`
