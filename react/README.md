@@ -4,17 +4,17 @@
 <img src="https://github.com/samuelexferri/masterthesis/blob/master/images/notarizeth.png" width="200">
 </p>
 
-**NotarizETH** - A React Distributed App connected with Ethereum Ropsten Network through Web3 Providers (Infura, MetaMask)
+**NotarizETH** - A [React](https://reactjs.org/) Distributed App connected with Ethereum Ropsten Network through Web3 Providers ([Infura](https://infura.io/), [MetaMask](https://metamask.io/))
 
 Built from a development version of [useDApp Framework](https://github.com/EthWorks/useDApp) (Employs ethers.js, web3-react...) and custom GUI with [Dracula UI](https://draculatheme.com/ui).
 
-NotarizETH Smart Contract written in [Solidity](https://soliditylang.org/) distributed on the Ethereum Ropsten Network at [this address](https://ropsten.etherscan.io/address/0x908d02931ea40670efe810e295936a5ca62050bc).
+NotarizETH Smart Contract written in [Solidity](https://soliditylang.org/) and deployed on the Ethereum Ropsten Network at [this address](https://ropsten.etherscan.io/address/0x908d02931ea40670efe810e295936a5ca62050bc).
 
 UPDATE ETHERSCAN ADDRESS
 
 LINK
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/samuelexferri/masterthesis/react_aws_s3?style=for-the-badge)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fsamuelexferri%2Fmasterthesis%2Fbadge%3Fref%3Dmaster%26token%3D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&style=for-the-badge)](https://actions-badge.atrox.dev/samuelexferri/masterthesis/goto?ref=master&token=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)
 ![alt text](https://img.shields.io/badge/Dracula%20UI-Made%20for%20Vampires%20%F0%9F%A7%9B%E2%80%8D%E2%99%82%EF%B8%8F-6272a4?style=for-the-badge)
 ![alt text](https://img.shields.io/badge/Language-English-infomrmational?style=for-the-badge)
 
