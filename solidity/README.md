@@ -1,7 +1,7 @@
 # Solidity Smart Contracts
 
 <p align="center">
-<img src="https://github.com/samuelexferri/masterthesis/blob/master/images/solidity.png" width="200">
+<img src="https://github.com/samuelexferri/masterthesis/blob/master/images/solidity.png" width="100">
 </p>
 
 **Solidity Smart Contracts** - Smart Contracts used in the thesis (Analysis, Analysis Truffle, NotarizETH)
@@ -27,6 +27,8 @@ See the `analysis-truffle/` folder for a ready Truffle project.
 ## NotarizETH
 
 Smart Contract of the DApp NotarizETH.
+
+LINK
 
 See the `notarizeth/` folder for full contract.
 
