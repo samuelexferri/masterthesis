@@ -1,12 +1,18 @@
 # NotarizETH React DApp
 
 <p align="center">
-<img src="https://github.com/samuelexferri/masterthesis/blob/master/images/notarizeth.jpg" width="200">
+<img src="https://github.com/samuelexferri/masterthesis/blob/master/images/notarizeth.png" width="200">
 </p>
 
-**NotarizETH** - A React Distributed App connected with Web3 Provider (Infura, MetaMask) througt on the Ethereum Ropsten Network
+**NotarizETH** - A React Distributed App connected with Ethereum Ropsten Network through Web3 Providers (Infura, MetaMask)
 
 Built from a development version of [useDApp Framework](https://github.com/EthWorks/useDApp) (Employs ethers.js, web3-react...) and custom GUI with [Dracula UI](https://draculatheme.com/ui).
+
+NotarizETH Smart Contract written in [Solidity](https://soliditylang.org/) distributed on the Ethereum Ropsten Network at [this address](https://ropsten.etherscan.io/address/0x908d02931ea40670efe810e295936a5ca62050bc).
+
+UPDATE ETHERSCAN ADDRESS
+
+LINK
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/samuelexferri/masterthesis/react_aws_s3?style=for-the-badge)
 ![alt text](https://img.shields.io/badge/Dracula%20UI-Made%20for%20Vampires%20%F0%9F%A7%9B%E2%80%8D%E2%99%82%EF%B8%8F-6272a4?style=for-the-badge)

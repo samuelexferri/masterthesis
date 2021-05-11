@@ -6,12 +6,26 @@
 
 **Master's thesis** - Computer Science and Engineering
 
-Smart Contracts
+**Smart Contracts** - Evaluation of costs associated with running and storing Ethereum Smart Contracts using Solidity. Development of the DApp NotarizETH.
 
 ![alt text](https://img.shields.io/badge/Language-Italian-infomrmational?style=for-the-badge)
 ![alt text](https://img.shields.io/badge/Language-English-infomrmational?style=for-the-badge)
 
-## Authors
+## Work
+
+### Part One
+
+Evaluation of costs associated with running and storing Ethereum Smart Contracts using Solidity.
+
+See the `doc` and the `solidity/analysis` folder.
+
+## Part EthWorks
+
+Development of the DApp NotarizETH.
+
+See the `doc` and `react` folder.
+
+LINK
 
 ### Team
 
@@ -23,7 +37,7 @@ Smart Contracts
 
 ## Version
 
-![alt text](https://img.shields.io/badge/Version-1.0.0a-blue.svg?style=for-the-badge)
+![alt text](https://img.shields.io/badge/Version-1.0.0-blue.svg?style=for-the-badge)
 
 ## License
 
