@@ -17,13 +17,13 @@
 
 Evaluation of costs associated with running and storing Ethereum Smart Contracts using Solidity.
 
-See the `doc` and the `solidity/analysis` folders.
+See the `doc/` and the `solidity/analysis/` folders.
 
 ## Part Two
 
 Development of the DApp NotarizETH.
 
-See the `doc` and `react` folders.
+See the `doc/` and `react/` folders.
 
 LINK
 

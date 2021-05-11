@@ -4,11 +4,9 @@
 <img src="https://github.com/samuelexferri/masterthesis/blob/master/images/notarizeth.png" width="200">
 </p>
 
-**NotarizETH** - A [React](https://reactjs.org/) Distributed App connected with Ethereum Ropsten Network through Web3 Providers ([Infura](https://infura.io/), [MetaMask](https://metamask.io/))
+**NotarizETH** - A [React](https://reactjs.org/) Distributed App connected with the Ethereum Ropsten Network through Web3 Providers ([Infura](https://infura.io/), [MetaMask](https://metamask.io/))
 
-Built from a development version of [useDApp Framework](https://github.com/EthWorks/useDApp) (Employs ethers.js, web3-react...) and custom GUI with [Dracula UI](https://draculatheme.com/ui).
-
-NotarizETH Smart Contract written in [Solidity](https://soliditylang.org/) and deployed on the Ethereum Ropsten Network at [this address](https://ropsten.etherscan.io/address/0x908d02931ea40670efe810e295936a5ca62050bc).
+Built from a development version of [useDApp Framework](https://github.com/EthWorks/useDApp) (ethers.js, web3-react...) and custom GUI modeled with [Dracula UI](https://draculatheme.com/ui). DApp deployed to [AWS S3](https://aws.amazon.com/s3/) thanks to [GitHub Actions Workflow (CI/CD)](https://github.com/features/actions). Backend Smart Contract written in [Solidity](https://soliditylang.org/) and deployed on the Ethereum Ropsten Network at [this](https://ropsten.etherscan.io/address/0x908d02931ea40670efe810e295936a5ca62050bc) address.
 
 UPDATE ETHERSCAN ADDRESS
 
@@ -20,25 +18,43 @@ LINK
 
 ## Commands
 
-### npm start
+### yarn
 
-Runs the app in the development mode.
-Open <http://localhost:8080> to view it in the browser.
+Install the packages (or upgrade them):
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+    yarn
+    yarn upgrade --latest
 
-### npm run build
+Start the app in the development mode on <http://127.0.0.1:8080/>:
 
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
+    yarn start
 
-**For the best production performance:** Add a build bundler plugin like "@snowpack/plugin-webpack" to your `snowpack.config.js` config file.
+Build the project to the `dist/` folder:
 
-### npm test
+    yarn build
 
-Launches the application test runner.
-Run with the `--watch` flag (`npm test -- --watch`) to run in interactive watch mode.
+Run the tests:
+
+    yarn test
+
+Run the linter:
+
+    yarn lint
+    yarn lint:fix
+
+### prettier
+
+Run prettier:
+
+    npx prettier --write "**/*.tsx"
+    npx prettier --write "**/*.ts"
+
+### eslint
+
+Run eslint:
+
+    yarn run eslint 'src/**/*.{js,ts,tsx}'
+    yarn run eslint 'src/**/*.{js,ts,tsx}' --fix
 
 ## Authors
 
