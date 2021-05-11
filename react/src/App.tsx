@@ -10,7 +10,7 @@ import { Transactions } from './pages/Transactions'
 
 // Dracula UI
 import '@dracula/dracula-ui/styles/dracula-ui.css'
-import { Button } from '@dracula/dracula-ui'
+import {} from '@dracula/dracula-ui'
 
 export function App() {
   return (

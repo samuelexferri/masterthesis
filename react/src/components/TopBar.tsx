@@ -54,7 +54,15 @@ export function TopBar() {
         {account ? (
           <Button onClick={() => deactivate()}>Disconnect</Button>
         ) : (
-          <Button onClick={() => activateBrowserWallet()}>Connect</Button>
+          <Button
+            onClick={() =>
+              typeof window.ethereum !== 'undefined' || typeof window.web3 !== 'undefined'
+                ? activateBrowserWallet()
+                : alert('You need a Web3 Provider (MetaMask)')
+            }
+          >
+            Connect
+          </Button>
         )}
 
         <Box p="sm"></Box>
@@ -90,7 +98,14 @@ export function TopBar() {
             Disconnect
           </Button>
         ) : (
-          <Button style={{ marginLeft: 'auto', marginRight: '16px' }} onClick={() => activateBrowserWallet()}>
+          <Button
+            style={{ marginLeft: 'auto', marginRight: '16px' }}
+            onClick={() =>
+              typeof window.ethereum !== 'undefined' || typeof window.web3 !== 'undefined'
+                ? activateBrowserWallet()
+                : alert('You need a Web3 Provider (MetaMask)')
+            }
+          >
             Connect
           </Button>
         )}
