@@ -1,6 +1,6 @@
 # New Project
 
-> ✨ Example useDApp application.
+> ✨ Example useDApp application
 
 ## Available Scripts
 
