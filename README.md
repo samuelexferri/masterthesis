@@ -9,6 +9,7 @@
 Smart Contracts
 
 ![alt text](https://img.shields.io/badge/Language-Italian-infomrmational?style=for-the-badge)
+![alt text](https://img.shields.io/badge/Language-English-infomrmational?style=for-the-badge)
 
 ## Authors
 
@@ -22,7 +23,7 @@ Smart Contracts
 
 ## Version
 
-![alt text](https://img.shields.io/badge/Version-0.0.1-blue.svg?style=for-the-badge)
+![alt text](https://img.shields.io/badge/Version-1.0.0a-blue.svg?style=for-the-badge)
 
 ## License
 
