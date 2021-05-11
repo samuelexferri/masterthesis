@@ -19,6 +19,8 @@ import { Button, Card, Heading, Input, List, Text } from '@dracula/dracula-ui'
 
 import { NETWORK_ALLOWED_ID, NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE } from '../../Constants'
 
+import QRCode from 'qrcode.react'
+
 // BASIC
 interface TitlePropsBasic {
   title: string
@@ -132,6 +134,8 @@ const TransactionFormVerify = ({ title, library }: TransactionFormVerify) => {
 }
 
 // CERTIFY
+let isQRCodeVisible = false // QRCode Visibility
+
 interface InputComponentPropsCertify {
   send: (value: string) => void
   transactionStatus: TransactionStatus['status']
@@ -154,17 +158,21 @@ const InputComponentCertify = ({ send, transactionStatus }: InputComponentPropsC
     'Certify'
   )
 
-  const onClick = () => {
+  const onClick = async () => {
     setCopied('Copy') // Reset Copy Button Name
+    await send(hashCertify) // Send Web3 Transaction (Await)
     setValue(hashCertify) // Set Input Hash
-    send(hashCertify) // Send Web3 Transaction
+
+    // Show QRCode
+    isQRCodeVisible = true
+    document.getElementById('idQRCode')!.hidden = !isQRCodeVisible || !isSuccess
   }
 
   return (
     <section className="container">
       <InputRow>
         <Input
-          id={`Input`}
+          id={`idInputCertify`}
           size="medium"
           color="white"
           placeholder="0xBYTES"
@@ -190,6 +198,22 @@ const InputComponentCertify = ({ send, transactionStatus }: InputComponentPropsC
         <Button disabled={!account || isMining || chainId != NETWORK_ALLOWED_ID} onClick={onClick}>
           {buttonContent}
         </Button>
+      </div>
+      <br></br>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <p
+          id="idQRCode"
+          hidden={!isQRCodeVisible || !isSuccess}
+          style={{ height: '168px', width: '168px', border: '20px solid white', borderRadius: '24px' }}
+        >
+          <QRCode value={hashCertify} />
+        </p>
       </div>
     </section>
   )
@@ -314,16 +338,16 @@ const InputComponentReset = ({ send, transactionStatus }: InputComponentPropsRes
   ) : (
     'Reset'
   )
-  const onClick = () => {
+  const onClick = async () => {
+    await send(hashReset) // Send Web3 Transaction
     setValue(hashReset) // Set Input Hash
-    send(hashReset) // Send Web3 Transaction
   }
 
   return (
     <section className="container">
       <InputRow>
         <Input
-          id={`Input`}
+          id={`idInputReset`}
           size="medium"
           color="white"
           placeholder="0xBYTES"
@@ -521,6 +545,11 @@ function StyledDropzoneCertify(props: any) {
       reader.onerror = () => console.log('file reading has failed')
       reader.onload = () => {
         // Do whatever you want with the file contents
+
+        // Hide the QRCode
+        isQRCodeVisible = false
+        document.getElementById('idQRCode')!.hidden = !isQRCodeVisible
+
         const arrayBuffer = reader.result
         console.log('ArrayBufferToWordArray', arrayBufferToWordArray(arrayBuffer))
 
@@ -530,6 +559,9 @@ function StyledDropzoneCertify(props: any) {
             outputLength: 256,
           }).toString(CryptoJS.enc.Hex)
         console.log('Hash', hashCertify)
+
+        // Reset the Input Value
+        document.getElementById('idInputCertify')?.setAttribute('value', '')
       }
       reader.readAsArrayBuffer(file)
     })
@@ -594,6 +626,9 @@ function StyledDropzoneReset(props: any) {
             outputLength: 256,
           }).toString(CryptoJS.enc.Hex)
         console.log('Hash', hashReset)
+
+        // Reset the Input Value
+        document.getElementById('idInputReset')?.setAttribute('value', '')
       }
       reader.readAsArrayBuffer(file)
     })
