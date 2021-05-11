@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { formatEther } from '@ethersproject/units'
-import { useEtherBalance, useEthers, useBlockMeta, useBlockNumber } from '@usedapp/core'
+import { useEtherBalance, useEthers } from '@usedapp/core'
 
 import { Container, ContentRow, MainContent, MyBreakText, Section, SectionRow } from '../components/base/base'
 
@@ -15,8 +15,6 @@ export function Home() {
   const { account, chainId } = useEthers()
 
   const userBalance = useEtherBalance(account)
-  const blockNumber = useBlockNumber()
-  const { timestamp, difficulty } = useBlockMeta()
 
   // Right/Wrong Network Alert
   let networkDisplay = (
@@ -90,22 +88,51 @@ export function Home() {
           <Box p="sm"></Box>
 
           <Card color="pinkPurple" p="sm">
-            <ContentRow>
-              <Text color="black">Chain ID:</Text> <Text>{chainId}</Text>
-            </ContentRow>
-            <ContentRow>
-              <Text color="black">Current Block:</Text> <Text>{blockNumber}</Text>
-            </ContentRow>
-            {difficulty && (
-              <ContentRow>
-                <Text color="black">Current Difficulty:</Text> <Text>{difficulty.toString()}</Text>
-              </ContentRow>
-            )}
-            {timestamp && (
-              <ContentRow>
-                <Text color="black">Current Block Timestamp:</Text> <Text>{timestamp.toLocaleString()}</Text>
-              </ContentRow>
-            )}
+            <MyBreakText color="black">
+              <Text>Certify your files on the Ethereum Blockchain!</Text>
+              <br></br>
+              <br></br>
+              <Text color="orange">Tamper Evidence, Decentralization, Transparency...</Text>
+              <br></br>
+              <br></br>
+              Notarize your document, certify it by writing a timestamped digital signature of your file into the
+              Ethereum Blockchain to later prove its existence, its integrity over time and that you cryptographically
+              signed it and had access to it.
+              <br></br>
+              <br></br>
+              Privacy! No uploading of files, the Keccak256 hash is calculated locally, the entire document is not
+              stored on the blockchain but only its hash.
+              <br></br>
+              <br></br>
+              Try yourself going into{' '}
+              <Anchor href={'./transactions'} color="cyanGreen" hoverColor="yellowPink" mb="sm">
+                transactions
+              </Anchor>{' '}
+              section!
+              <br></br>
+              <br></br>
+              See the{' '}
+              <Anchor
+                href={'https://github.com/samuelexferri/masterthesis'}
+                target="_blank"
+                color="cyanGreen"
+                hoverColor="yellowPink"
+                mb="sm"
+              >
+                project
+              </Anchor>{' '}
+              and the{' '}
+              <Anchor
+                href={'https://github.com/samuelexferri/masterthesis/tree/master/doc'}
+                target="_blank"
+                color="cyanGreen"
+                hoverColor="yellowPink"
+                mb="sm"
+              >
+                documentation
+              </Anchor>
+              .
+            </MyBreakText>
           </Card>
         </Section>
       </Container>

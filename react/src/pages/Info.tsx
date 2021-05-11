@@ -1,17 +1,22 @@
 import React from 'react'
 
-import { useEthers } from '@usedapp/core'
+import { formatEther } from '@ethersproject/units'
+import { useEtherBalance, useEthers, useBlockMeta, useBlockNumber } from '@usedapp/core'
 
-import { Container, MainContent, MyBreakText, Section, SectionRow } from '../components/base/base'
+import { Container, ContentRow, MainContent, MyBreakText, Section, SectionRow } from '../components/base/base'
 
-import { Avatar, Box, Card, Heading, Text } from '@dracula/dracula-ui'
+import { Anchor, Avatar, Box, Card, Heading, Text } from '@dracula/dracula-ui'
 
 import polyIMG from '../assets/images/poly.png'
 
-import { NETWORK_ALLOWED_ID, NETWORK_ALLOWED_NAME } from '../Constants'
+import { NETWORK_ALLOWED_ID, NETWORK_ALLOWED_NAME, NOTARIZETH_ADDRESS } from '../Constants'
 
 export function Info() {
   const { account, chainId } = useEthers()
+
+  const userBalance = useEtherBalance(account)
+  const blockNumber = useBlockNumber()
+  const { timestamp, difficulty } = useBlockMeta()
 
   // Right/Wrong Network Alert
   let networkDisplay = (
@@ -57,13 +62,50 @@ export function Info() {
           <Box p="sm"></Box>
 
           <Card color="pinkPurple" p="sm">
-            <MyBreakText>TODO</MyBreakText>
+            {account && (
+              <ContentRow>
+                <Text color="black">Account:</Text> <Text>{account}</Text>
+              </ContentRow>
+            )}
+            {userBalance && (
+              <ContentRow>
+                <Text color="black">Ether Balance:</Text> <Text>{formatEther(userBalance)}</Text> <Text>ETH</Text>
+              </ContentRow>
+            )}
+
+            <ContentRow>
+              <Text color="black">NotarizETH Contract Address:</Text>{' '}
+              <Anchor
+                href={'https://ropsten.etherscan.io/address/' + NOTARIZETH_ADDRESS}
+                target="_blank"
+                color="cyanGreen"
+                hoverColor="yellowPink"
+                mb="sm"
+              >
+                <MyBreakText>{NOTARIZETH_ADDRESS}</MyBreakText>
+              </Anchor>
+            </ContentRow>
           </Card>
 
           <Box p="sm"></Box>
 
           <Card color="pinkPurple" p="sm">
-            <MyBreakText>TODO</MyBreakText>
+            <ContentRow>
+              <Text color="black">Chain ID:</Text> <Text>{chainId}</Text>
+            </ContentRow>
+            <ContentRow>
+              <Text color="black">Current Block:</Text> <Text>{blockNumber}</Text>
+            </ContentRow>
+            {difficulty && (
+              <ContentRow>
+                <Text color="black">Current Difficulty:</Text> <Text>{difficulty.toString()}</Text>
+              </ContentRow>
+            )}
+            {timestamp && (
+              <ContentRow>
+                <Text color="black">Current Block Timestamp:</Text> <Text>{timestamp.toString()}</Text>
+              </ContentRow>
+            )}
           </Card>
         </Section>
       </Container>

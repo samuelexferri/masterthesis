@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { BorderRad, Colors, Shadows, Sizes } from '../../global/styles'
 
+import { Text } from '@dracula/dracula-ui'
+
 export const Page = styled.div`
   display: flex;
   position: relative;
@@ -73,7 +75,7 @@ export const ContentBlock = styled.div`
 `
 
 // MYBREAKTEXT
-export const MyBreakText = styled.text`
+export const MyBreakText = styled(Text)`
   /* These are technically the same, but use both */
   overflow-wrap: break-word;
   word-wrap: break-word;

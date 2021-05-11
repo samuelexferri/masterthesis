@@ -73,7 +73,8 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
                 res[1] +
                 '</a>' +
                 '<br>' +
-                'Timestamp: TODO'),
+                'Timestamp: ' +
+                new Date(Number(res[3]) * 1000)),
           (document.getElementById('idHolderVerify')!.className =
             res[0] == false
               ? 'drac-text drac-line-height drac-text-yellow'
@@ -263,7 +264,7 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
         (document.getElementById('idHolderCertify')!.innerHTML =
           res[0] == false
             ? 'General Error!'
-            : 'The file hash does already exists on the Ethereum blockchain!' +
+            : 'The file hash already exists on the Ethereum blockchain!' +
               '<br>' +
               'Owner: <a href="https://ropsten.etherscan.io/address/' +
               res[1] +
@@ -271,7 +272,8 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
               res[1] +
               '</a>' +
               '<br>' +
-              'Timestamp: TODO'),
+              'Timestamp: ' +
+              new Date(Number(res[3]) * 1000)),
         (document.getElementById('idHolderCertify')!.className = 'drac-text drac-line-height drac-text-red')
     })
 
@@ -423,7 +425,8 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
               res[1] +
               '</a>' +
               '<br>' +
-              'Timestamp: TODO'),
+              'Timestamp: ' +
+              new Date(Number(res[3]) * 1000)),
         (document.getElementById('idHolderReset')!.className = 'drac-text drac-line-height drac-text-red'))
     })
 
