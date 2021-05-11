@@ -11,7 +11,7 @@ import {
 import { AnimatePresence, motion } from 'framer-motion'
 
 import styled from 'styled-components'
-import { Colors } from '../../global/Styles'
+import { Colors } from '../../global/styles'
 import { CheckIcon, ClockIcon, ExclamationIcon, ShareIcon, UnwrapIcon, WalletIcon, WrapIcon } from './Icons'
 
 import { Card, Heading, Table, Text } from '@dracula/dracula-ui'

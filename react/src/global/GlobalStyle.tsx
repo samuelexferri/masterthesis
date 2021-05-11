@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-import { Colors, Fonts } from './Styles'
+import { Colors, Fonts } from './styles'
 
 import FiraCodeRegular from '../assets/fonts/FiraCode-Regular.woff2'
 import FiraCodeBold from '../assets/fonts/FiraCode-Bold.woff2'

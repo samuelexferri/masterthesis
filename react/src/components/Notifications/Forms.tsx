@@ -10,7 +10,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import styled from 'styled-components'
 import { MyBreakText } from '../Base/Base'
-import { BorderRad, Colors } from '../../global/Styles'
+import { BorderRad, Colors } from '../../global/styles'
 import { SpinnerIcon } from './Icons'
 
 import 'reactjs-popup/dist/index.css'

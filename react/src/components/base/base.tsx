@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BorderRad, Colors, Shadows, Sizes } from '../../global/Styles'
+import { BorderRad, Colors, Shadows, Sizes } from '../../global/styles'
 
 export const Page = styled.div`
   display: flex;

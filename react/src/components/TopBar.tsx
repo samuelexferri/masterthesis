@@ -5,7 +5,7 @@ import { useEthers } from '@usedapp/core'
 import { slide as Menu } from 'react-burger-menu'
 
 import styled from 'styled-components'
-import { Colors, Shadows, Sizes, Transitions } from '../global/Styles'
+import { Colors, Shadows, Sizes, Transitions } from '../global/styles'
 import { HeaderContainer } from './Base/Base'
 
 import { Anchor, Box, Button, Text } from '@dracula/dracula-ui'
