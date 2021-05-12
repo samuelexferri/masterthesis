@@ -24,7 +24,7 @@ Very useful for analyzing contracts and their costs in detail also thanks to the
 
 See the `analysis-truffle/` folder for a ready Truffle project.
 
-## NotarizETH
+### NotarizETH
 
 Smart Contract of the DApp NotarizETH.
 
@@ -33,6 +33,8 @@ Use some libraries from [OpenZeppelin Contracts](https://openzeppelin.com/contra
 LINK
 
 See the `notarizeth/` folder for full contract.
+
+## Authors
 
 ### Team
 
