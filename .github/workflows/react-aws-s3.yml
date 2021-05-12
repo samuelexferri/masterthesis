@@ -15,23 +15,28 @@ jobs:
     
     steps:
     - uses: actions/checkout@master
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        
     - name: Create .npmrc
       uses: bduff9/use-npmrc@v1.1
       with:
         dot-npmrc: ${{ secrets.NPMRC_DRACULA_UI }} # Contains all three line of the .npmrc file, token included
         working-directory: ./react/
+        
     - name: Yarn Install
       run: |
         yarn install
       working-directory: ./react/
+      
     - name: Yarn Production Build # CI='' Not treating warnings as errors
       run: |
         CI='' yarn build 
       working-directory: ./react/
+      
     - name: Deploy to S3 Bucket (S3 Sync)
       uses: jakejarvis/s3-sync-action@master
       with:
