@@ -3,10 +3,11 @@ import React, { useState, useCallback, useMemo } from 'react'
 import { ethers } from 'ethers'
 import { Contract } from '@ethersproject/contracts'
 import { TransactionStatus, useContractFunction, useEthers } from '@usedapp/core'
+
 import CryptoJS from 'crypto-js'
 import { useDropzone } from 'react-dropzone'
-
 import { CopyToClipboard } from 'react-copy-to-clipboard'
+import QRCode from 'qrcode.react'
 
 import styled from 'styled-components'
 import { MyBreakText } from '../base/base'
@@ -19,7 +20,98 @@ import { Button, Card, Heading, Input, List, Text } from '@dracula/dracula-ui'
 
 import { NETWORK_ALLOWED_ID, NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE } from '../../Constants'
 
-import QRCode from 'qrcode.react'
+// CRYPTOJS
+let hashCertify = '0x0'
+let hashReset = '0x0'
+
+// HELPER
+function arrayBufferToWordArray(arrayBuffer: ArrayBuffer | string | null) {
+  if (arrayBuffer instanceof ArrayBuffer) {
+    const i8a = new Uint8Array(arrayBuffer)
+    const a = []
+    for (let i = 0; i < i8a.length; i += 4) {
+      a.push((i8a[i] << 24) | (i8a[i + 1] << 16) | (i8a[i + 2] << 8) | i8a[i + 3])
+    }
+    return CryptoJS.lib.WordArray.create(a, i8a.length)
+  } else {
+    return ''
+  }
+}
+
+// HELPER
+function formatBytes(bytes: number, decimals = 2) {
+  if (bytes === 0) return '0 Bytes'
+
+  const k = 1024
+  const dm = decimals < 0 ? 0 : decimals
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k))
+
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
+}
+
+// DROPZONE CSS
+const baseStyle = {
+  flex: 1,
+  display: 'flex',
+  alignItems: 'center',
+  padding: '20px',
+  borderWidth: 3,
+  borderRadius: 10,
+  borderColor: '#eeeeee',
+  borderStyle: 'dashed',
+  backgroundColor: 'trasparent',
+  color: '#eeeeee',
+  outline: 'none',
+  transition: 'border .24s ease-in-out',
+}
+
+const activeStyle = {
+  borderColor: '#2196f3',
+}
+
+const acceptStyle = {
+  borderColor: '#00e676',
+}
+
+const rejectStyle = {
+  borderColor: '#ff1744',
+}
+
+// DROPZONE FILE WORKAROUND
+interface MyFile extends File {
+  path: string
+}
+
+// FUNCTIONS
+export const VerifyFile = () => {
+  const { library } = useEthers()
+
+  return <TransactionFormVerify title="VerifyFile" library={library} />
+}
+
+export const CertifyFile = () => {
+  const { library } = useEthers()
+
+  const contract = new Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library?.getSigner())
+  const { state, send } = useContractFunction(contract, 'certifyFile', {
+    transactionName: 'certifyFile',
+  })
+
+  return <TransactionFormCertify send={(value: string) => send(value)} title="CertifyFile" transaction={state} />
+}
+
+export const ResetFile = () => {
+  const { library } = useEthers()
+
+  const contract = new Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library?.getSigner())
+  const { state, send } = useContractFunction(contract, 'resetFile', {
+    transactionName: 'resetFile',
+  })
+
+  return <TransactionFormReset send={(value: string) => send(value)} title="ResetFile" transaction={state} />
+}
 
 // BASIC
 interface TitlePropsBasic {
@@ -134,8 +226,6 @@ const TransactionFormVerify = ({ title, library }: TransactionFormVerify) => {
 }
 
 // CERTIFY
-let isQRCodeVisible = false // QRCode Visibility
-
 interface InputComponentPropsCertify {
   send: (value: string) => void
   transactionStatus: TransactionStatus['status']
@@ -146,6 +236,7 @@ const InputComponentCertify = ({ send, transactionStatus }: InputComponentPropsC
 
   const [value, setValue] = useState('')
   const [copied, setCopied] = useState('Copy')
+  const [isQRCodeVisible, setIsQRCodeVisible] = useState(false) // QRCode Visibility
 
   const isMining = transactionStatus === 'Mining'
   const isSuccess = transactionStatus === 'Success'
@@ -162,14 +253,107 @@ const InputComponentCertify = ({ send, transactionStatus }: InputComponentPropsC
     setCopied('Copy') // Reset Copy Button Name
     await send(hashCertify) // Send Web3 Transaction (Await)
     setValue(hashCertify) // Set Input Hash
+    setIsQRCodeVisible(true) // Show QRCode
+    hashCertify = '0x0' // Reset Hash
+  }
 
-    // Show QRCode
-    isQRCodeVisible = true
-    document.getElementById('idQRCode')!.hidden = !isQRCodeVisible || !isSuccess
+  // DROPZONE CERTIFY
+  function StyledDropzoneCertify(props: any) {
+    const onDrop = useCallback((acceptedFiles) => {
+      acceptedFiles.forEach((file: Blob) => {
+        const reader = new FileReader()
+
+        reader.onabort = () => console.log('file reading was aborted')
+        reader.onerror = () => console.log('file reading has failed')
+        reader.onload = () => {
+          // Do whatever you want with the file contents
+
+          // Hide the QRCode
+          setIsQRCodeVisible(false)
+
+          // Reset Input Value
+          setValue('')
+
+          const arrayBuffer = reader.result
+          console.log('ArrayBufferToWordArray', arrayBufferToWordArray(arrayBuffer))
+
+          hashCertify =
+            '0x' +
+            CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), {
+              outputLength: 256,
+            }).toString(CryptoJS.enc.Hex)
+          console.log('Hash', hashCertify)
+        }
+        reader.readAsArrayBuffer(file)
+      })
+    }, [])
+
+    const onDropRejected = useCallback(() => {
+      hashCertify = '0x0' // Reset Hash Value
+    }, [])
+
+    const { acceptedFiles, fileRejections, getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } =
+      useDropzone({
+        onDrop,
+        onDropRejected,
+        // accept: 'image/*',
+        maxFiles: 1,
+        disabled: !account || isMining || chainId != NETWORK_ALLOWED_ID,
+      })
+
+    const acceptedFileItems = acceptedFiles.map((file) => (
+      <li className="drac-text drac-text-white" key={(file as MyFile).path}>
+        "{(file as MyFile).path}" - {formatBytes(file.size)}
+      </li>
+    ))
+
+    const fileRejectionItems = fileRejections.map(({ file, errors }) => {
+      return (
+        <li className="drac-text drac-text-white" key={(file as MyFile).path}>
+          {(file as MyFile).path} - {file.size} bytes
+          <ul>
+            {errors.map((e) => (
+              <li className="drac-text drac-text-white" key={e.code}>
+                {e.message}
+              </li>
+            ))}
+          </ul>
+        </li>
+      )
+    })
+
+    const style = useMemo(
+      () => ({
+        ...baseStyle,
+        ...(isDragActive ? activeStyle : {}),
+        ...(isDragAccept ? acceptStyle : {}),
+        ...(isDragReject ? rejectStyle : {}),
+      }),
+      [isDragActive, isDragReject, isDragAccept]
+    )
+
+    return (
+      <div className="container">
+        <br></br>
+        <div {...getRootProps({ style })}>
+          <input {...getInputProps()} />
+          <p>Drag 'n' drop one file here, or click to select file</p>
+        </div>
+        <br></br>
+        <div>
+          <Text color="blackSecondary">File accepted:</Text>
+          <List>{acceptedFileItems}</List>
+          <Text color="blackSecondary">File rejected:</Text>
+          <List>{fileRejectionItems}</List>
+        </div>
+      </div>
+    )
   }
 
   return (
     <section className="container">
+      <StyledDropzoneCertify />
+      <br></br>
       <InputRow>
         <Input
           id={`idInputCertify`}
@@ -207,13 +391,20 @@ const InputComponentCertify = ({ send, transactionStatus }: InputComponentPropsC
           justifyContent: 'center',
         }}
       >
-        <p
-          id="idQRCode"
-          hidden={!isQRCodeVisible || !isSuccess}
-          style={{ height: '168px', width: '168px', border: '20px solid white', borderRadius: '24px' }}
-        >
-          <QRCode value={hashCertify} />
-        </p>
+        {isQRCodeVisible && isSuccess && (
+          <p
+            id="idQRCode"
+            style={{
+              display: isQRCodeVisible && isSuccess ? 'block' : 'none',
+              height: '168px',
+              width: '168px',
+              border: '20px solid white',
+              borderRadius: '24px',
+            }}
+          >
+            <QRCode value={hashCertify} />
+          </p>
+        )}
       </div>
     </section>
   )
@@ -239,8 +430,7 @@ const TransactionFormCertify = ({ send, title, transaction }: TransactionFormCer
       <Text hidden={account != null && chainId === NETWORK_ALLOWED_ID} color="yellow">
         You must be connected with MetaMask on Ropsten Network to perform this operation!
       </Text>
-      <StyledDropzoneCertify />
-      <br></br>
+
       <InputComponentCertify transactionStatus={transaction.status} send={send} />
       <MyBreakText>
         <ErrorMessageCertify transaction={transaction} />
@@ -341,10 +531,102 @@ const InputComponentReset = ({ send, transactionStatus }: InputComponentPropsRes
   const onClick = async () => {
     await send(hashReset) // Send Web3 Transaction
     setValue(hashReset) // Set Input Hash
+    hashReset = '0x0' // Reset Hash
+  }
+
+  // DROPZONE RESET
+  function StyledDropzoneReset(props: any) {
+    const onDrop = useCallback((acceptedFiles) => {
+      acceptedFiles.forEach((file: Blob) => {
+        const reader = new FileReader()
+
+        reader.onabort = () => console.log('file reading was aborted')
+        reader.onerror = () => console.log('file reading has failed')
+        reader.onload = () => {
+          // Do whatever you want with the file contents
+          const arrayBuffer = reader.result
+          console.log('ArrayBufferToWordArray', arrayBufferToWordArray(arrayBuffer))
+
+          // Reset Input Value
+          setValue('')
+
+          hashReset =
+            '0x' +
+            CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), {
+              outputLength: 256,
+            }).toString(CryptoJS.enc.Hex)
+          console.log('Hash', hashReset)
+        }
+        reader.readAsArrayBuffer(file)
+      })
+    }, [])
+
+    const onDropRejected = useCallback(() => {
+      hashCertify = '0x0' // Reset Hash Value
+    }, [])
+
+    const { acceptedFiles, fileRejections, getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } =
+      useDropzone({
+        onDrop,
+        onDropRejected,
+        // accept: 'image/*',
+        maxFiles: 1,
+        disabled: !account || isMining || chainId != NETWORK_ALLOWED_ID,
+      })
+
+    const acceptedFileItems = acceptedFiles.map((file) => (
+      <li className="drac-text drac-text-white" key={(file as MyFile).path}>
+        "{(file as MyFile).path}" - {formatBytes(file.size)}
+      </li>
+    ))
+
+    const fileRejectionItems = fileRejections.map(({ file, errors }) => {
+      return (
+        <li className="drac-text drac-text-white" key={(file as MyFile).path}>
+          {(file as MyFile).path} - {file.size} bytes
+          <ul>
+            {errors.map((e) => (
+              <li className="drac-text drac-text-white" key={e.code}>
+                {e.message}
+              </li>
+            ))}
+          </ul>
+        </li>
+      )
+    })
+
+    const style = useMemo(
+      () => ({
+        ...baseStyle,
+        ...(isDragActive ? activeStyle : {}),
+        ...(isDragAccept ? acceptStyle : {}),
+        ...(isDragReject ? rejectStyle : {}),
+      }),
+      [isDragActive, isDragReject, isDragAccept]
+    )
+
+    return (
+      <div className="container">
+        <br></br>
+        <div {...getRootProps({ style })}>
+          <input {...getInputProps()} />
+          <p>Drag 'n' drop one file here, or click to select file</p>
+        </div>
+        <br></br>
+        <div>
+          <Text color="blackSecondary">File accepted:</Text>
+          {acceptedFileItems}
+          <Text color="blackSecondary">File rejected:</Text>
+          <List>{fileRejectionItems}</List>
+        </div>
+      </div>
+    )
   }
 
   return (
     <section className="container">
+      <StyledDropzoneReset />
+      <br></br>
       <InputRow>
         <Input
           id={`idInputReset`}
@@ -394,8 +676,6 @@ const TransactionFormReset = ({ send, title, transaction }: TransactionFormReset
       <Text hidden={account != null && chainId === NETWORK_ALLOWED_ID} color="yellow">
         You must be connected with MetaMask on Ropsten Network to perform this operation!
       </Text>
-      <StyledDropzoneReset />
-      <br></br>
       <InputComponentReset transactionStatus={transaction.status} send={send} />
       <ErrorMessageReset transaction={transaction} />
     </Card>
@@ -469,238 +749,6 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
       <Text color="red">{'errorMessage' in transaction && transaction.errorMessage}</Text>
     </ErrorRow>
   )
-}
-
-// CRYPTOJS
-let hashCertify = '0x0'
-let hashReset = '0x0'
-
-// HELPER
-function arrayBufferToWordArray(arrayBuffer: ArrayBuffer | string | null) {
-  if (arrayBuffer instanceof ArrayBuffer) {
-    const i8a = new Uint8Array(arrayBuffer)
-    const a = []
-    for (let i = 0; i < i8a.length; i += 4) {
-      a.push((i8a[i] << 24) | (i8a[i + 1] << 16) | (i8a[i + 2] << 8) | i8a[i + 3])
-    }
-    return CryptoJS.lib.WordArray.create(a, i8a.length)
-  } else {
-    return ''
-  }
-}
-
-// HELPER
-function formatBytes(bytes: number, decimals = 2) {
-  if (bytes === 0) return '0 Bytes'
-
-  const k = 1024
-  const dm = decimals < 0 ? 0 : decimals
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-
-  const i = Math.floor(Math.log(bytes) / Math.log(k))
-
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
-}
-
-// DROPZONE CSS
-const baseStyle = {
-  flex: 1,
-  display: 'flex',
-  alignItems: 'center',
-  padding: '20px',
-  borderWidth: 3,
-  borderRadius: 10,
-  borderColor: '#eeeeee',
-  borderStyle: 'dashed',
-  backgroundColor: 'trasparent',
-  color: '#eeeeee',
-  outline: 'none',
-  transition: 'border .24s ease-in-out',
-}
-
-const activeStyle = {
-  borderColor: '#2196f3',
-}
-
-const acceptStyle = {
-  borderColor: '#00e676',
-}
-
-const rejectStyle = {
-  borderColor: '#ff1744',
-}
-
-// DROPZONE FILE WORKAROUND
-interface MyFile extends File {
-  path: string
-}
-
-// DROPZONE CERTIFY
-function StyledDropzoneCertify(props: any) {
-  const onDrop = useCallback((acceptedFiles) => {
-    acceptedFiles.forEach((file: Blob) => {
-      const reader = new FileReader()
-
-      reader.onabort = () => console.log('file reading was aborted')
-      reader.onerror = () => console.log('file reading has failed')
-      reader.onload = () => {
-        // Do whatever you want with the file contents
-
-        // Hide the QRCode
-        isQRCodeVisible = false
-        document.getElementById('idQRCode')!.hidden = !isQRCodeVisible
-
-        const arrayBuffer = reader.result
-        console.log('ArrayBufferToWordArray', arrayBufferToWordArray(arrayBuffer))
-
-        hashCertify =
-          '0x' +
-          CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), {
-            outputLength: 256,
-          }).toString(CryptoJS.enc.Hex)
-        console.log('Hash', hashCertify)
-
-        // Reset the Input Value
-        document.getElementById('idInputCertify')?.setAttribute('value', '')
-      }
-      reader.readAsArrayBuffer(file)
-    })
-  }, [])
-
-  const { acceptedFiles, getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
-    onDrop,
-    // accept: 'image/*',
-    maxFiles: 1,
-  })
-
-  const files = acceptedFiles.map((file) => (
-    <li key={(file as MyFile).path}>
-      "{(file as MyFile).path}" - {formatBytes(file.size)}
-    </li>
-  ))
-
-  const style = useMemo(
-    () => ({
-      ...baseStyle,
-      ...(isDragActive ? activeStyle : {}),
-      ...(isDragAccept ? acceptStyle : {}),
-      ...(isDragReject ? rejectStyle : {}),
-    }),
-    [isDragActive, isDragReject, isDragAccept]
-  )
-
-  return (
-    <div className="container">
-      <br></br>
-      <div {...getRootProps({ style })}>
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop one file here, or click to select file</p>
-      </div>
-      <br></br>
-      <div>
-        <Text color="blackSecondary">File accepted:</Text>
-        <List>
-          <li className="drac-text drac-text-white">{files}</li>
-        </List>
-      </div>
-    </div>
-  )
-}
-
-// DROPZONE RESET
-function StyledDropzoneReset(props: any) {
-  const onDrop = useCallback((acceptedFiles) => {
-    acceptedFiles.forEach((file: Blob) => {
-      const reader = new FileReader()
-
-      reader.onabort = () => console.log('file reading was aborted')
-      reader.onerror = () => console.log('file reading has failed')
-      reader.onload = () => {
-        // Do whatever you want with the file contents
-        const arrayBuffer = reader.result
-        console.log('ArrayBufferToWordArray', arrayBufferToWordArray(arrayBuffer))
-
-        hashReset =
-          '0x' +
-          CryptoJS.SHA3(arrayBufferToWordArray(arrayBuffer), {
-            outputLength: 256,
-          }).toString(CryptoJS.enc.Hex)
-        console.log('Hash', hashReset)
-
-        // Reset the Input Value
-        document.getElementById('idInputReset')?.setAttribute('value', '')
-      }
-      reader.readAsArrayBuffer(file)
-    })
-  }, [])
-
-  const { acceptedFiles, getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
-    onDrop,
-    // accept: 'image/*',
-    maxFiles: 1,
-  })
-
-  const files = acceptedFiles.map((file) => (
-    <li key={(file as MyFile).path}>
-      "{(file as MyFile).path}" - {formatBytes(file.size)}
-    </li>
-  ))
-
-  const style = useMemo(
-    () => ({
-      ...baseStyle,
-      ...(isDragActive ? activeStyle : {}),
-      ...(isDragAccept ? acceptStyle : {}),
-      ...(isDragReject ? rejectStyle : {}),
-    }),
-    [isDragActive, isDragReject, isDragAccept]
-  )
-
-  return (
-    <div className="container">
-      <br></br>
-      <div {...getRootProps({ style })}>
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop one file here, or click to select file</p>
-      </div>
-      <br></br>
-      <div>
-        <Text color="blackSecondary">File accepted:</Text>
-        <List>
-          <li className="drac-text drac-text-white">{files}</li>
-        </List>
-      </div>
-    </div>
-  )
-}
-
-// FUNCTIONS
-export const VerifyFile = () => {
-  const { library } = useEthers()
-
-  return <TransactionFormVerify title="VerifyFile" library={library} />
-}
-
-export const CertifyFile = () => {
-  const { library } = useEthers()
-
-  const contract = new Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library?.getSigner())
-  const { state, send } = useContractFunction(contract, 'certifyFile', {
-    transactionName: 'certifyFile',
-  })
-
-  return <TransactionFormCertify send={(value: string) => send(value)} title="CertifyFile" transaction={state} />
-}
-
-export const ResetFile = () => {
-  const { library } = useEthers()
-
-  const contract = new Contract(NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE, library?.getSigner())
-  const { state, send } = useContractFunction(contract, 'resetFile', {
-    transactionName: 'resetFile',
-  })
-
-  return <TransactionFormReset send={(value: string) => send(value)} title="ResetFile" transaction={state} />
 }
 
 // CSS
