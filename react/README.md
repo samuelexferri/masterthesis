@@ -8,9 +8,9 @@
 
 Built from a development version of [useDApp Framework](https://github.com/EthWorks/useDApp) (ethers.js, web3-react...) and custom GUI modeled with [Dracula UI](https://draculatheme.com/ui). DApp deployed to [AWS S3](https://aws.amazon.com/s3/) thanks to [GitHub Actions Workflow (CI/CD)](https://github.com/features/actions). Backend Smart Contract written in [Solidity](https://soliditylang.org/) and deployed on the Ethereum Ropsten Network at [this](https://ropsten.etherscan.io/address/0x908d02931ea40670efe810e295936a5ca62050bc) address.
 
-UPDATE ETHERSCAN ADDRESS
+_UPDATE ETHERSCAN ADDRESS_
 
-LINK
+[NotarizETH](notarizeth.xyz)
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fsamuelexferri%2Fmasterthesis%2Fbadge%3Fref%3Dmaster&style=for-the-badge)](https://actions-badge.atrox.dev/samuelexferri/masterthesis/goto?ref=master)
 ![alt text](https://img.shields.io/badge/Dracula%20UI-Made%20for%20Vampires%20%F0%9F%A7%9B%E2%80%8D%E2%99%82%EF%B8%8F-6272a4?style=for-the-badge)

@@ -21,11 +21,9 @@ See the `doc/` and the `solidity/analysis/` folders.
 
 ### Part Two
 
-Development of the DApp NotarizETH.
+Development of the DApp [NotarizETH](notarizeth.xyz).
 
 See the `doc/` and `react/` folders.
-
-LINK
 
 ## Authors
 
