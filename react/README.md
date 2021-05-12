@@ -10,7 +10,7 @@ Built from a development version of [useDApp Framework](https://github.com/EthWo
 
 _UPDATE ETHERSCAN ADDRESS_
 
-[NotarizETH](notarizeth.xyz)
+[NotarizETH](https://notarizeth.xyz/)
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fsamuelexferri%2Fmasterthesis%2Fbadge%3Fref%3Dmaster&style=for-the-badge)](https://actions-badge.atrox.dev/samuelexferri/masterthesis/goto?ref=master)
 ![alt text](https://img.shields.io/badge/Dracula%20UI-Made%20for%20Vampires%20%F0%9F%A7%9B%E2%80%8D%E2%99%82%EF%B8%8F-6272a4?style=for-the-badge)
