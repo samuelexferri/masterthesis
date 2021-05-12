@@ -97,7 +97,7 @@ export function TopBar() {
           </Anchor>
         </Menu>
 
-        <Text size="lg" style={{ marginLeft: '75px' }}>
+        <Text size="lg" weight="bold" style={{ marginLeft: '75px' }}>
           NotarizETH
         </Text>
 
