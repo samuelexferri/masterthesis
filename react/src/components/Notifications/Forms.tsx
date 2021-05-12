@@ -227,7 +227,13 @@ const TransactionFormVerify = ({ title, library }: TransactionFormVerify) => {
 
 // CERTIFY
 // DROPZONE CERTIFY
-const StyledDropzoneCertify = ({ transactionStatus, setValue, setIsQRCodeVisible }) => {
+interface StyledDropzoneCertify {
+  transactionStatus: string
+  setValue: (arg0: string) => void
+  setIsQRCodeVisible: (arg0: boolean) => void
+}
+
+const StyledDropzoneCertify = ({ transactionStatus, setValue, setIsQRCodeVisible }: StyledDropzoneCertify) => {
   const { account, chainId } = useEthers()
 
   const isMining = transactionStatus === 'Mining'
@@ -517,7 +523,12 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
 
 // RESET
 // DROPZONE RESET
-const StyledDropzoneReset = ({ transactionStatus, setValue }) => {
+interface StyledDropzoneReset {
+  transactionStatus: string
+  setValue: (arg0: string) => void
+}
+
+const StyledDropzoneReset = ({ transactionStatus, setValue }: StyledDropzoneReset) => {
   const { account, chainId } = useEthers()
 
   const isMining = transactionStatus === 'Mining'
@@ -793,13 +804,3 @@ const ErrorRow = styled.div`
   font-size: 14px;
   margin: 8px auto 32px auto;
 `
-function setIsQRCodeVisible(transactionStatus: any, setIsQRCodeVisible: any) {
-  throw new Error('Function not implemented.')
-}
-
-function transactionStatus(
-  transactionStatus: any,
-  setIsQRCodeVisible: (transactionStatus: any, setIsQRCodeVisible: any) => void
-) {
-  throw new Error('Function not implemented.')
-}
