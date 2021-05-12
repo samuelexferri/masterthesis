@@ -26,7 +26,7 @@ See the `analysis-truffle/` folder for a ready Truffle project.
 
 ### NotarizETH
 
-Smart Contract of the DApp NotarizETH.
+Smart Contract of the DApp [NotarizETH](https://notarizeth.xyz/).
 
 Use some libraries from [OpenZeppelin Contracts](https://openzeppelin.com/contracts/) for secure smart contract development.
 
