@@ -27,6 +27,8 @@ See the `doc/` and `react/` folders.
 
 LINK
 
+## Authors
+
 ### Team
 
 -   **Samuele Ferri**: [Site](https://samuelexferri.com), [GitHub](https://github.com/samuelexferri)
