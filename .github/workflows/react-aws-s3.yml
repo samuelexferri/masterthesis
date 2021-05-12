@@ -32,7 +32,7 @@ jobs:
       run: |
         CI='' yarn build 
       working-directory: ./react/
-    - name: Deploy to S3 (S3 Sync)
+    - name: Deploy to S3 Bucket (S3 Sync)
       uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --follow-symlinks --delete
