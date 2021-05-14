@@ -50,7 +50,7 @@ export function Home() {
           <SectionRow>
             <Heading>Home</Heading>
 
-            {account ? <Text>{account}</Text> : <Text></Text>}
+            {account ? <MyBreakText>{account}</MyBreakText> : <Text></Text>}
 
             <Avatar title="Samuele Ferri" src={polyIMG} />
           </SectionRow>
@@ -62,17 +62,25 @@ export function Home() {
           <Card color="pinkPurple" p="sm">
             {account && (
               <ContentRow>
-                <Text color="black">Account:</Text> <Text>{account}</Text>
+                <Text color="black" weight="semibold">
+                  Account:
+                </Text>{' '}
+                <MyBreakText color="black">{account}</MyBreakText>
               </ContentRow>
             )}
             {userBalance && (
               <ContentRow>
-                <Text color="black">Ether Balance:</Text> <Text>{formatEther(userBalance)}</Text> <Text>ETH</Text>
+                <Text color="black" weight="semibold">
+                  Ether Balance:
+                </Text>{' '}
+                <Text color="black">{formatEther(userBalance)} ETH</Text>
               </ContentRow>
             )}
 
             <ContentRow>
-              <Text color="black">NotarizETH Contract Address:</Text>{' '}
+              <Text color="black" weight="semibold">
+                NotarizETH Contract Address:
+              </Text>{' '}
               <Anchor
                 href={'https://ropsten.etherscan.io/address/' + NOTARIZETH_ADDRESS}
                 target="_blank"
@@ -89,10 +97,14 @@ export function Home() {
 
           <Card color="pinkPurple" p="sm">
             <MyBreakText color="black">
-              <Text>Certify your files on the Ethereum Blockchain!</Text>
+              <Text color="black" weight="semibold">
+                Certify your files on the Ethereum Blockchain!
+              </Text>
               <br></br>
               <br></br>
-              <Text color="orange">Tamper Evidence, Decentralization, Transparency...</Text>
+              <Text color="black">
+                <i>Tamper Evidence, Decentralization, Transparency...</i>
+              </Text>
               <br></br>
               <br></br>
               Notarize your document, certify it by writing a timestamped digital signature of your file into the

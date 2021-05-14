@@ -52,7 +52,7 @@ export function Info() {
           <SectionRow>
             <Heading>Info</Heading>
 
-            {account ? <Text>{account}</Text> : <Text></Text>}
+            {account ? <MyBreakText>{account}</MyBreakText> : <Text></Text>}
 
             <Avatar title="Samuele Ferri" src={polyIMG} />
           </SectionRow>
@@ -64,17 +64,25 @@ export function Info() {
           <Card color="pinkPurple" p="sm">
             {account && (
               <ContentRow>
-                <Text color="black">Account:</Text> <Text>{account}</Text>
+                <Text color="black" weight="semibold">
+                  Account:
+                </Text>{' '}
+                <MyBreakText color="black">{account}</MyBreakText>
               </ContentRow>
             )}
             {userBalance && (
               <ContentRow>
-                <Text color="black">Ether Balance:</Text> <Text>{formatEther(userBalance)}</Text> <Text>ETH</Text>
+                <Text color="black" weight="semibold">
+                  Ether Balance:
+                </Text>{' '}
+                <Text color="black">{formatEther(userBalance)} ETH</Text>
               </ContentRow>
             )}
 
             <ContentRow>
-              <Text color="black">NotarizETH Contract Address:</Text>{' '}
+              <Text color="black" weight="semibold">
+                NotarizETH Contract Address:
+              </Text>{' '}
               <Anchor
                 href={'https://ropsten.etherscan.io/address/' + NOTARIZETH_ADDRESS}
                 target="_blank"
@@ -82,7 +90,7 @@ export function Info() {
                 hoverColor="yellowPink"
                 mb="sm"
               >
-                <MyBreakText>{NOTARIZETH_ADDRESS}</MyBreakText>
+                <MyBreakText color="black">{NOTARIZETH_ADDRESS}</MyBreakText>
               </Anchor>
             </ContentRow>
           </Card>
@@ -91,19 +99,31 @@ export function Info() {
 
           <Card color="pinkPurple" p="sm">
             <ContentRow>
-              <Text color="black">Chain ID:</Text> <Text>{chainId}</Text>
+              <Text color="black" weight="semibold">
+                Chain ID:
+              </Text>{' '}
+              <Text color="black">{chainId}</Text>
             </ContentRow>
             <ContentRow>
-              <Text color="black">Current Block:</Text> <Text>{blockNumber}</Text>
+              <Text color="black" weight="semibold">
+                Current Block:
+              </Text>{' '}
+              <Text color="black">{blockNumber}</Text>
             </ContentRow>
             {difficulty && (
               <ContentRow>
-                <Text color="black">Current Difficulty:</Text> <Text>{difficulty.toString()}</Text>
+                <Text color="black" weight="semibold">
+                  Current Difficulty:
+                </Text>{' '}
+                <Text color="black">{difficulty.toString()}</Text>
               </ContentRow>
             )}
             {timestamp && (
               <ContentRow>
-                <Text color="black">Current Block Timestamp:</Text> <Text>{timestamp.toString()}</Text>
+                <Text color="black" weight="semibold">
+                  Current Block Timestamp:
+                </Text>{' '}
+                <Text color="black">{timestamp.toString()}</Text>
               </ContentRow>
             )}
           </Card>

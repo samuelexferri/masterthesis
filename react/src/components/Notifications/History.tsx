@@ -24,8 +24,10 @@ interface TableWrapperProps {
 
 const TableWrapper = ({ children, title }: TableWrapperProps) => (
   <Card color="pinkPurple" p="sm">
-    <TitleRow>
-      <Heading size="md">{title}</Heading>
+    <TitleRow style={{ display: 'flex', justifyContent: 'center' }}>
+      <Heading size="md" color="black">
+        {title}
+      </Heading>
     </TitleRow>
     <MyTable>{children}</MyTable>
   </Card>
@@ -228,7 +230,7 @@ const TitleRow = styled(Text)`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  border-bottom: ${Colors.Foreground} 2px solid;
+  border-bottom: ${Colors.Background} 2px solid;
   padding: 16px;
   font-size: 18px;
 `

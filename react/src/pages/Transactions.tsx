@@ -6,7 +6,7 @@ import { CertifyFile, ResetFile, VerifyFile } from '../components/Notifications/
 import { NotificationsList, TransactionsList } from '../components/Notifications/History'
 
 import styled from 'styled-components'
-import { Container, MainContent, Section, SectionRow } from '../components/base/base'
+import { Container, MainContent, MyBreakText, Section, SectionRow } from '../components/base/base'
 
 import { Avatar, Box, Heading, Text } from '@dracula/dracula-ui'
 
@@ -51,7 +51,7 @@ export function Transactions() {
           <SectionRow>
             <Heading>Transactions</Heading>
 
-            {account ? <Text>{account}</Text> : <Text></Text>}
+            {account ? <MyBreakText>{account}</MyBreakText> : <Text></Text>}
 
             <Avatar title="Samuele Ferri" src={polyIMG} />
           </SectionRow>

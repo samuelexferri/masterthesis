@@ -120,8 +120,10 @@ interface TitlePropsBasic {
 
 const TitleBasic = ({ title }: TitlePropsBasic) => {
   return (
-    <TitleRow>
-      <Heading size="md">{title}</Heading>
+    <TitleRow style={{ display: 'flex', justifyContent: 'center' }}>
+      <Heading size="md" color="black">
+        {title}
+      </Heading>
     </TitleRow>
   )
 }
@@ -216,7 +218,7 @@ const TransactionFormVerify = ({ title, library }: TransactionFormVerify) => {
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} />
       <LabelRow>
-        <Text color="blackSecondary">
+        <Text color="black">
           Verify the timestamp and owner of a file by uploading it or entering its Keccak256 hash.
         </Text>
       </LabelRow>
@@ -320,9 +322,9 @@ const StyledDropzoneCertify = ({ transactionStatus, setValue, setIsQRCodeVisible
       </div>
       <br></br>
       <div>
-        <Text color="blackSecondary">File accepted:</Text>
+        <Text color="black">File accepted:</Text>
         <List>{acceptedFileItems}</List>
-        <Text color="blackSecondary">File rejected:</Text>
+        <Text color="black">File rejected:</Text>
         <List>{fileRejectionItems}</List>
       </div>
     </div>
@@ -436,9 +438,7 @@ const TransactionFormCertify = ({ send, title, transaction }: TransactionFormCer
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} />
       <LabelRow>
-        <Text color="blackSecondary">
-          Certify your file on the Ethereum blockchain and save the Keccak256 hash as proof.
-        </Text>
+        <Text color="black">Certify your file on the Ethereum blockchain and save the Keccak256 hash as proof.</Text>
       </LabelRow>
       <Text hidden={account != null && chainId === NETWORK_ALLOWED_ID} color="yellow">
         You must be connected with MetaMask on Ropsten Network to perform this operation!
@@ -611,9 +611,9 @@ const StyledDropzoneReset = ({ transactionStatus, setValue }: StyledDropzoneRese
       </div>
       <br></br>
       <div>
-        <Text color="blackSecondary">File accepted:</Text>
+        <Text color="black">File accepted:</Text>
         <List>{acceptedFileItems}</List>
-        <Text color="blackSecondary">File rejected:</Text>
+        <Text color="black">File rejected:</Text>
         <List>{fileRejectionItems}</List>
       </div>
     </div>
@@ -690,7 +690,7 @@ const TransactionFormReset = ({ send, title, transaction }: TransactionFormReset
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} />
       <LabelRow>
-        <Text color="blackSecondary">
+        <Text color="black">
           If you are the owner of a file, you can remove it from the Ethereum blockchain if you want.
         </Text>
       </LabelRow>
@@ -791,7 +791,7 @@ const TitleRow = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  border-bottom: ${Colors.Foreground} 2px solid;
+  border-bottom: ${Colors.Background} 0px solid;
   padding: 16px;
 `
 
