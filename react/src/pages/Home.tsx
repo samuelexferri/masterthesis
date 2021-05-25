@@ -103,7 +103,7 @@ export function Home() {
               <br></br>
               <br></br>
               <Text color="black">
-                <i>Tamper Evidence, Decentralization, Transparency...</i>
+                <i>Tamper-Proof, Decentralization, Transparency...</i>
               </Text>
               <br></br>
               <br></br>
@@ -112,11 +112,11 @@ export function Home() {
               signed it and had access to it.
               <br></br>
               <br></br>
-              Privacy! No uploading of files, the Keccak256 hash is calculated locally, the entire document is not
+              Privacy! Your files are not uploaded, the Keccak256 hash is calculated locally, the entire document is not
               stored on the blockchain but only its hash.
               <br></br>
               <br></br>
-              Try yourself going into{' '}
+              Try yourself going into the{' '}
               <Anchor href={'./transactions'} color="cyanGreen" hoverColor="yellowPink" mb="sm">
                 transactions
               </Anchor>{' '}
