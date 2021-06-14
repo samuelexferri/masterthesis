@@ -16,7 +16,7 @@ import { SpinnerIcon } from './Icons'
 
 import 'reactjs-popup/dist/index.css'
 
-import { Button, Card, Heading, Input, List, Text } from '@dracula/dracula-ui'
+import { Box, Button, Card, Heading, Input, List, Text } from '@dracula/dracula-ui'
 
 import { NETWORK_ALLOWED_ID, NOTARIZETH_ADDRESS, NOTARIZETH_ABI_INTERFACE } from '../../Constants'
 
@@ -59,10 +59,10 @@ const baseStyle = {
   padding: '20px',
   borderWidth: 3,
   borderRadius: 10,
-  borderColor: '#eeeeee',
+  borderColor: '#282A36',
   borderStyle: 'dashed',
   backgroundColor: 'trasparent',
-  color: '#eeeeee',
+  color: '#282A36',
   outline: 'none',
   transition: 'border .24s ease-in-out',
 }
@@ -148,7 +148,7 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
       // Input Error
       console.log('Input Error', valuehash)
       document.getElementById('idHolderVerify')!.textContent =
-        'Input Error! The file hash must be in byte format (32 bytes, string length is 64 or 66 with 0x prefix)'
+        'Input Error! The file hash must be in byte format (32 bytes, the string length is 64 or 66 with 0x prefix)'
       return
     }
 
@@ -158,12 +158,12 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
         console.log('VerifyFile', res),
           (document.getElementById('idHolderVerify')!.innerHTML =
             res[0] == false
-              ? 'File hash ' + valuehash + ' not exist on the blockchain'
+              ? 'File hash ' + valuehash + ' not exist in the smart contract mapping!'
               : 'File hash ' +
                 valuehash +
-                ' exist on the blockchain:' +
+                ' exist in the smart contract mapping:' +
                 '<br>' +
-                'Owner: <a href="https://ropsten.etherscan.io/address/' +
+                'Sender: <a href="https://ropsten.etherscan.io/address/' +
                 res[1] +
                 '" target="_blank"  class="drac-anchor drac-text drac-text-cyan-green drac-text-yellow-pink--hover drac-mb-sm">' +
                 res[1] +
@@ -202,7 +202,11 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
       </InputRow>
       <br></br>
       <MyBreakText>
-        <Text id="idHolderVerify"></Text>
+        <Box color="blackSecondary" width="full" rounded="lg" p="sm" display="flex">
+          <Text id="idHolderVerify" size="md">
+            <p style={{ color: '#727C8F' }}>Output Box</p>
+          </Text>
+        </Box>
       </MyBreakText>
     </section>
   )
@@ -218,9 +222,7 @@ const TransactionFormVerify = ({ title, library }: TransactionFormVerify) => {
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} />
       <LabelRow>
-        <Text color="black">
-          Verify the timestamp and owner of a file by uploading it or entering its Keccak256 hash.
-        </Text>
+        <Text color="black">Verify the timestamp of a file by entering its Keccak256 hash.</Text>
       </LabelRow>
       <InputComponentVerify library={library} />
     </Card>
@@ -318,7 +320,7 @@ const StyledDropzoneCertify = ({ transactionStatus, setValue, setIsQRCodeVisible
       <br></br>
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <Text color="white">Drag 'n' drop one file here, or click to select file</Text>
+        <Text color="black">Drag 'n' drop one file here, or click to select file</Text>
       </div>
       <br></br>
       <div>
@@ -438,13 +440,14 @@ const TransactionFormCertify = ({ send, title, transaction }: TransactionFormCer
     <Card color="pinkPurple" p="sm">
       <TitleBasic title={title} />
       <LabelRow>
-        <Text color="black">Certify your file on the Ethereum blockchain and save the Keccak256 hash as proof.</Text>
+        <Text color="black">
+          Certify the existence of your file on the blockchain by saving its Keccak256 hash as proof.
+        </Text>
       </LabelRow>
+      <InputComponentCertify transactionStatus={transaction.status} send={send} />
       <Text hidden={account != null && chainId === NETWORK_ALLOWED_ID} color="yellow">
         You must be connected with MetaMask on Ropsten Network to perform this operation!
       </Text>
-
-      <InputComponentCertify transactionStatus={transaction.status} send={send} />
       <MyBreakText>
         <ErrorMessageCertify transaction={transaction} />
       </MyBreakText>
@@ -466,7 +469,9 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
   if (transaction.status == 'Success') {
     return (
       <ErrorRow>
-        <Text color="green">{'Successfull! Your file hash is stored on the blockchain!'}</Text>
+        <Box color="blackSecondary" width="full" rounded="lg" p="sm" display="flex">
+          <Text color="green">{'Successfull! Your file hash is stored in the smart contract mapping!'}</Text>
+        </Box>
       </ErrorRow>
     )
   }
@@ -477,9 +482,11 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
   if (error_temp == error_1) {
     return (
       <ErrorRow>
-        <Text color="yellow">
-          {'Upload your file before! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}
-        </Text>
+        <Box color="blackSecondary" width="full" rounded="lg" p="sm" display="flex">
+          <Text color="yellow">
+            {'Upload your file before! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}
+          </Text>
+        </Box>
       </ErrorRow>
     )
   } else if (error_temp == error_2) {
@@ -487,13 +494,13 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
 
     contractEther.verifyFile(hashCertify).then(function (res: boolean[]) {
       console.log('CertifyErrorVerifyFile', res),
-        // General error or already exist on the blockchain
+        // General error or already exist in the smart contract mapping
         (document.getElementById('idHolderCertify')!.innerHTML =
           res[0] == false
             ? 'General Error!'
-            : 'The file hash already exists on the Ethereum blockchain!' +
+            : 'The file hash already exists in the smart contract mapping!' +
               '<br>' +
-              'Owner: <a href="https://ropsten.etherscan.io/address/' +
+              'Sender: <a href="https://ropsten.etherscan.io/address/' +
               res[1] +
               '" target="_blank"  class="drac-anchor drac-text drac-text-cyan-green drac-text-yellow-pink--hover drac-mb-sm">' +
               res[1] +
@@ -506,14 +513,14 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
 
     return (
       <ErrorRow>
-        <MyBreakText>
+        <Box color="blackSecondary" width="full" rounded="lg" p="sm" display="flex">
           <Text color="red" id="idHolderCertify"></Text>
-        </MyBreakText>
+        </Box>
       </ErrorRow>
     )
   }
 
-  // Other error
+  // Other Error (no box)
   return (
     <ErrorRow>
       <Text color="red">{'errorMessage' in transaction && transaction.errorMessage}</Text>
@@ -607,7 +614,7 @@ const StyledDropzoneReset = ({ transactionStatus, setValue }: StyledDropzoneRese
       <br></br>
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <Text color="white">Drag 'n' drop one file here, or click to select file</Text>
+        <Text color="black">Drag 'n' drop one file here, or click to select file</Text>
       </div>
       <br></br>
       <div>
@@ -691,14 +698,17 @@ const TransactionFormReset = ({ send, title, transaction }: TransactionFormReset
       <TitleBasic title={title} />
       <LabelRow>
         <Text color="black">
-          If you are the owner of a file, you can remove it from the Ethereum blockchain if you want.
+          If you previously sent a Keccak256 hash, you can remove it from the smart contract mapping if you want.
         </Text>
       </LabelRow>
+      <InputComponentReset transactionStatus={transaction.status} send={send} />
+      <br></br>
       <Text hidden={account != null && chainId === NETWORK_ALLOWED_ID} color="yellow">
         You must be connected with MetaMask on Ropsten Network to perform this operation!
       </Text>
-      <InputComponentReset transactionStatus={transaction.status} send={send} />
-      <ErrorMessageReset transaction={transaction} />
+      <MyBreakText>
+        <ErrorMessageReset transaction={transaction} />
+      </MyBreakText>
     </Card>
   )
 }
@@ -717,7 +727,9 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
   if (transaction.status == 'Success') {
     return (
       <ErrorRow>
-        <Text color="green">{'Successfull! Your file hash is removed from the blockchain!'}</Text>
+        <Box color="blackSecondary" width="full" rounded="lg" p="sm" display="flex">
+          <Text color="green">{'Successfull! Your file hash is removed from the smart contract mapping!'}</Text>
+        </Box>
       </ErrorRow>
     )
   }
@@ -728,9 +740,11 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
   if (error_temp == error_1) {
     return (
       <ErrorRow>
-        <Text color="yellow">
-          {'Upload your file before! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}
-        </Text>
+        <Box color="blackSecondary" width="full" rounded="lg" p="sm" display="flex">
+          <Text color="yellow">
+            {'Upload your file before! Full details: '} {'errorMessage' in transaction && transaction.errorMessage}
+          </Text>
+        </Box>
       </ErrorRow>
     )
   } else if (error_temp == error_2) {
@@ -738,13 +752,13 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
 
     contractEther.verifyFile(hashReset).then(function (res: boolean[]) {
       console.log('ResetErrorVerifyFile', res),
-        // Not exist on the blockchain or you are not the owner
+        // Not exist on the smart contract mapping or you are not the sender
         ((document.getElementById('idHolderReset')!.innerHTML =
           res[0] == false
-            ? 'The file hash does not exists on the Ethereum blockchain!'
-            : 'You are not the owner of the file hash!' +
+            ? 'The file hash does not exists in the smart contract mapping!'
+            : 'You are not the sender of the file hash!' +
               '<br>' +
-              'Owner: <a href="https://ropsten.etherscan.io/address/' +
+              'Sender: <a href="https://ropsten.etherscan.io/address/' +
               res[1] +
               '" target="_blank"  class="drac-anchor drac-text drac-text-cyan-green drac-text-yellow-pink--hover drac-mb-sm">' +
               res[1] +
@@ -757,14 +771,14 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
 
     return (
       <ErrorRow>
-        <MyBreakText>
+        <Box color="blackSecondary" width="full" rounded="lg" p="sm" display="flex">
           <Text color="red" id="idHolderReset"></Text>
-        </MyBreakText>
+        </Box>
       </ErrorRow>
     )
   }
 
-  // Other Error
+  // Other Error (no box)
   return (
     <ErrorRow>
       <Text color="red">{'errorMessage' in transaction && transaction.errorMessage}</Text>

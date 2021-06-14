@@ -10,6 +10,7 @@ import { Anchor, Avatar, Box, Card, Heading, Text } from '@dracula/dracula-ui'
 import polyIMG from '../assets/images/poly.png'
 
 import { NETWORK_ALLOWED_ID, NETWORK_ALLOWED_NAME, NOTARIZETH_ADDRESS } from '../Constants'
+import styled from 'styled-components'
 
 export function Home() {
   const { account, chainId } = useEthers()
@@ -97,23 +98,22 @@ export function Home() {
 
           <Card color="pinkPurple" p="sm">
             <MyBreakText color="black">
-              <Text color="black" weight="semibold">
-                Certify your files on the Ethereum Blockchain!
-              </Text>
-              <br></br>
-              <br></br>
-              <Text color="black">
-                <i>Tamper-Proof, Decentralization, Transparency...</i>
-              </Text>
-              <br></br>
-              <br></br>
-              Notarize your document, certify it by writing a timestamped digital signature of your file into the
-              Ethereum Blockchain to later prove its existence, its integrity over time and that you cryptographically
-              signed it and had access to it.
+              <LabelRow>
+                <Text color="black" weight="semibold" align="center">
+                  Certify your files on the Ethereum Blockchain!
+                </Text>
+              </LabelRow>
+              <LabelRow>
+                <Text color="black" align="center">
+                  <i>Tamper-Proof, Decentralization, Transparency</i>
+                </Text>
+              </LabelRow>
+              Notarize your document by writing its Keccak256 hash in the smart contract mapping hosted on the Ethereum
+              blockchain to later prove its existence and its integrity over time.
               <br></br>
               <br></br>
               Privacy! Your files are not uploaded, the Keccak256 hash is calculated locally, the entire document is not
-              stored on the blockchain but only its hash.
+              stored on the blockchain but only its Keccak256 hash.
               <br></br>
               <br></br>
               Try yourself going into the{' '}
@@ -151,3 +151,9 @@ export function Home() {
     </MainContent>
   )
 }
+
+const LabelRow = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 16px 0 24px 0;
+`
