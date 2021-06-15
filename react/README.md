@@ -8,7 +8,13 @@
 
 Built from a development version of [useDApp Framework](https://github.com/EthWorks/useDApp) (ethers.js, web3-react...) and custom GUI modeled with [Dracula UI](https://draculatheme.com/ui). DApp deployed to [AWS S3](https://aws.amazon.com/s3/) thanks to [GitHub Actions Workflow (CI/CD)](https://github.com/features/actions). Backend Smart Contract written in [Solidity](https://soliditylang.org/) and deployed on the Ethereum Ropsten Network at [this](https://ropsten.etherscan.io/address/0x908d02931ea40670efe810e295936a5ca62050bc) address.
 
-_UPDATE ETHERSCAN ADDRESS_
+**Certify your files on the Ethereum Blockchain!**
+
+Tamper-Proof, Decentralization, Transparency
+
+Notarize your document by writing its Keccak256 hash in the smart contract mapping hosted on the Ethereum blockchain to later prove its existence and its integrity over time.
+
+Privacy! Your files are not uploaded, the Keccak256 hash is calculated locally, the entire document is not stored on the blockchain but only its Keccak256 hash.
 
 [NotarizETH](https://notarizeth.xyz/)
 
