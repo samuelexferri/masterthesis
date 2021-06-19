@@ -8,63 +8,61 @@ contract NotarizETH is AccessControl {
     struct Certificate {
         bool exist; 
         address author;
-        bytes32 file_hash;
-        uint256 timestamp;
+        uint80 timestamp;
+        bytes32 filehash;
     }
 
     // Event that will be fired when a file is certified
-    event FileCertified(address author, bytes32 file_hash, uint256 timestamp);
+    event FileCertified(address author, uint256 timestamp, bytes32 filehash);
 
     // Object that will store the file certificates by hash
     mapping(bytes32 => Certificate) records;
     
     // Constructor
-    constructor () {
-        // Who creates the contract is Admin
+    constructor() {
+        // Who creates the contract is admin
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
     // Function that allows users to verify if a file has been certified before
-    function verifyFile(bytes32 file_hash) public view returns (bool, address, bytes32, uint256) {
-        Certificate memory record = records[file_hash];
+    function verifyFile(bytes32 filehash) public view returns (bool, address, uint80, bytes32) {
+        Certificate memory record = records[filehash];
 
         if (record.exist == true) {
             return (
                 true,
                 record.author,
-                record.file_hash,
-                record.timestamp
+                record.timestamp,
+                record.filehash
             );
         } else {
             return (
                 false,
                 address(0x0),
-                bytes32(0),
-                uint256(0)
+                uint80(0),
+                bytes32(0)
             );
         }
     }
 
     // Function that allows users to certify a file
-    function certifyFile(bytes32 file_hash) public {
-        Certificate memory new_certificate = Certificate(true, msg.sender, file_hash, block.timestamp);
-
+    function certifyFile(bytes32 filehash) public {
         // Control that the file hash not exist yet
-        require(records[file_hash].exist != true, "Certificate with given hash already exists");
+        require(records[filehash].exist != true, "Certificate with given file hash already exists");
 
-        records[file_hash] = new_certificate;
+        records[filehash] = Certificate(true, msg.sender, uint80(block.timestamp), filehash);
         
         // Permissions to modify the file data to the actual sender
-        grantRoleHash(file_hash, msg.sender);
+        grantRoleHash(filehash, msg.sender);
 
-        emit FileCertified(msg.sender, file_hash, block.timestamp);
+        emit FileCertified(msg.sender, uint80(block.timestamp), filehash);
     }
 
     // Function that reset a file certificate from records (Modifier onlyRole)
-    function resetFile(bytes32 file_hash) public onlyRole(file_hash) {
-        revokeRoleHash(file_hash, records[file_hash].author);
+    function resetFile(bytes32 filehash) public onlyRole(filehash) {
+        revokeRoleHash(filehash, records[filehash].author);
 
-        delete records[file_hash];
+        delete records[filehash];
     }
     
     // Return true if the account belongs to the admin role
@@ -86,17 +84,17 @@ contract NotarizETH is AccessControl {
     
     // Grant the permissions to modify the file data to the actual sender
     function grantRoleHash(bytes32 role, address account) private {
-        require(account == _msgSender(), "AccessControl: can only grant hash role for self");
+        require(account == _msgSender(), "AccessControl: can only grant file hash role for self");
         _grantRole(role, account);
     }
     
     // Revoke the permissions to modify the file data to the actual sender
     function revokeRoleHash(bytes32 role, address account) private {
-        require(account == _msgSender(), "AccessControl: can only revoke hash role for self");
+        require(account == _msgSender(), "AccessControl: can only revoke file hash role for self");
          _revokeRole(role, account);
     }
     
-    // Removes the entire contract from the blockchain and invalidates all signatures 
+    // 'Removes' the contract code from the blockchain and invalidates all signatures 
     function removeContract() public onlyRole(DEFAULT_ADMIN_ROLE) {
         selfdestruct(payable(msg.sender));
     }
