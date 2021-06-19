@@ -170,7 +170,7 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
                 '</a>' +
                 '<br>' +
                 'Timestamp: ' +
-                new Date(Number(res[3]) * 1000)),
+                new Date(Number(res[2]) * 1000)),
           (document.getElementById('idHolderVerify')!.className =
             res[0] == false
               ? 'drac-text drac-line-height drac-text-yellow'
@@ -189,7 +189,7 @@ const InputComponentVerify = ({ library }: InputComponentPropsVerify) => {
       <InputRow>
         <Input
           id={`Input`}
-          size="medium"
+          size="md"
           color="white"
           placeholder="0xBYTES"
           type="text"
@@ -374,7 +374,7 @@ const InputComponentCertify = ({ send, transactionStatus }: InputComponentPropsC
       <InputRow>
         <Input
           id={`idInputCertify`}
-          size="medium"
+          size="md"
           color="white"
           placeholder="0xBYTES"
           type="text"
@@ -507,7 +507,7 @@ const ErrorMessageCertify = ({ transaction }: ErrorRowPropsCertify) => {
               '</a>' +
               '<br>' +
               'Timestamp: ' +
-              new Date(Number(res[3]) * 1000)),
+              new Date(Number(res[2]) * 1000)),
         (document.getElementById('idHolderCertify')!.className = 'drac-text drac-line-height drac-text-red')
     })
 
@@ -658,7 +658,7 @@ const InputComponentReset = ({ send, transactionStatus }: InputComponentPropsRes
       <InputRow>
         <Input
           id={`idInputReset`}
-          size="medium"
+          size="md"
           color="white"
           placeholder="0xBYTES"
           type="text"
@@ -765,7 +765,7 @@ const ErrorMessageReset = ({ transaction }: ErrorRowPropsReset) => {
               '</a>' +
               '<br>' +
               'Timestamp: ' +
-              new Date(Number(res[3]) * 1000)),
+              new Date(Number(res[2]) * 1000)),
         (document.getElementById('idHolderReset')!.className = 'drac-text drac-line-height drac-text-red'))
     })
 
