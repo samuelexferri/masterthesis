@@ -6,14 +6,15 @@
 
 **NotarizETH** - A [React](https://reactjs.org/) Distributed App connected with the Ethereum Ropsten Network through Web3 Providers ([Infura](https://infura.io/), [MetaMask](https://metamask.io/))
 
-Built from a development version of [useDApp Framework](https://github.com/EthWorks/useDApp) (ethers.js, web3-react...) and custom GUI modeled with [Dracula UI](https://draculatheme.com/ui). DApp deployed to [AWS S3](https://aws.amazon.com/s3/) thanks to [GitHub Actions Workflow (CI/CD)](https://github.com/features/actions). Backend Smart Contract written in [Solidity](https://soliditylang.org/) and deployed on the Ethereum Ropsten Network at [this](https://ropsten.etherscan.io/address/0x39B1704688cBBE66A9bdd88A06eaf3A496d132F6) address.
+Built using [useDApp Framework](https://github.com/EthWorks/useDApp) (ethers.js, web3-react...) and custom GUI modeled with [Dracula UI](https://draculatheme.com/ui).\
+Application deployed to [AWS S3](https://aws.amazon.com/s3/) thanks to [GitHub Actions Workflow (CI/CD)](https://github.com/features/actions).\
+Backend Smart Contract written in [Solidity](https://soliditylang.org/) and deployed on the Ethereum Ropsten Network at [this address](https://ropsten.etherscan.io/address/0x39B1704688cBBE66A9bdd88A06eaf3A496d132F6).
 
 **Certify your files on the Ethereum Blockchain!**
 
 _Tamper-Proof, Decentralization, Transparency_
 
-Notarize your document by writing its Keccak256 hash in the smart contract mapping hosted on the Ethereum blockchain to later prove its existence and its integrity over time.
-
+Notarize your document by writing its Keccak256 hash in the smart contract mapping hosted on the Ethereum blockchain to later prove its existence and its integrity over time.\
 Privacy! Your files are not uploaded, the Keccak256 hash is calculated locally, the entire document is not stored on the blockchain but only its Keccak256 hash.
 
 [NotarizETH](https://notarizeth.xyz/)
