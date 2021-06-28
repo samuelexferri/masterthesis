@@ -1,27 +1,23 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.9.0;
+pragma solidity >=0.8.0 <0.9.0;
 
 contract Bool {
-    
     uint256 packedBools;
     
-    function test() public returns(bool) {
-        bool b = true;
-        uint256 pos = 0;
-        
-        packedBools = setBoolean(packedBools, pos, b);
-        return getBoolean(packedBools, pos);
+    function test(uint256 pos, bool value) public returns(bool) {
+        setBoolean(pos, value);
+        return getBoolean(pos);
     }
     
-    function getBoolean(uint256 packedBools, uint256 boolNumber) public view returns(bool) {
-        uint256 flag = (packedBools >> boolNumber) & uint256(1);
+    function getBoolean(uint256 pos) public view returns(bool) {
+        uint256 flag = (packedBools >> pos) & uint256(1);
         return (flag == 1 ? true : false);
     }
     
-    function setBoolean(uint256 packedBools, uint256 boolNumber, bool value) public view returns(uint256) {
+    function setBoolean(uint256 pos, bool value) public {
         if (value)
-            return packedBools | uint256(1) << boolNumber;
+            packedBools = packedBools | uint256(1) << pos;
         else
-            return packedBools & ~(uint256(1) << boolNumber);
+            packedBools = packedBools & ~(uint256(1) << pos);
     }
 }

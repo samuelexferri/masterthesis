@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.9.0;
+pragma solidity >=0.8.0 <0.9.0;
 
-contract MemoryAndStorage {
-    
+contract MemoryStorage {
     mapping(uint => Account) accounts;
     
     struct Account {
@@ -20,7 +19,7 @@ contract MemoryAndStorage {
         account.balance = balance;
     }
  
-    function getBalance(uint id) public returns (uint) {
+    function getBalance(uint id) public view returns (uint) {
         return accounts[id].balance;
     } 
 }

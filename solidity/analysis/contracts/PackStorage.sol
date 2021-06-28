@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.9.0;
+pragma solidity >=0.8.0 <0.9.0;
 
-// Fake Address: 0x1234574773Fc4F943711e57a7542f5Af2c83210F
-// Fake Time: 1609455600
-// Fake DNA: 73616d75656c65786665727269
+// Test Address: 0x1234574773Fc4F943711e57a7542f5Af2c83210F
+// Test Time: 1609455600
+// Test DNA: 73616d75656c65786665727269
 
-contract PackDivided {
-    
+contract PackSingle {
     mapping(uint256 => address) owners;
     mapping(uint256 => uint256) dnas;
     mapping(uint256 => uint16) heights;
@@ -31,7 +30,6 @@ contract PackDivided {
 }
 
 contract PackStructs {
-    
     struct Person {
         address owner; // Address 160 bit
         uint64 creationTime; 
@@ -52,7 +50,6 @@ contract PackStructs {
 }
 
 contract PackEncoding {
-    
     mapping(uint256 => uint256) persons;
     mapping(uint256 => uint256) dnas;
     

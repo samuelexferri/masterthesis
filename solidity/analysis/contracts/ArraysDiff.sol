@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.0 <0.9.0; // A partire dalla versione 0.8.0 di Solidity, ABI Coder v2 è di default e si può omettere
-// pragma experimental ABIEncoderV2;
+pragma solidity >=0.8.0 <0.9.0;
 
 contract ArraysDiff {
     uint64[5] numbers_fix;    
     uint64[] numbers_dyn;    
     
-    // Execution cost elem#1: 43320 gas
+    // Execution cost elem#1: 43320 gas (Tx base 21000 + Slot di storage 20000)
     // Execution cost elem#2: 43335 gas (Delta: 15)
     // Execution cost elem#3: 43362 gas (Delta: 27)
     // Execution cost elem#4: 43392 gas (Delta: 30)
@@ -19,7 +18,7 @@ contract ArraysDiff {
         numbers_fix[4] = 0x5555555555555555;
     }
     
-    // Execution cost elem#1: 65498 gas (Slot aggiuntivo per la length)
+    // Execution cost elem#1: 65498 gas (Tx base 21000 + Slot di storage 20000 + Slot aggiuntivo per la length)
     // Execution cost elem#2: 66103 gas (Delta: 605)
     // Execution cost elem#3: 66667 gas (Delta: 564)
     // Execution cost elem#4: 67231 gas (Delta: 564)

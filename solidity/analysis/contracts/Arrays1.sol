@@ -12,7 +12,7 @@ contract Arrays1 {
     
     uint64[] numbers_three;    
     
-    // Execution cost: 109859 gas
+    // Execution cost: 109781 gas
     function fixedByteArray() public returns (uint) {
         b_one[0] = bytes16('0x1111');
         b_one[1] = bytes16('0x1111');
@@ -24,9 +24,9 @@ contract Arrays1 {
         return b_one.length;
     }
     
-    // Execution cost: 31 - 75209 gas / 32 - 96579 gas 
+    // Execution cost: 31 - 73459 gas / 32 - 96612 gas 
     function dynamicBytesArray() public returns (uint) {
-        for (int i = 0; i < 31; i++) { // Cambiare 31/32
+        for (int i = 0; i < 32; i++) { // Cambiare 31/32
             b_two.push('a');
         }
 
@@ -34,7 +34,7 @@ contract Arrays1 {
         return b_two.length;
     }
     
-    // Execution cost: 43845 gas
+    // Execution cost: 43846 gas
     function dynamicStringArray() public {
         s_one = 'Hello World!'; // UTF-8 Encoding
     
@@ -43,7 +43,7 @@ contract Arrays1 {
         // return s_one.length; // Non ha salvato la sua length
     }
      
-    // Execution cost: 87683 gas
+    // Execution cost: 87650 gas
     function fixedArray() public returns (uint) {
         numbers_one[0] = 0x1111111111111111;
         numbers_one[2] = 0x2222222222222222;

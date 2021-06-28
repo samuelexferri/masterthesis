@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.9.0;
+pragma solidity >=0.8.0 <0.9.0;
 
 contract Unchecked {
-    
     function check() public {
         uint8[8] memory array = [8,8,8,8,8,8,8,8];
         uint start = 2;
