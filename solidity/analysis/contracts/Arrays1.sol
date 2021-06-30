@@ -76,7 +76,7 @@ contract Arrays1 {
 	function dynamicMemoryArray() public returns (uint256) {
 		uint32[] memory a_mem = new uint32[](5); // Operatore new
 
-		// a_mem.push(1); // Non è possibile per gli array dinamici in memoria, bisogna usare l'indice
+		// a_mem.push(1); // Non è possibile per gli arrays dinamici in memoria, bisogna usare l'indice
 
 		a_mem[0] = 1111;
 		a_mem[4] = 5555;
