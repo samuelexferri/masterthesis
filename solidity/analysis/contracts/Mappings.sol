@@ -45,3 +45,14 @@ contract MappingNotPack {
 		items[0xB] = 0xBB;
 	}
 }
+
+contract MappingEnd {
+  mapping (uint256 => uint128) itemsA;
+  mapping (uint256 => uint128) itemsB;
+
+  function map(uint256 x) public {
+      itemsA[72] = 11 ;
+      itemsA[73] = 12 ;
+      itemsB[x] = 22 ;
+   }
+}
